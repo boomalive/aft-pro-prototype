@@ -11,6 +11,20 @@ function renderCards(items, className = "grid-2") {
     .join("")}</div>`;
 }
 
+function renderSolutions(items) {
+  return `<div class="solution-track" tabindex="0" aria-label="Решения: откройте карточку, чтобы узнать подробнее">
+    ${items.map(([title, text, products], index) => `<details class="card solution-card">
+      <summary>
+        <span class="card-media media-placeholder" role="img" aria-label="Место для изображения ${escapeHtml(title)}"><span>Фото решения</span></span>
+        <span class="card-index">${String(index + 1).padStart(2, "0")}</span>
+        <h3>${escapeHtml(title)}</h3>
+        <span class="solution-toggle">Подробнее <span aria-hidden="true">+</span></span>
+      </summary>
+      <div class="solution-detail"><p>${escapeHtml(text)}</p>${products?.length ? `<ul>${products.map((product) => `<li>${escapeHtml(product)}</li>`).join("")}</ul>` : ""}</div>
+    </details>`).join("")}
+  </div>`;
+}
+
 function renderServicePage() {
   const slug = document.body.dataset.service;
   const data = window.AFT_SERVICE_DATA?.[slug];
@@ -21,51 +35,29 @@ function renderServicePage() {
   const description = document.querySelector('meta[name="description"]');
   if (description) description.content = data.lead;
 
-  const stats = data.stats?.length
-    ? `<section class="section section-white">
+  const statItems = data.stats?.length ? data.stats : [
+    ["—", "Показатель направления — уточняется"],
+    ["—", "Объем выполненных работ — уточняется"],
+    ["—", "Результаты проектов — уточняются"]
+  ];
+  const stats = `<section class="section section-white">
         <div class="container">
           <p class="eyebrow">Показатели</p>
           <h2>Опыт и ориентиры направления</h2>
           <div class="stats">
-            ${data.stats.map(([number, text]) => `<div class="stat"><strong>${number}</strong><span>${text}</span></div>`).join("")}
+            ${statItems.map(([number, text]) => `<div class="stat reveal"><strong>${number}</strong><span>${text}</span></div>`).join("")}
           </div>
         </div>
-      </section>`
-    : "";
+      </section>`;
 
-  const cases = data.cases?.length
-    ? `<section class="section case-carousel" id="cases" data-case-carousel>
-        <div class="container">
-          <div class="case-carousel-head">
-            <div><p class="eyebrow">Практика ${data.caseNote ? `<button class="editor-note" type="button" data-note="${data.caseNote}" aria-label="Комментарий редактора">i</button>` : ""}</p><h2>Кейсы: опыт, подтвержденный реальными задачами</h2></div>
-            <div class="case-carousel-actions">
-              <a class="button-secondary" href="contacts.html#request">Получить консультацию</a>
-              <div class="case-controls" aria-label="Управление кейсами">
-                <button class="case-control" type="button" data-carousel-prev aria-label="Предыдущий кейс">←</button>
-                <button class="case-control" type="button" data-carousel-next aria-label="Следующий кейс">→</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="case-track">
-          ${data.cases
-            .map(
-              ([title, text, metrics, image]) => `<article class="case-slide">
-                ${image ? `<img class="case-image" src="${image}" alt="${title}" loading="lazy">` : '<div class="case-image" role="img" aria-label="Изображение проекта"></div>'}
-                <div class="case-body">
-                  <p class="case-kicker">${title}</p>
-                  <p class="case-description">${text}</p>
-                  <div class="case-metrics"><strong>${data.caseMetricLabel || "Результат"}:</strong><ul>${metrics.map((metric) => `<li>${metric}</li>`).join("")}</ul></div>
-                </div>
-              </article>`
-            )
-            .join("")}
-        </div>
-      </section>`
-    : "";
+  const cases = renderCaseCarousel(data.cases?.length ? data.cases : placeholderCases(data.title), {
+    metricLabel: data.caseMetricLabel || "Результат",
+    note: data.caseNote || (data.cases?.length ? "" : "Карточки-заглушки: заменить после получения материалов по кейсам")
+  });
 
   target.innerHTML = `
-    <section class="hero">
+    <section class="hero service-hero">
+      <div class="hero-background media-placeholder" role="img" aria-label="Место для фонового видео по направлению ${data.title}"><span>Фоновое видео</span></div>
       <div class="container">
         <div class="breadcrumbs"><a href="index.html">Главная</a><span>/</span><a href="services.html">Услуги</a><span>/</span><span>${data.title}</span></div>
         <div class="service-nav" id="service-nav"></div>
@@ -81,25 +73,30 @@ function renderServicePage() {
               <a class="button-secondary" href="#solutions">Что мы делаем</a>
             </div>
           </div>
-          <div class="visual-placeholder" role="img" aria-label="Место для изображения по направлению ${data.title}"></div>
         </div>
       </div>
     </section>
 
-    <section class="section section-white" id="solutions">
+    <section class="section section-white" id="solutions" data-solutions-carousel>
       <div class="container">
         <div class="section-head">
           <div><p class="eyebrow">Что мы делаем</p><h2>${data.solutionsTitle}</h2></div>
-          <p class="muted">${data.solutionsIntro}</p>
+          <div class="solutions-head-actions">
+            <p class="muted">${data.solutionsIntro}</p>
+            <div class="case-controls" aria-label="Управление решениями">
+              <button class="case-control" type="button" data-carousel-prev aria-label="Предыдущие решения">←</button>
+              <button class="case-control" type="button" data-carousel-next aria-label="Следующие решения">→</button>
+            </div>
+          </div>
         </div>
-        ${renderCards(data.solutions)}
+        ${renderSolutions(data.solutions)}
       </div>
     </section>
 
     <section class="section">
       <div class="container split">
         <div>
-          <p class="eyebrow">Задачи и объекты</p>
+          <p class="eyebrow">${data.tasksEyebrow || "Задачи и объекты"}</p>
           <h2>${data.tasksTitle}</h2>
         </div>
         <div class="plain-list">
@@ -114,9 +111,9 @@ function renderServicePage() {
 
     <section class="section section-white">
       <div class="container">
-        <p class="eyebrow">Единая логика проекта</p>
-        <h2>Как строится работа</h2>
-        <div class="timeline">
+        <p class="eyebrow">${data.processEyebrow || "Единая логика проекта"}</p>
+        <h2>${data.processTitle || "Как строится работа"}</h2>
+        <div class="timeline" style="--step-count: ${data.process.length}">
           ${data.process.map(([title, text]) => `<article class="timeline-item"><h3>${title}</h3><p>${text}</p></article>`).join("")}
         </div>
       </div>

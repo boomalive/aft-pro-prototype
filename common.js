@@ -6,6 +6,60 @@ const services = [
   { slug: "service", title: "Сервис", href: "service-service.html" },
 ];
 
+const homeCases = [
+  ["Криогаз-Высоцк СПГ, Высоцк", "Доставка компонентов для завода по производству сжиженного природного газа из США, ОАЭ, Китая, Индии, Южной Кореи и стран Европы. Подготовка их таможенного оформления.", ["1 грузовой самолет", "5 крановых судов", "50+ негабаритных грузов", "700+ автотранспортных средств"], "assets/cases/kriogaz-vysotsk.webp"],
+  ["Новатэк, Усть-Луга", "Доставка реактора гидрокрекинга размерами 28,4 × 5,45 × 5,42 м и десяти дополнительных негабаритных единиц оборудования из Италии до терминала НОВАТЭКа. Обеспечение выгрузки в порту.", ["1 крановое судно", "11 негабаритных грузов", "620 т оборудования"], "assets/cases/novatek-ust-luga.webp"],
+  ["Архбум Тиссью Групп, Калуга", "Доставка многочисленных компонентов оборудования из разных стран одновременно и в установленный контрактом срок.", ["12 крупногабаритных грузов", "12 мега-трейлеров", "158 полуприцепов"], "assets/cases/arkhbum-kaluga.webp"]
+];
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  })[character]);
+}
+
+function placeholderCases(serviceTitle) {
+  return [1, 2, 3].map((number) => [
+    `${serviceTitle} · Проект ${String(number).padStart(2, "0")}`,
+    "Краткое описание задачи заказчика и выполненного решения. Текст кейса будет добавлен после получения материалов.",
+    ["Состав решения — уточняется", "Объем проекта — уточняется", "Результат — уточняется"]
+  ]);
+}
+
+// Главная и услуги используют одну карточку: изображение, название,
+// короткое описание и список показателей. Детальные страницы кейсов не добавляем.
+function renderCaseCarousel(items, { metricLabel = "Результат", note = "" } = {}) {
+  return `<section class="section case-carousel" id="cases" data-case-carousel>
+    <div class="container">
+      <div class="case-carousel-head">
+        <div><p class="eyebrow">Практика ${note ? `<button class="editor-note" type="button" data-note="${escapeHtml(note)}" aria-label="Комментарий редактора">i</button>` : ""}</p><h2>Кейсы: опыт, подтвержденный реальными задачами</h2></div>
+        <div class="case-carousel-actions">
+          <a class="button-secondary" href="contacts.html#request">Получить консультацию</a>
+          <div class="case-controls" aria-label="Управление кейсами">
+            <button class="case-control" type="button" data-carousel-prev aria-label="Предыдущий кейс">←</button>
+            <button class="case-control" type="button" data-carousel-next aria-label="Следующий кейс">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="case-track" tabindex="0" aria-label="Кейсы">
+      ${items.map(([title, description, metrics, image]) => `<article class="case-slide">
+        ${image ? `<img class="case-image" src="${escapeHtml(image)}" alt="${escapeHtml(title)}" loading="lazy">` : `<div class="case-image media-placeholder" role="img" aria-label="Место для изображения проекта ${escapeHtml(title)}"><span>Фото проекта</span></div>`}
+        <div class="case-body">
+          <p class="case-kicker">${escapeHtml(title)}</p>
+          <p class="case-description">${escapeHtml(description)}</p>
+          <div class="case-metrics"><strong>${escapeHtml(metricLabel)}:</strong><ul>${metrics.map((metric) => `<li>${escapeHtml(metric)}</li>`).join("")}</ul></div>
+        </div>
+      </article>`).join("")}
+    </div>
+  </section>`;
+}
+
+function renderHomeCases() {
+  const target = document.querySelector("#home-cases");
+  if (target) target.outerHTML = renderCaseCarousel(homeCases, { metricLabel: "Техника" });
+}
+
 function currentFile() {
   const name = window.location.pathname.split("/").pop();
   return name || "index.html";
@@ -120,18 +174,42 @@ function initReveal() {
 }
 
 function initCaseCarousels() {
-  document.querySelectorAll("[data-case-carousel]").forEach((carousel) => {
-    const track = carousel.querySelector(".case-track");
+  document.querySelectorAll("[data-case-carousel], [data-solutions-carousel]").forEach((carousel) => {
+    if (carousel.dataset.carouselReady) return;
+    const track = carousel.querySelector(".case-track, .solution-track");
     const prev = carousel.querySelector("[data-carousel-prev]");
     const next = carousel.querySelector("[data-carousel-next]");
     if (!track || !prev || !next) return;
+    carousel.dataset.carouselReady = "true";
     const move = (direction) => {
-      const card = track.querySelector(".case-slide");
-      const distance = card ? card.getBoundingClientRect().width + 22 : track.clientWidth * 0.8;
+      const card = track.querySelector(".case-slide, .solution-card");
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      const distance = card ? card.getBoundingClientRect().width + gap : track.clientWidth * 0.8;
       track.scrollBy({ left: distance * direction, behavior: "smooth" });
     };
     prev.addEventListener("click", () => move(-1));
     next.addEventListener("click", () => move(1));
+    const updateControls = () => {
+      prev.disabled = track.scrollLeft <= 1;
+      next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 1;
+    };
+    track.addEventListener("scroll", updateControls, { passive: true });
+    if ("ResizeObserver" in window) new ResizeObserver(updateControls).observe(track);
+    updateControls();
+  });
+}
+
+function initClientMarquee() {
+  document.querySelectorAll("[data-client-marquee]").forEach((cloud) => {
+    const group = document.createElement("div");
+    group.className = "logo-group";
+    group.append(...cloud.children);
+    const duplicate = group.cloneNode(true);
+    duplicate.setAttribute("aria-hidden", "true");
+    const track = document.createElement("div");
+    track.className = "logo-track";
+    track.append(group, duplicate);
+    cloud.append(track);
   });
 }
 
@@ -142,11 +220,13 @@ function setYear() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  renderHomeCases();
   renderHeader();
   renderFooter();
   renderServiceNav();
   initPrototypeForms();
   initReveal();
   initCaseCarousels();
+  initClientMarquee();
   setYear();
 });
