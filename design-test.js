@@ -225,52 +225,47 @@ function renderConceptCases() {
   target.outerHTML = `<section class="section section-white project-section" id="cases" aria-labelledby="projects-title">
     <div class="container">
       <div class="section-heading"><p class="section-label">06 / Практика</p><h2 id="projects-title">Кейсы: опыт, подтвержденный реальными задачами</h2></div>
-      <div class="project-tabs" role="tablist" aria-label="Выбрать кейс">
-        ${homeCases.map(([title], i) => `<button class="project-tab" id="project-tab-${i}" type="button" role="tab" aria-controls="project-${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}"><span class="project-tab-number">${number(i + 1)}</span><span>${escapeHtml(title)}</span>${arrow('diagonal')}</button>`).join('')}
-      </div>
-      <div class="project-panels">
-        ${homeCases.map(([title, description, metrics, image], i) => `<article class="project-panel" id="project-${i}" role="tabpanel" aria-labelledby="project-tab-${i}" tabindex="0" ${i === 0 ? '' : 'hidden'}>
+    </div>
+    <ul class="project-track" id="project-track" tabindex="0" aria-label="Кейсы — горизонтальная лента">
+        ${homeCases.map(([title, description, metrics, image], i) => `<li class="project-card"><article id="project-${i}" aria-labelledby="project-title-${i}">
           <div class="project-visual"><img class="project-image" src="${escapeHtml(image)}" alt="${escapeHtml(title)}" loading="lazy"><span class="project-image-index" aria-hidden="true">${number(i + 1)} / ${number(homeCases.length)}</span></div>
-          <div class="project-copy"><h3>${escapeHtml(title)}</h3><p class="project-description">${escapeHtml(description)}</p><div class="project-equipment"><p class="small-label">Техника</p><ul>${metrics.map(metric => {
+          <div class="project-copy"><h3 id="project-title-${i}">${escapeHtml(title)}</h3><p class="project-description">${escapeHtml(description)}</p><div class="project-equipment"><p class="small-label">Техника</p><ul>${metrics.map(metric => {
             const [, value, suffix, label] = metric.match(/^(\d+)(\+?)\s+(.+)$/) || ['', '', '', metric];
             return `<li><strong aria-label="${escapeHtml(value + suffix)}"><span data-count-to="${escapeHtml(value)}">${escapeHtml(value)}</span><span aria-hidden="true">${escapeHtml(suffix)}</span></strong><span>${escapeHtml(label)}</span></li>`;
           }).join('')}</ul></div></div>
-        </article>`).join('')}
-      </div>
-      <div class="project-footer"><div class="project-controls"><span class="project-progress" aria-live="polite" aria-atomic="true">Кейс <span data-project-current>01</span> / ${number(homeCases.length)}</span><button class="case-control" type="button" data-project-prev aria-label="Предыдущий кейс">${arrow('prev')}</button><button class="case-control" type="button" data-project-next aria-label="Следующий кейс">${arrow('next')}</button></div><a class="concept-button concept-button-red" href="#request">Получить консультацию ${arrow('diagonal')}</a></div>
+        </article></li>`).join('')}
+    </ul>
+    <div class="container">
+      <div class="project-footer"><div class="project-controls"><span class="project-scroll-hint">Листайте кейсы</span><button class="case-control" type="button" data-project-prev aria-controls="project-track" aria-label="Прокрутить кейсы влево">${arrow('prev')}</button><button class="case-control" type="button" data-project-next aria-controls="project-track" aria-label="Прокрутить кейсы вправо">${arrow('next')}</button></div><a class="concept-button concept-button-red" href="#request">Получить консультацию ${arrow('diagonal')}</a></div>
     </div>
   </section>`;
 
   const section = document.querySelector('#cases');
-  const tabs = [...section.querySelectorAll('[role="tab"]')];
-  const panels = [...section.querySelectorAll('[role="tabpanel"]')];
+  const track = section.querySelector('.project-track');
   const prev = section.querySelector('[data-project-prev]');
   const next = section.querySelector('[data-project-next]');
-  let current = 0;
-  function show(index, focusTab = false) {
-    current = Math.max(0, Math.min(panels.length - 1, index));
-    tabs.forEach((tab, i) => {
-      tab.setAttribute('aria-selected', String(i === current));
-      tab.tabIndex = i === current ? 0 : -1;
-      panels[i].hidden = i !== current;
-    });
-    prev.disabled = current === 0;
-    next.disabled = current === panels.length - 1;
-    section.querySelector('[data-project-current]').textContent = number(current + 1);
-    if (focusTab) tabs[current].focus();
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const end = () => track.scrollWidth - track.clientWidth;
+  const step = () => track.querySelector('.project-card').getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap);
+  function scrollTo(left) {
+    track.scrollTo({ left, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
   }
-  tabs.forEach((tab, i) => {
-    tab.addEventListener('click', () => show(i));
-    tab.addEventListener('keydown', event => {
-      const destinations = { ArrowLeft: (i + tabs.length - 1) % tabs.length, ArrowRight: (i + 1) % tabs.length, Home: 0, End: tabs.length - 1 };
-      if (!(event.key in destinations)) return;
-      event.preventDefault();
-      show(destinations[event.key], true);
-    });
+  function updateControls() {
+    prev.disabled = track.scrollLeft <= 1;
+    next.disabled = track.scrollLeft >= end() - 1;
+  }
+  prev.addEventListener('click', () => scrollTo(track.scrollLeft - step()));
+  next.addEventListener('click', () => scrollTo(track.scrollLeft + step()));
+  track.addEventListener('scroll', updateControls, { passive: true });
+  track.addEventListener('keydown', event => {
+    if (event.target !== track || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+    const destinations = { ArrowLeft: track.scrollLeft - step(), ArrowRight: track.scrollLeft + step(), Home: 0, End: end() };
+    if (!(event.key in destinations)) return;
+    event.preventDefault();
+    scrollTo(destinations[event.key]);
   });
-  prev.addEventListener('click', () => show(current - 1));
-  next.addEventListener('click', () => show(current + 1));
-  show(0);
+  new ResizeObserver(updateControls).observe(track);
+  updateControls();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
