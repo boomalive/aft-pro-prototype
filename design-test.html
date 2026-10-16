@@ -9,9 +9,9 @@
   <link rel="preload" href="assets/concept/hero-building.png" as="image" fetchpriority="high">
   <link rel="preload" href="assets/concept/fonts/inter-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/concept/fonts/inter-tight-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="design-test.css?v=1">
+  <link rel="stylesheet" href="design-test.css?v=2">
   <script src="common.js?v=5" defer></script>
-  <script src="design-test.js?v=1" defer></script>
+  <script src="design-test.js?v=2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">К содержанию</a>
@@ -82,7 +82,7 @@
       <div class="container">
         <div class="section-heading">
           <p class="section-label">02 / Направления деятельности</p>
-          <div><h2>Пять направлений.<br>Одна система.</h2><a class="text-link" href="services.html">Все услуги <span aria-hidden="true">↗</span></a></div>
+          <div><h2>Пять направлений.<br>Одна система.</h2><a class="text-link" href="services.html">Все услуги <img class="arrow-icon" src="assets/concept/button-arrow.svg" alt="" width="9" height="9"></a></div>
         </div>
         <div class="service-accordion">
           <details class="direction" name="directions" open>
@@ -111,9 +111,9 @@
 
     <section class="section section-white statistics-section" aria-label="Ключевые показатели">
       <div class="container statistics">
-        <div class="stat reveal"><strong>100 000<span>+</span></strong><p>тонн перевезенных грузов</p></div>
-        <div class="stat reveal"><strong>50<span>+</span></strong><p>крупных индустриальных проектов</p></div>
-        <div class="stat reveal"><strong>1500<span>+</span></strong><p>доставленных контейнеров</p></div>
+        <div class="stat reveal"><strong aria-label="100 000 и более"><span class="stat-value" data-count-to="100000" data-count-group>100 000</span><span class="stat-plus" aria-hidden="true">+</span></strong><p>тонн перевезенных грузов</p></div>
+        <div class="stat reveal"><strong aria-label="50 и более"><span class="stat-value" data-count-to="50">50</span><span class="stat-plus" aria-hidden="true">+</span></strong><p>крупных индустриальных проектов</p></div>
+        <div class="stat reveal"><strong aria-label="1500 и более"><span class="stat-value" data-count-to="1500">1500</span><span class="stat-plus" aria-hidden="true">+</span></strong><p>доставленных контейнеров</p></div>
       </div>
     </section>
 
@@ -127,14 +127,14 @@
             <article class="benefit-slide" data-benefit-slide hidden><span class="benefit-number">03 / 04</span><h3>Технологии с понятной экономикой</h3><p>Сравниваем технические варианты и затраты на внедрение и эксплуатацию, чтобы выбор решения опирался на расчёты ещё до начала проекта.</p></article>
             <article class="benefit-slide" data-benefit-slide hidden><span class="benefit-number">04 / 04</span><h3>Поддержка после запуска</h3><p>Сопровождаем роботизированное оборудование при монтаже и пусконаладке, а после запуска обслуживаем его в процессе эксплуатации.</p></article>
           </div>
-          <div class="benefit-controls"><button type="button" class="case-control" data-benefit-prev aria-label="Предыдущее преимущество">←</button><button type="button" class="case-control" data-benefit-next aria-label="Следующее преимущество">→</button></div>
+          <div class="benefit-controls"><button type="button" class="case-control" data-benefit-prev aria-label="Предыдущее преимущество"><img class="arrow-icon arrow-prev" src="assets/concept/button-arrow.svg" alt="" width="9" height="9"></button><button type="button" class="case-control" data-benefit-next aria-label="Следующее преимущество"><img class="arrow-icon arrow-next" src="assets/concept/button-arrow.svg" alt="" width="9" height="9"></button></div>
         </div>
       </div>
     </section>
 
     <section class="section section-white industries-section" id="industries">
       <div class="container">
-        <div class="section-heading"><p class="section-label">04 / Экспертиза</p><div><h2>Ключевые отрасли<br>работы</h2><a class="text-link" href="#request">Обсудить задачу <span aria-hidden="true">↗</span></a></div></div>
+        <div class="section-heading"><p class="section-label">04 / Экспертиза</p><div><h2>Ключевые отрасли<br>работы</h2><a class="text-link" href="#request">Обсудить задачу <img class="arrow-icon" src="assets/concept/button-arrow.svg" alt="" width="9" height="9"></a></div></div>
         <div class="industries-grid">
           <article class="industry"><span class="small-label">01 / Отрасль</span><div class="industry-media" role="img" aria-label="Место для изображения химической отрасли"><span>Химия и полимеры</span></div><h3>Химия и полимеры</h3><p>Логистические комплексы для фасовки, упаковки, хранения и отгрузки продукции. Автоматизация складов и внутриплощадочных перемещений.</p></article>
           <article class="industry"><span class="small-label">02 / Отрасль</span><div class="industry-media" role="img" aria-label="Место для изображения производства удобрений"><span>Минеральные удобрения</span></div><h3>Минеральные удобрения</h3><p>Проектные решения для фасовки карбамида в биг-беги, хранения и подачи продукции к автомобильной и железнодорожной отгрузке.</p></article>
@@ -147,11 +147,11 @@
     <section class="section geography-section">
       <div class="container">
         <div class="section-heading"><p class="section-label">05 / Офисы</p><h2>География<br>присутствия</h2></div>
-        <div class="geography-layout"><div class="geography-map" role="img" aria-label="Заглушка карты городов присутствия АФТ ПРО"><span class="map-caption">Место для карты присутствия</span><span class="map-crosshair" aria-hidden="true"></span><span class="map-company">AFT PRO</span></div><div><p class="geography-intro">Команды АФТ ПРО работают рядом с ключевыми промышленными регионами и подключаются к задачам по России и международным маршрутам.</p><ul class="office-list"><li><span>01</span> Усть-Луга <span aria-hidden="true">↗</span></li><li><span>02</span> Москва <span aria-hidden="true">↗</span></li><li><span>03</span> Нижний Новгород <span aria-hidden="true">↗</span></li><li><span>04</span> Екатеринбург <span aria-hidden="true">↗</span></li></ul></div></div>
+        <div class="geography-layout"><div class="geography-map" role="img" aria-label="Заглушка карты городов присутствия АФТ ПРО"><span class="map-caption">Место для карты присутствия</span><span class="map-crosshair" aria-hidden="true"></span><span class="map-company">AFT PRO</span></div><div><p class="geography-intro">Команды АФТ ПРО работают рядом с ключевыми промышленными регионами и подключаются к задачам по России и международным маршрутам.</p><ul class="office-list"><li><span>01</span> Усть-Луга <img class="arrow-icon" src="assets/concept/button-arrow.svg" alt="" width="9" height="9"></li><li><span>02</span> Москва <img class="arrow-icon" src="assets/concept/button-arrow.svg" alt="" width="9" height="9"></li><li><span>03</span> Нижний Новгород <img class="arrow-icon" src="assets/concept/button-arrow.svg" alt="" width="9" height="9"></li><li><span>04</span> Екатеринбург <img class="arrow-icon" src="assets/concept/button-arrow.svg" alt="" width="9" height="9"></li></ul></div></div>
       </div>
     </section>
 
-    <div id="home-cases"></div>
+    <div id="concept-cases"></div>
 
     <section class="section section-white clients-section">
       <div class="container"><div class="clients-heading"><p class="section-label">07 / Опыт работы</p><h2>Клиенты</h2></div><div class="logo-cloud" data-client-marquee tabindex="0" aria-label="Список клиентов"><span class="logo-chip">S-Chem</span><span class="logo-chip">SABIC</span><span class="logo-chip">QAPCO</span><span class="logo-chip">Tasnee</span><span class="logo-chip">СИБУР</span><span class="logo-chip">ЛУКОЙЛ</span><span class="logo-chip">LANXESS</span><span class="logo-chip">Petro Rabigh</span><span class="logo-chip">Farabi</span><span class="logo-chip">Unipetrol</span><span class="logo-chip">TotalEnergies</span><span class="logo-chip">Shell</span><span class="logo-chip">Covestro</span><span class="logo-chip">Chevron Phillips</span><span class="logo-chip">LyondellBasell</span><span class="logo-chip">BASF</span><span class="logo-chip">QatarEnergy</span><span class="logo-chip">Dow</span><span class="logo-chip">Grupa Azoty</span><span class="logo-chip">Slovnaft</span><span class="logo-chip">ExxonMobil</span><span class="logo-chip">Orpic</span></div></div>
@@ -173,6 +173,6 @@
       </div>
     </section>
   </main>
-  <footer class="concept-footer"><div class="container"><div class="footer-top"><a class="footer-brand" href="design-test.html">AFT PRO</a><p>Комплексные решения для перевозки, проектирования, роботизации и эксплуатации логистической инфраструктуры.</p><a class="text-link" href="#main">Наверх <span aria-hidden="true">↑</span></a></div><div class="footer-bottom"><span>© AFT PRO, <span data-year></span></span><nav aria-label="Направления"><a href="service-logistics.html">Логистика</a><a href="service-engineering.html">Инжиниринг</a><a href="service-robotics.html">Роботизация</a><a href="service-consulting.html">Консалтинг</a><a href="service-service.html">Сервис</a></nav><a href="https://aft.pro/privacy">Политика обработки данных</a></div></div></footer>
+  <footer class="concept-footer"><div class="container"><div class="footer-top"><a class="footer-brand" href="design-test.html">AFT PRO</a><p>Комплексные решения для перевозки, проектирования, роботизации и эксплуатации логистической инфраструктуры.</p><a class="text-link" href="#main">Наверх <img class="arrow-icon arrow-up" src="assets/concept/button-arrow.svg" alt="" width="9" height="9"></a></div><div class="footer-bottom"><span>© AFT PRO, <span data-year></span></span><nav aria-label="Направления"><a href="service-logistics.html">Логистика</a><a href="service-engineering.html">Инжиниринг</a><a href="service-robotics.html">Роботизация</a><a href="service-consulting.html">Консалтинг</a><a href="service-service.html">Сервис</a></nav><a href="https://aft.pro/privacy">Политика обработки данных</a></div></div></footer>
 </body>
 </html>

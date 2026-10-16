@@ -1,4 +1,4 @@
-/* The prototype's shared case renderer, carousel and demo form stay in common.js. */
+/* Shared content and the demo form stay in common.js; this page has its own case layout. */
 function initConceptHero() {
   const hero = document.querySelector('.concept-hero');
   const canvas = hero?.querySelector('[data-hero-canvas]');
@@ -29,6 +29,10 @@ function initConceptHero() {
   function sizeHero() {
     const scale = mobile.matches ? 1 : hero.clientWidth / 1200;
     canvas.style.setProperty('--hero-scale', String(scale));
+    const contentAxis = document.querySelector('.purpose-section .section-heading > h2');
+    if (contentAxis && !mobile.matches) {
+      canvas.style.setProperty('--hero-content-axis', `${contentAxis.getBoundingClientRect().left / scale}px`);
+    }
     dimensions = {
       width: mobile.matches ? hero.clientWidth : 1200,
       height: mobile.matches ? hero.clientHeight : 640,
@@ -166,8 +170,113 @@ function initBenefits() {
   show(0);
 }
 
+function initConceptCounters() {
+  const values = [...document.querySelectorAll('[data-count-to]')];
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const animations = new Map();
+  const format = (element, value) => element.hasAttribute('data-count-group')
+    ? String(value).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+    : String(value);
+  const finish = element => {
+    if (animations.has(element)) cancelAnimationFrame(animations.get(element));
+    animations.delete(element);
+    element.textContent = format(element, Number(element.dataset.countTo));
+  };
+  values.forEach(element => {
+    element.setAttribute('aria-hidden', 'true');
+    element.textContent = reducedMotion.matches ? format(element, Number(element.dataset.countTo)) : '0';
+  });
+  if (!('IntersectionObserver' in window)) {
+    values.forEach(finish);
+    return;
+  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const element = entry.target.querySelector('[data-count-to]');
+      observer.unobserve(entry.target);
+      if (reducedMotion.matches) return finish(element);
+      let start = null;
+      const target = Number(element.dataset.countTo);
+      function tick(timestamp) {
+        if (start === null) start = timestamp;
+        const progress = Math.min(1, (timestamp - start) / 1600);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        element.textContent = format(element, Math.floor(target * eased));
+        if (progress < 1) animations.set(element, requestAnimationFrame(tick));
+        else finish(element);
+      }
+      animations.set(element, requestAnimationFrame(tick));
+    });
+  }, { threshold: .4 });
+  values.forEach(element => observer.observe(element.closest('.stat, .project-equipment li')));
+  reducedMotion.addEventListener('change', () => {
+    if (!reducedMotion.matches) return;
+    observer.disconnect();
+    values.forEach(finish);
+  });
+}
+
+function renderConceptCases() {
+  const target = document.querySelector('#concept-cases');
+  if (!target) return;
+  const number = value => String(value).padStart(2, '0');
+  const arrow = direction => `<img class="arrow-icon arrow-${direction}" src="assets/concept/button-arrow.svg" alt="" width="9" height="9">`;
+  target.outerHTML = `<section class="section section-white project-section" id="cases" aria-labelledby="projects-title">
+    <div class="container">
+      <div class="section-heading"><p class="section-label">06 / Практика</p><h2 id="projects-title">Кейсы: опыт, подтвержденный реальными задачами</h2></div>
+      <div class="project-tabs" role="tablist" aria-label="Выбрать кейс">
+        ${homeCases.map(([title], i) => `<button class="project-tab" id="project-tab-${i}" type="button" role="tab" aria-controls="project-${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}"><span class="project-tab-number">${number(i + 1)}</span><span>${escapeHtml(title)}</span>${arrow('diagonal')}</button>`).join('')}
+      </div>
+      <div class="project-panels">
+        ${homeCases.map(([title, description, metrics, image], i) => `<article class="project-panel" id="project-${i}" role="tabpanel" aria-labelledby="project-tab-${i}" tabindex="0" ${i === 0 ? '' : 'hidden'}>
+          <div class="project-visual"><img class="project-image" src="${escapeHtml(image)}" alt="${escapeHtml(title)}" loading="lazy"><span class="project-image-index" aria-hidden="true">${number(i + 1)} / ${number(homeCases.length)}</span></div>
+          <div class="project-copy"><h3>${escapeHtml(title)}</h3><p class="project-description">${escapeHtml(description)}</p><div class="project-equipment"><p class="small-label">Техника</p><ul>${metrics.map(metric => {
+            const [, value, suffix, label] = metric.match(/^(\d+)(\+?)\s+(.+)$/) || ['', '', '', metric];
+            return `<li><strong aria-label="${escapeHtml(value + suffix)}"><span data-count-to="${escapeHtml(value)}">${escapeHtml(value)}</span><span aria-hidden="true">${escapeHtml(suffix)}</span></strong><span>${escapeHtml(label)}</span></li>`;
+          }).join('')}</ul></div></div>
+        </article>`).join('')}
+      </div>
+      <div class="project-footer"><div class="project-controls"><span class="project-progress" aria-live="polite" aria-atomic="true">Кейс <span data-project-current>01</span> / ${number(homeCases.length)}</span><button class="case-control" type="button" data-project-prev aria-label="Предыдущий кейс">${arrow('prev')}</button><button class="case-control" type="button" data-project-next aria-label="Следующий кейс">${arrow('next')}</button></div><a class="concept-button concept-button-red" href="#request">Получить консультацию ${arrow('diagonal')}</a></div>
+    </div>
+  </section>`;
+
+  const section = document.querySelector('#cases');
+  const tabs = [...section.querySelectorAll('[role="tab"]')];
+  const panels = [...section.querySelectorAll('[role="tabpanel"]')];
+  const prev = section.querySelector('[data-project-prev]');
+  const next = section.querySelector('[data-project-next]');
+  let current = 0;
+  function show(index, focusTab = false) {
+    current = Math.max(0, Math.min(panels.length - 1, index));
+    tabs.forEach((tab, i) => {
+      tab.setAttribute('aria-selected', String(i === current));
+      tab.tabIndex = i === current ? 0 : -1;
+      panels[i].hidden = i !== current;
+    });
+    prev.disabled = current === 0;
+    next.disabled = current === panels.length - 1;
+    section.querySelector('[data-project-current]').textContent = number(current + 1);
+    if (focusTab) tabs[current].focus();
+  }
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => show(i));
+    tab.addEventListener('keydown', event => {
+      const destinations = { ArrowLeft: (i + tabs.length - 1) % tabs.length, ArrowRight: (i + 1) % tabs.length, Home: 0, End: tabs.length - 1 };
+      if (!(event.key in destinations)) return;
+      event.preventDefault();
+      show(destinations[event.key], true);
+    });
+  });
+  prev.addEventListener('click', () => show(current - 1));
+  next.addEventListener('click', () => show(current + 1));
+  show(0);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  renderConceptCases();
   initConceptHero();
   initConceptMenu();
   initBenefits();
+  initConceptCounters();
 });
