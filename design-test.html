@@ -9,12 +9,14 @@
   <link rel="preload" href="assets/concept/hero-building.png" as="image" fetchpriority="high">
   <link rel="preload" href="assets/concept/fonts/inter-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/concept/fonts/inter-tight-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="design-test.css?v=8">
+  <script src="design-scale.js?v=1"></script>
+  <link rel="stylesheet" href="design-test.css?v=9">
   <script src="common.js?v=5" defer></script>
-  <script src="design-test.js?v=5" defer></script>
+  <script src="design-test.js?v=6" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">К содержанию</a>
+  <div class="site-canvas">
   <main id="main">
     <section class="concept-hero" aria-labelledby="hero-title">
       <div class="hero-canvas" data-hero-canvas>
@@ -136,10 +138,10 @@
       <div class="container">
         <div class="section-heading"><p class="section-label">04 / Экспертиза</p><div><h2>Ключевые отрасли<br>работы</h2><a class="text-link" href="#request">Обсудить задачу <img class="arrow-icon" src="assets/concept/button-arrow-ink.svg" alt="" width="9" height="9"></a></div></div>
         <div class="industries-grid">
-          <article class="industry"><span class="small-label">01 / Отрасль</span><figure class="industry-media"><img src="assets/concept/industries/chemistry.webp" srcset="assets/concept/industries/chemistry-480.webp 480w, assets/concept/industries/chemistry.webp 960w" sizes="(max-width: 600px) calc(100vw - 20px), (max-width: 1000px) 48vw, 24vw" alt="Линия фасовки и паллетирования химической продукции" width="960" height="720" loading="lazy" decoding="async"></figure><h3>Химия и полимеры</h3><p>Логистические комплексы для фасовки, упаковки, хранения и отгрузки продукции. Автоматизация складов и внутриплощадочных перемещений.</p></article>
-          <article class="industry"><span class="small-label">02 / Отрасль</span><figure class="industry-media"><img src="assets/concept/industries/fertilizers.webp" srcset="assets/concept/industries/fertilizers-480.webp 480w, assets/concept/industries/fertilizers.webp 960w" sizes="(max-width: 600px) calc(100vw - 20px), (max-width: 1000px) 48vw, 24vw" alt="Фасовка минеральных удобрений в биг-беги" width="960" height="720" loading="lazy" decoding="async"></figure><h3>Минеральные удобрения</h3><p>Проектные решения для фасовки карбамида в биг-беги, хранения и подачи продукции к автомобильной и железнодорожной отгрузке.</p></article>
-          <article class="industry"><span class="small-label">03 / Отрасль</span><figure class="industry-media"><img src="assets/concept/industries/oil-gas.webp" srcset="assets/concept/industries/oil-gas-480.webp 480w, assets/concept/industries/oil-gas.webp 960w" sizes="(max-width: 600px) calc(100vw - 20px), (max-width: 1000px) 48vw, 24vw" alt="Транспортировка крупного реактора для нефтегазового комплекса" width="960" height="720" loading="lazy" decoding="async"></figure><h3>Нефтегазовая отрасль</h3><p>Доставка оборудования для производственных объектов, включая тяжеловесные и негабаритные грузы.</p></article>
-          <article class="industry"><span class="small-label">04 / Отрасль</span><figure class="industry-media"><img src="assets/concept/industries/distribution.webp" srcset="assets/concept/industries/distribution-480.webp 480w, assets/concept/industries/distribution.webp 960w" sizes="(max-width: 600px) calc(100vw - 20px), (max-width: 1000px) 48vw, 24vw" alt="Автоматизированный распределительный центр" width="960" height="720" loading="lazy" decoding="async"></figure><h3>Ритейл и распределительные центры</h3><p>Роботизация перемещения паллет и проектирование автоматизированных складских процессов.</p></article>
+          <article class="industry"><span class="small-label">01 / Отрасль</span><figure class="industry-media"><img src="assets/concept/industries/chemistry.webp" srcset="assets/concept/industries/chemistry-480.webp 480w, assets/concept/industries/chemistry.webp 960w" sizes="(min-width: 1200px) 24vw, (min-width: 640px) 48vw, 94vw" alt="Линия фасовки и паллетирования химической продукции" width="960" height="720" loading="lazy" decoding="async"></figure><h3>Химия и полимеры</h3><p>Логистические комплексы для фасовки, упаковки, хранения и отгрузки продукции. Автоматизация складов и внутриплощадочных перемещений.</p></article>
+          <article class="industry"><span class="small-label">02 / Отрасль</span><figure class="industry-media"><img src="assets/concept/industries/fertilizers.webp" srcset="assets/concept/industries/fertilizers-480.webp 480w, assets/concept/industries/fertilizers.webp 960w" sizes="(min-width: 1200px) 24vw, (min-width: 640px) 48vw, 94vw" alt="Фасовка минеральных удобрений в биг-беги" width="960" height="720" loading="lazy" decoding="async"></figure><h3>Минеральные удобрения</h3><p>Проектные решения для фасовки карбамида в биг-беги, хранения и подачи продукции к автомобильной и железнодорожной отгрузке.</p></article>
+          <article class="industry"><span class="small-label">03 / Отрасль</span><figure class="industry-media"><img src="assets/concept/industries/oil-gas.webp" srcset="assets/concept/industries/oil-gas-480.webp 480w, assets/concept/industries/oil-gas.webp 960w" sizes="(min-width: 1200px) 24vw, (min-width: 640px) 48vw, 94vw" alt="Транспортировка крупного реактора для нефтегазового комплекса" width="960" height="720" loading="lazy" decoding="async"></figure><h3>Нефтегазовая отрасль</h3><p>Доставка оборудования для производственных объектов, включая тяжеловесные и негабаритные грузы.</p></article>
+          <article class="industry"><span class="small-label">04 / Отрасль</span><figure class="industry-media"><img src="assets/concept/industries/distribution.webp" srcset="assets/concept/industries/distribution-480.webp 480w, assets/concept/industries/distribution.webp 960w" sizes="(min-width: 1200px) 24vw, (min-width: 640px) 48vw, 94vw" alt="Автоматизированный распределительный центр" width="960" height="720" loading="lazy" decoding="async"></figure><h3>Ритейл и распределительные центры</h3><p>Роботизация перемещения паллет и проектирование автоматизированных складских процессов.</p></article>
         </div>
       </div>
     </section>
@@ -230,5 +232,6 @@
       <div class="footer-bottom"><span>© AFT PRO, <span data-year></span></span><a href="https://aft.pro/privacy">Политика обработки данных <img class="arrow-icon" src="assets/concept/button-arrow-ink.svg" alt="" width="9" height="9"></a></div>
     </div>
   </footer>
+  </div>
 </body>
 </html>

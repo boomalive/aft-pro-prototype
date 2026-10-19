@@ -1,11 +1,13 @@
 /* Shared content and the demo form stay in common.js; this page has its own case layout. */
+const getConceptLayoutWidth = () => Number(document.documentElement.dataset.layoutWidth) || 1440;
+const getConceptPageScale = () => Number(document.documentElement.style.getPropertyValue('--page-scale')) || 1;
+
 function initConceptHero() {
   const hero = document.querySelector('.concept-hero');
   const canvas = hero?.querySelector('[data-hero-canvas]');
   const scene = hero?.querySelector('[data-coordinate-scene]');
   if (!hero || !canvas || !scene) return;
 
-  const mobile = window.matchMedia('(max-width: 900px)');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const labels = {
     degreeX: scene.querySelector('[data-coordinate-degree-x]'),
@@ -27,19 +29,23 @@ function initConceptHero() {
   }
 
   function sizeHero() {
-    const scale = mobile.matches ? 1 : hero.clientWidth / 1200;
+    const mobile = getConceptLayoutWidth() < 1200;
+    const scale = mobile ? 1 : hero.clientWidth / 1200;
+    const screenScale = scale * getConceptPageScale();
     canvas.style.setProperty('--hero-scale', String(scale));
+    const gutter = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--page-gutter'));
+    canvas.style.setProperty('--hero-gutter', `${gutter / scale}px`);
     const contentAxis = document.querySelector('.purpose-section .section-heading > h2');
-    if (contentAxis && !mobile.matches) {
-      canvas.style.setProperty('--hero-content-axis', `${contentAxis.getBoundingClientRect().left / scale}px`);
+    if (contentAxis && !mobile) {
+      canvas.style.setProperty('--hero-content-axis', `${(contentAxis.getBoundingClientRect().left - hero.getBoundingClientRect().left) / screenScale}px`);
     }
     dimensions = {
-      width: mobile.matches ? hero.clientWidth : 1200,
-      height: mobile.matches ? hero.clientHeight : 640,
-      scale
+      width: mobile ? hero.clientWidth : 1200,
+      height: mobile ? hero.clientHeight : 640,
+      scale: screenScale
     };
     scene.style.setProperty('--coordinate-line-scale', String(dimensions.height / 640));
-    position = mobile.matches
+    position = mobile
       ? { x: Math.min(dimensions.width * .74, dimensions.width - 40), y: dimensions.height * .55 }
       : { x: 787, y: 430 };
     journey = null;
@@ -112,6 +118,7 @@ function initConceptHero() {
 
   sizeHero();
   new ResizeObserver(sizeHero).observe(hero);
+  window.addEventListener('aft-layout-change', sizeHero);
   if ('IntersectionObserver' in window) new IntersectionObserver(entries => {
     onScreen = entries[0].isIntersecting;
     refreshMotion();
@@ -130,12 +137,15 @@ function initConceptMenu() {
     document.body.classList.remove('menu-open');
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Открыть меню');
+    // Resolve scrollbar width before the browser follows an in-page link.
+    window.dispatchEvent(new Event('aft-refresh-scale'));
   }
   toggle.addEventListener('click', () => {
     const open = nav.classList.toggle('is-open');
     document.body.classList.toggle('menu-open', open);
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+    window.dispatchEvent(new Event('aft-refresh-scale'));
   });
   nav.addEventListener('click', event => { if (event.target.closest('a')) close(); });
   document.addEventListener('keydown', event => {
@@ -144,7 +154,14 @@ function initConceptMenu() {
       toggle.focus();
     }
   });
-  window.matchMedia('(max-width: 900px)').addEventListener('change', close);
+  let layoutWidth = getConceptLayoutWidth();
+  window.addEventListener('aft-layout-change', () => {
+    const nextWidth = getConceptLayoutWidth();
+    if (nextWidth !== layoutWidth) {
+      layoutWidth = nextWidth;
+      close();
+    }
+  });
 }
 
 function initBenefits() {
@@ -227,7 +244,7 @@ function renderConceptCases() {
     </div>
     <ul class="project-track" id="project-track" tabindex="0" aria-label="Кейсы — горизонтальная лента">
         ${homeCases.map(([title, description, metrics, image], i) => `<li class="project-card"><article id="project-${i}" aria-labelledby="project-title-${i}">
-          <div class="project-visual"><img class="project-image" src="${escapeHtml(image.replace('assets/cases/', 'assets/concept/cases/'))}" srcset="${escapeHtml(image.replace('assets/cases/', 'assets/concept/cases/').replace('.webp', '-480.webp'))} 480w, ${escapeHtml(image.replace('assets/cases/', 'assets/concept/cases/'))} 960w" sizes="(max-width: 600px) calc(100vw - 44px), 46vw" alt="${escapeHtml(title)}" loading="lazy" decoding="async"></div>
+          <div class="project-visual"><img class="project-image" src="${escapeHtml(image.replace('assets/cases/', 'assets/concept/cases/'))}" srcset="${escapeHtml(image.replace('assets/cases/', 'assets/concept/cases/').replace('.webp', '-480.webp'))} 480w, ${escapeHtml(image.replace('assets/cases/', 'assets/concept/cases/'))} 960w" sizes="(min-width: 1200px) 46vw, (min-width: 640px) 72vw, 87vw" alt="${escapeHtml(title)}" loading="lazy" decoding="async"></div>
           <div class="project-copy"><h3 id="project-title-${i}">${escapeHtml(title)}</h3><p class="project-description">${escapeHtml(description)}</p><div class="project-equipment"><p class="small-label">Техника</p><ul>${metrics.map(metric => {
             const [, value, suffix, label] = metric.match(/^(\d+)(\+?)\s+(.+)$/) || ['', '', '', metric];
             return `<li><strong aria-label="${escapeHtml(value + suffix)}"><span data-count-to="${escapeHtml(value)}">${escapeHtml(value)}</span><span aria-hidden="true">${escapeHtml(suffix)}</span></strong><span>${escapeHtml(label)}</span></li>`;
@@ -242,7 +259,7 @@ function renderConceptCases() {
   const next = section.querySelector('[data-project-next]');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const end = () => track.scrollWidth - track.clientWidth;
-  const step = () => track.querySelector('.project-card').getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap);
+  const step = () => track.querySelector('.project-card').offsetWidth + parseFloat(getComputedStyle(track).columnGap);
   function scrollTo(left) {
     track.scrollTo({ left, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
   }
@@ -286,7 +303,7 @@ function initConceptClients() {
       track.querySelectorAll('[aria-hidden="true"]').forEach(copy => copy.remove());
       if (reducedMotion.matches) return;
       // Short lists must span the viewport before the entire group is repeated.
-      while (group.getBoundingClientRect().width < row.clientWidth) {
+      while (group.offsetWidth < row.clientWidth) {
         logos.forEach(logo => {
           const copy = logo.cloneNode(true);
           copy.setAttribute('aria-hidden', 'true');
@@ -298,7 +315,7 @@ function initConceptClients() {
       duplicate.setAttribute('aria-hidden', 'true');
       duplicate.querySelectorAll('img').forEach(img => { img.alt = ''; });
       track.append(duplicate);
-      row.style.setProperty('--marquee-duration', `${group.getBoundingClientRect().width / 35}s`);
+      row.style.setProperty('--marquee-duration', `${group.offsetWidth / 35}s`);
     }
     new ResizeObserver(() => {
       if (previousWidth === row.clientWidth) return;
