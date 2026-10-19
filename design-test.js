@@ -292,6 +292,37 @@ function initFloatingFields() {
   });
 }
 
+function initGeographyContext() {
+  const section = document.querySelector('.geography-section');
+  const frame = section?.querySelector('.geography-map');
+  const image = frame?.querySelector('img');
+  if (!section || !frame || !image) return;
+
+  function alignContext() {
+    const pageScale = getConceptPageScale();
+    const sectionBox = section.getBoundingClientRect();
+    const frameBox = frame.getBoundingClientRect();
+    const width = frameBox.width / pageScale;
+    const height = frameBox.height / pageScale;
+    // Match the existing SVG's object-fit without enlarging or moving its cities.
+    const fit = getComputedStyle(image).objectFit === 'contain' ? Math.min : Math.max;
+    const mapScale = fit(width / 1000, height / 600);
+    const left = (frameBox.left - sectionBox.left) / pageScale + (width - 1000 * mapScale) / 2;
+    const top = (frameBox.top - sectionBox.top) / pageScale + (height - 600 * mapScale) / 2;
+    // offices-context.svg extends the original map's coordinate system.
+    section.style.setProperty('--map-context-left', `${left - 200 * mapScale}px`);
+    section.style.setProperty('--map-context-top', `${top - 900 * mapScale}px`);
+    section.style.setProperty('--map-context-width', `${2600 * mapScale}px`);
+    section.style.setProperty('--map-context-height', `${3400 * mapScale}px`);
+  }
+  const observer = new ResizeObserver(alignContext);
+  observer.observe(section);
+  observer.observe(frame);
+  window.addEventListener('aft-layout-change', alignContext);
+  document.fonts.ready.then(alignContext);
+  alignContext();
+}
+
 function initConceptClients() {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   document.querySelectorAll('[data-concept-marquee]').forEach(row => {
@@ -333,5 +364,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initBenefits();
   initConceptCounters();
   initFloatingFields();
+  initGeographyContext();
   initConceptClients();
 });

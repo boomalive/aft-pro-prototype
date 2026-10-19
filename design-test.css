@@ -25,9 +25,8 @@ button:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 .section{padding:110px 0}
 .section-white{background:var(--surface)}
 .section-label,.small-label{font-size:12px;line-height:1.2;font-weight:600;text-transform:uppercase;letter-spacing:.025em}
-.section-label{color:var(--muted)}
-.section-label,.small-label-marker{display:flex;align-items:center;gap:9px}
-.section-label::before,.small-label-marker::before{content:"";width:5px;height:5px;flex:0 0 5px;background:var(--accent)}
+.section-label{color:var(--muted);display:flex;align-items:center;gap:9px}
+.section-label::before{content:"";width:5px;height:5px;flex:0 0 5px;background:var(--accent)}
 .small-label{color:var(--accent)}
 .section-heading{display:grid;grid-template-columns:1fr 2fr;gap:32px;align-items:start;margin-bottom:64px}
 .section-heading>.section-label{padding-top:9px}
@@ -146,14 +145,17 @@ button:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 .benefit-controls .case-control:disabled{background:transparent;border-color:rgb(255 255 255 / .4)}
 .industries-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px}
 .industry{min-width:0;border-top:1px solid var(--line);padding-top:18px}
-.industry .small-label{color:var(--muted)}
-.industry-media{position:relative;margin:24px 0 26px;aspect-ratio:1.35;background:var(--panel);overflow:hidden}
+.industry-media{position:relative;margin:0 0 26px;aspect-ratio:1.35;background:var(--panel);overflow:hidden}
 .industry-media img{width:100%;height:100%;object-fit:cover}
 .industry-media::before{position:absolute;content:"";z-index:1;width:16px;height:16px;top:18px;right:18px;border-top:1px solid var(--white);border-right:1px solid var(--white)}
 .industry h3{font-size:22px;line-height:1.1}
 .industry p{margin-top:20px;font-size:12px;line-height:1.5;color:var(--muted)}
+.geography-section{position:relative;isolation:isolate;overflow:hidden;background:var(--bg)}
+.geography-backdrop{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.geography-backdrop>img{position:absolute;left:var(--map-context-left,0px);top:var(--map-context-top,0px);width:var(--map-context-width,2600px);height:var(--map-context-height,3400px);max-width:none}
+.geography-section>.container{position:relative}
 .geography-layout{display:grid;grid-template-columns:minmax(0,calc(50% - 40px)) minmax(0,1fr);gap:40px}
-.geography-map{position:relative;align-self:stretch;width:100%;min-width:0;min-height:0;margin:0;background:var(--panel);overflow:hidden}
+.geography-map{position:relative;align-self:stretch;width:100%;min-width:0;min-height:0;margin:0;background:transparent;overflow:hidden}
 .geography-map>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .geography-intro{font-size:14px;line-height:1.5;color:var(--muted);max-width:410px;margin-bottom:28px}
 .office-list{padding:0;margin:0;list-style:none}
@@ -183,9 +185,9 @@ button:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 .client-row{overflow:hidden;padding-block:8px}
 .client-track,.client-group{display:flex;align-items:center;width:max-content}
 .client-track{animation:client-line var(--marquee-duration,65s) linear infinite;will-change:transform}
-.client-group{gap:24px;padding-right:24px}
-.client-logo{display:flex;align-items:center;justify-content:center;flex:0 0 180px;height:92px}
-.client-logo img{width:160px;height:68px;object-fit:contain}
+.client-group{gap:32px;padding-right:32px}
+.client-logo{display:flex;align-items:center;justify-content:center;flex:0 0 240px;height:136px}
+.client-logo img{width:220px;height:104px;object-fit:contain}
 .client-row-reverse .client-track{animation-direction:reverse}
 .client-row:hover .client-track,.client-row:focus-within .client-track{animation-play-state:paused}
 @keyframes client-line{to{transform:translateX(-50%)}}
@@ -300,7 +302,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visi
   .industries-grid{gap:32px 18px}
   .industry h3{font-size:20px}
   .industry p{font-size:12px;margin-top:14px}
-  .industry-media{aspect-ratio:1.2;margin:20px 0}
+  .industry-media{aspect-ratio:1.2;margin:0 0 20px}
   .geography-map{min-height:270px;aspect-ratio:5/3}
   .geography-map>img{object-fit:contain}
   .geography-intro{font-size:14px}
@@ -321,9 +323,9 @@ button:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visi
   .project-toolbar{justify-content:space-between;gap:16px;margin-top:24px}
   .clients-section{padding-top:0}
   .clients-heading{grid-template-columns:1fr;gap:24px;margin-bottom:25px}
-  .client-logo{flex-basis:140px;height:76px}
-  .client-logo img{width:124px;height:56px}
-  .client-group{gap:20px;padding-right:20px}
+  .client-logo{flex-basis:184px;height:108px}
+  .client-logo img{width:164px;height:76px}
+  .client-group{gap:24px;padding-right:24px}
   .contact-layout{gap:40px}
   .contact-details{margin-top:30px}
   .contact-intro{margin-top:24px}
