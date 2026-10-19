@@ -221,7 +221,7 @@ function renderConceptCases() {
   const target = document.querySelector('#concept-cases');
   if (!target) return;
   const number = value => String(value).padStart(2, '0');
-  const arrow = direction => `<img class="arrow-icon arrow-${direction}" src="assets/concept/button-arrow.svg" alt="" width="9" height="9">`;
+  const arrow = direction => `<img class="arrow-icon arrow-${direction}" src="assets/concept/button-arrow${direction === 'diagonal' ? '' : '-ink'}.svg" alt="" width="9" height="9">`;
   target.outerHTML = `<section class="section section-white project-section" id="cases" aria-labelledby="projects-title">
     <div class="container">
       <div class="section-heading"><p class="section-label">06 / Практика</p><h2 id="projects-title">Кейсы: опыт, подтвержденный реальными задачами</h2></div>
