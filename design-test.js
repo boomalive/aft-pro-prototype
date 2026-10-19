@@ -28,6 +28,19 @@ function initConceptHero() {
     scene.style.setProperty('--target-y', `${position.y.toFixed(2)}px`);
   }
 
+  function getMotionBounds() {
+    if (getConceptLayoutWidth() < 1200) return {
+      left: dimensions.width * .5, right: dimensions.width * .75,
+      top: dimensions.height * .5, bottom: dimensions.height * .58
+    };
+    // Keep the entire 160px ring inside the selected area around the facade sign.
+    const radius = 80;
+    return {
+      left: dimensions.width * .36 + radius, right: dimensions.width * .93 - radius,
+      top: dimensions.height * .225 + radius, bottom: dimensions.height * .77 - radius
+    };
+  }
+
   function sizeHero() {
     const mobile = getConceptLayoutWidth() < 1200;
     const scale = mobile ? 1 : hero.clientWidth / 1200;
@@ -48,6 +61,9 @@ function initConceptHero() {
     position = mobile
       ? { x: Math.min(dimensions.width * .74, dimensions.width - 40), y: dimensions.height * .55 }
       : { x: 787, y: 430 };
+    const bounds = getMotionBounds();
+    position.x = Math.max(bounds.left, Math.min(bounds.right, position.x));
+    position.y = Math.max(bounds.top, Math.min(bounds.bottom, position.y));
     journey = null;
     startedAt = null;
     paint();
@@ -64,15 +80,15 @@ function initConceptHero() {
         bottom: (box.bottom - origin.top) / dimensions.scale + 35
       };
     });
-    const marginX = Math.min(90, dimensions.width * .18);
+    const bounds = getMotionBounds();
     for (let attempt = 0; attempt < 30; attempt++) {
       const point = {
-        x: marginX + Math.random() * (dimensions.width - marginX * 2),
-        y: 125 + Math.random() * Math.max(1, dimensions.height - 225)
+        x: bounds.left + Math.random() * (bounds.right - bounds.left),
+        y: bounds.top + Math.random() * (bounds.bottom - bounds.top)
       };
       if (!avoid.some(box => point.x > box.left && point.x < box.right && point.y > box.top && point.y < box.bottom)) return point;
     }
-    return { x: dimensions.width * .78, y: dimensions.height * .54 };
+    return { x: (bounds.left + bounds.right) / 2, y: (bounds.top + bounds.bottom) / 2 };
   }
 
   function animate(timestamp) {
