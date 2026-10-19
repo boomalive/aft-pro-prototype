@@ -220,24 +220,20 @@ function initConceptCounters() {
 function renderConceptCases() {
   const target = document.querySelector('#concept-cases');
   if (!target) return;
-  const number = value => String(value).padStart(2, '0');
   const arrow = direction => `<img class="arrow-icon arrow-${direction}" src="assets/concept/button-arrow${direction === 'diagonal' ? '' : '-ink'}.svg" alt="" width="9" height="9">`;
   target.outerHTML = `<section class="section section-white project-section" id="cases" aria-labelledby="projects-title">
     <div class="container">
-      <div class="section-heading"><p class="section-label">06 / Практика</p><h2 id="projects-title">Кейсы: опыт, подтвержденный реальными задачами</h2></div>
+      <div class="section-heading"><p class="section-label">06 / Практика</p><div><h2 id="projects-title">Кейсы: опыт, подтвержденный реальными задачами</h2><div class="project-toolbar"><div class="project-controls"><button class="case-control" type="button" data-project-prev aria-controls="project-track" aria-label="Прокрутить кейсы влево">${arrow('prev')}</button><button class="case-control" type="button" data-project-next aria-controls="project-track" aria-label="Прокрутить кейсы вправо">${arrow('next')}</button></div><a class="concept-button concept-button-red" href="#request">Получить консультацию ${arrow('diagonal')}</a></div></div></div>
     </div>
     <ul class="project-track" id="project-track" tabindex="0" aria-label="Кейсы — горизонтальная лента">
         ${homeCases.map(([title, description, metrics, image], i) => `<li class="project-card"><article id="project-${i}" aria-labelledby="project-title-${i}">
-          <div class="project-visual"><img class="project-image" src="${escapeHtml(image)}" alt="${escapeHtml(title)}" loading="lazy"><span class="project-image-index" aria-hidden="true">${number(i + 1)} / ${number(homeCases.length)}</span></div>
+          <div class="project-visual"><img class="project-image" src="${escapeHtml(image.replace('assets/cases/', 'assets/concept/cases/'))}" srcset="${escapeHtml(image.replace('assets/cases/', 'assets/concept/cases/').replace('.webp', '-480.webp'))} 480w, ${escapeHtml(image.replace('assets/cases/', 'assets/concept/cases/'))} 960w" sizes="(max-width: 600px) calc(100vw - 44px), 46vw" alt="${escapeHtml(title)}" loading="lazy" decoding="async"></div>
           <div class="project-copy"><h3 id="project-title-${i}">${escapeHtml(title)}</h3><p class="project-description">${escapeHtml(description)}</p><div class="project-equipment"><p class="small-label">Техника</p><ul>${metrics.map(metric => {
             const [, value, suffix, label] = metric.match(/^(\d+)(\+?)\s+(.+)$/) || ['', '', '', metric];
             return `<li><strong aria-label="${escapeHtml(value + suffix)}"><span data-count-to="${escapeHtml(value)}">${escapeHtml(value)}</span><span aria-hidden="true">${escapeHtml(suffix)}</span></strong><span>${escapeHtml(label)}</span></li>`;
           }).join('')}</ul></div></div>
         </article></li>`).join('')}
     </ul>
-    <div class="container">
-      <div class="project-footer"><div class="project-controls"><span class="project-scroll-hint">Листайте кейсы</span><button class="case-control" type="button" data-project-prev aria-controls="project-track" aria-label="Прокрутить кейсы влево">${arrow('prev')}</button><button class="case-control" type="button" data-project-next aria-controls="project-track" aria-label="Прокрутить кейсы вправо">${arrow('next')}</button></div><a class="concept-button concept-button-red" href="#request">Получить консультацию ${arrow('diagonal')}</a></div>
-    </div>
   </section>`;
 
   const section = document.querySelector('#cases');
@@ -268,10 +264,57 @@ function renderConceptCases() {
   updateControls();
 }
 
+function initFloatingFields() {
+  document.querySelectorAll('.floating-field').forEach(field => {
+    const control = field.querySelector('input,select,textarea');
+    const sync = () => field.classList.toggle('has-value', control.value.trim() !== '');
+    control.addEventListener('input', sync);
+    control.addEventListener('change', sync);
+    control.form?.addEventListener('reset', () => requestAnimationFrame(sync));
+    sync();
+  });
+}
+
+function initConceptClients() {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('[data-concept-marquee]').forEach(row => {
+    const track = row.querySelector('.client-track');
+    const group = track.querySelector('.client-group');
+    const logos = [...group.children];
+    let previousWidth = 0;
+    function rebuild() {
+      track.querySelectorAll('[aria-hidden="true"]').forEach(copy => copy.remove());
+      if (reducedMotion.matches) return;
+      // Short lists must span the viewport before the entire group is repeated.
+      while (group.getBoundingClientRect().width < row.clientWidth) {
+        logos.forEach(logo => {
+          const copy = logo.cloneNode(true);
+          copy.setAttribute('aria-hidden', 'true');
+          copy.querySelector('img').alt = '';
+          group.append(copy);
+        });
+      }
+      const duplicate = group.cloneNode(true);
+      duplicate.setAttribute('aria-hidden', 'true');
+      duplicate.querySelectorAll('img').forEach(img => { img.alt = ''; });
+      track.append(duplicate);
+      row.style.setProperty('--marquee-duration', `${group.getBoundingClientRect().width / 35}s`);
+    }
+    new ResizeObserver(() => {
+      if (previousWidth === row.clientWidth) return;
+      previousWidth = row.clientWidth;
+      rebuild();
+    }).observe(row);
+    reducedMotion.addEventListener('change', rebuild);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderConceptCases();
   initConceptHero();
   initConceptMenu();
   initBenefits();
   initConceptCounters();
+  initFloatingFields();
+  initConceptClients();
 });
