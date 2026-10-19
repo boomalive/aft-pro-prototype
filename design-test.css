@@ -148,10 +148,8 @@ button:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 .industry h3{font-size:25px;line-height:1.16}
 .industry p{margin-top:20px;font-size:12px;line-height:1.65;color:var(--muted)}
 .geography-layout{display:grid;grid-template-columns:1.35fr 1fr;gap:60px}
-.geography-map{position:relative;display:flex;align-items:center;justify-content:center;min-width:0;min-height:365px;margin:0;background:var(--panel);overflow:hidden}
-.geography-map>img{width:100%;height:auto}
-.map-credit{position:absolute;left:16px;bottom:12px;font-size:9px;color:var(--muted)}
-.map-credit a{text-decoration:underline;text-underline-offset:2px}
+.geography-map{position:relative;align-self:stretch;width:100%;min-width:0;min-height:0;margin:0;background:var(--panel);overflow:hidden}
+.geography-map>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .geography-intro{font-size:14px;line-height:1.6;color:var(--muted);max-width:410px;margin-bottom:28px}
 .office-list{padding:0;margin:0;list-style:none}
 .office-list li{display:grid;grid-template-columns:30px 1fr 20px;gap:15px;border-top:1px solid var(--line);padding:16px 0;font-family:'Inter Tight',Inter,sans-serif;font-size:23px;line-height:1.2;align-items:center}
@@ -302,7 +300,8 @@ button:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visi
   .industry h3{font-size:22px}
   .industry p{font-size:12px;margin-top:14px}
   .industry-media{aspect-ratio:1.2;margin:20px 0}
-  .geography-map{min-height:270px}
+  .geography-map{min-height:270px;aspect-ratio:5/3}
+  .geography-map>img{object-fit:contain}
   .geography-intro{font-size:14px}
   .office-list li{font-size:25px;padding:18px 0}
   .case-control{width:36px;height:36px}
