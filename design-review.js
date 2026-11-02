@@ -1,7 +1,8 @@
 /* Review options live on the test homepage; structural prototype pages are unchanged. */
 (() => {
   const root = document.documentElement;
-  const fonts = ['inter', 'manrope', 'onest'];
+  const fontFamilies = { inter: 'Inter', manrope: 'Manrope', onest: 'Onest', 'inter-display': 'Inter Display', 'ibm-plex-sans': 'IBM Plex Sans' };
+  const fonts = Object.keys(fontFamilies);
   const parameters = new URLSearchParams(location.search);
   let storedFont;
   try { storedFont = localStorage.getItem('aft-review-font'); } catch { /* Private mode can disable storage. */ }
@@ -26,9 +27,7 @@
     const front = card.querySelector('.purpose-flip-front');
     const back = card.querySelector('.purpose-flip-back');
     const open = card.querySelector('[data-flip-open]');
-    const close = card.querySelector('[data-flip-close]');
     const canHover = window.matchMedia('(hover: hover) and (pointer: fine)');
-    let locked = false;
     let updating = false;
     function setExpanded(expanded, moveFocus = false) {
       updating = true;
@@ -39,14 +38,20 @@
       front.setAttribute('aria-hidden', String(expanded));
       back.setAttribute('aria-hidden', String(!expanded));
       updating = false;
-      if (moveFocus) (expanded ? close : open).focus({ preventScroll: true });
+      if (moveFocus) (expanded ? back : open).focus({ preventScroll: true });
     }
-    open.addEventListener('click', () => { locked = true; setExpanded(true, true); });
-    close.addEventListener('click', () => { locked = false; setExpanded(false, true); });
+    open.addEventListener('click', () => setExpanded(true, true));
+    back.addEventListener('click', () => setExpanded(false, true));
+    back.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        setExpanded(false, true);
+      }
+    });
     card.addEventListener('mouseenter', () => { if (canHover.matches) setExpanded(true); });
-    card.addEventListener('mouseleave', () => { if (canHover.matches && !locked && !card.contains(document.activeElement)) setExpanded(false); });
-    card.addEventListener('focusout', event => { if (!updating && !locked && !card.contains(event.relatedTarget)) setExpanded(false); });
-    card.addEventListener('keydown', event => { if (event.key === 'Escape') { locked = false; setExpanded(false, true); } });
+    card.addEventListener('mouseleave', () => { if (canHover.matches) setExpanded(false, back.contains(document.activeElement)); });
+    card.addEventListener('focusout', event => { if (!updating && !card.contains(event.relatedTarget)) setExpanded(false); });
+    card.addEventListener('keydown', event => { if (event.key === 'Escape') setExpanded(false, true); });
     setExpanded(false);
   }
 
@@ -63,7 +68,7 @@
         url.searchParams.set('font', font);
         history.replaceState(null, '', url);
       }
-      document.fonts.load('500 16px ' + font[0].toUpperCase() + font.slice(1), 'АФТ ПРО').then(() => {
+      document.fonts.load('500 16px "' + fontFamilies[font] + '"', 'АФТ ПРО').then(() => {
         // Existing hero alignment, map context and carousel observers follow the new font metrics.
         window.dispatchEvent(new Event('aft-layout-change'));
       });
