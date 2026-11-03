@@ -9,10 +9,24 @@
   <link rel="stylesheet" href="ui-kit.css?v=1">
   <link rel="stylesheet" href="design-test.css?v=12">
   <link rel="stylesheet" href="design-review.css?v=4">
-  <link rel="stylesheet" href="service-logistics-ideas.css?v=2">
+  <link rel="stylesheet" href="service-logistics.css?v=7">
+  <link rel="stylesheet" href="service-logistics-ideas.css?v=3">
   <script src="design-review.js?v=2" defer></script>
 </head>
 <body class="logistics-studies">
+<svg class="logistics-icon-defs" width="0" height="0" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <defs><filter id="logistics-task-colors" color-interpolation-filters="sRGB">
+    <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  8 -8 0 0 1" result="light-lines"/>
+    <feComponentTransfer in="light-lines" result="light-mask"><feFuncA type="discrete" tableValues="0 1"/></feComponentTransfer>
+    <feComposite in="SourceAlpha" in2="light-mask" operator="in" result="ink-alpha"/>
+    <feComposite in="SourceAlpha" in2="light-mask" operator="out" result="accent-alpha"/>
+    <feFlood style="flood-color:var(--ink)" result="ink"/>
+    <feComposite in="ink" in2="ink-alpha" operator="in" result="ink-lines"/>
+    <feFlood style="flood-color:var(--accent)" result="accent"/>
+    <feComposite in="accent" in2="accent-alpha" operator="in" result="accent-lines"/>
+    <feMerge><feMergeNode in="ink-lines"/><feMergeNode in="accent-lines"/></feMerge>
+  </filter></defs>
+</svg>
 <div class="site-canvas">
   <header class="study-toolbar container">
     <div><h1>Логистика · варианты блоков</h1><p>По два статичных варианта. Только исходные тексты прототипа.</p></div>
@@ -51,28 +65,12 @@
     <section class="study-block study-tiles-section" data-content-block="situations-02" aria-labelledby="situations-title-02">
       <div class="container">
         <h2 id="situations-title-02">Когда подключается АФТ ПРО</h2>
-        <div class="study-situation-tiles">
-          <article class="study-situation-tile">
-            <span class="study-index" aria-hidden="true">01</span>
-            <div class="study-tile-copy"><h3>Нестандартный маршрут</h3><p>Есть ограничения по географии, срокам, видам транспорта или инфраструктуре на пути следования.</p></div>
-            <div class="study-tile-art"><img src="assets/concept/media/benefit-transport.webp" width="96" height="96" alt="" loading="lazy"></div>
-          </article>
-          <article class="study-situation-tile">
-            <span class="study-index" aria-hidden="true">02</span>
-            <div class="study-tile-copy"><h3>Сложный груз</h3><p>Требуется перевезти негабаритное, тяжеловесное, опасное или технологически сложное оборудование.</p></div>
-            <div class="study-tile-art"><img src="assets/concept/media/benefit-support.webp" width="96" height="96" alt="" loading="lazy"></div>
-          </article>
-          <article class="study-situation-tile">
-            <span class="study-index" aria-hidden="true">03</span>
-            <div class="study-tile-copy"><h3>Комплексная поставка</h3><p>Нужно синхронизировать несколько видов транспорта, подрядчиков, терминалов и документов.</p></div>
-            <div class="study-tile-art"><img src="assets/concept/media/benefit-system.webp" width="96" height="96" alt="" loading="lazy"></div>
-          </article>
-          <article class="study-situation-tile">
-            <span class="study-index" aria-hidden="true">04</span>
-            <div class="study-tile-copy"><h3>Регулярная логистика</h3><p>Требуется стабильная схема поставок с прозрачными сроками, затратами и ответственностью.</p></div>
-            <div class="study-tile-art"><img src="assets/concept/media/benefit-economics.webp" width="96" height="96" alt="" loading="lazy"></div>
-          </article>
-        </div>
+        <div class="logistics-task-grid">
+<article class="logistics-task-card"><span aria-hidden="true" class="logistics-task-number ui-meta">01</span><div class="logistics-task-copy"><h3 class="ui-card-title">Нестандартный маршрут</h3><p class="ui-body">Есть ограничения по географии, срокам, видам транспорта или инфраструктуре на пути следования.</p></div><img alt="" class="logistics-task-icon" decoding="async" height="96" loading="lazy" src="assets/concept/media/benefit-transport.webp" width="96"/></article>
+<article class="logistics-task-card"><span aria-hidden="true" class="logistics-task-number ui-meta">02</span><div class="logistics-task-copy"><h3 class="ui-card-title">Сложный груз</h3><p class="ui-body">Требуется перевезти негабаритное, тяжеловесное, опасное или технологически сложное оборудование.</p></div><img alt="" class="logistics-task-icon" decoding="async" height="96" loading="lazy" src="assets/concept/media/benefit-support.webp" width="96"/></article>
+<article class="logistics-task-card"><span aria-hidden="true" class="logistics-task-number ui-meta">03</span><div class="logistics-task-copy"><h3 class="ui-card-title">Комплексная поставка</h3><p class="ui-body">Нужно синхронизировать несколько видов транспорта, подрядчиков, терминалов и документов.</p></div><img alt="" class="logistics-task-icon" decoding="async" height="96" loading="lazy" src="assets/concept/media/benefit-system.webp" width="96"/></article>
+<article class="logistics-task-card"><span aria-hidden="true" class="logistics-task-number ui-meta">04</span><div class="logistics-task-copy"><h3 class="ui-card-title">Регулярная логистика</h3><p class="ui-body">Требуется стабильная схема поставок с прозрачными сроками, затратами и ответственностью.</p></div><img alt="" class="logistics-task-icon" decoding="async" height="96" loading="lazy" src="assets/concept/media/benefit-economics.webp" width="96"/></article>
+</div>
       </div>
     </section>
 

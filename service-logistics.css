@@ -41,11 +41,15 @@
 .logistics-service-copy{flex:1;margin-top:26px;padding-top:0}
 .logistics-service-copy h3{font-size:var(--ui-service-title-size);line-height:1.1;max-width:340px}
 .logistics-service-copy p{margin-top:18px;font-size:var(--ui-body-size);line-height:1.6;color:var(--muted);max-width:360px}
-.logistics-task-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 64px}
-.logistics-task{display:grid;grid-template-columns:42px 1fr;gap:24px;padding:32px 0;border-top:1px solid var(--line)}
-.logistics-task-number{color:var(--accent);font-size:var(--ui-caption-size);padding-top:4px}
-.logistics-task h3{font-size:var(--ui-card-title-size);line-height:1.15;letter-spacing:-.025em}
-.logistics-task p{margin-top:18px;max-width:430px;font-size:var(--ui-body-size);line-height:1.6;color:var(--muted)}
+.logistics-tasks{background:var(--page-gradient)}
+.logistics-task-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.logistics-task-card{display:grid;grid-template-columns:minmax(0,1fr) 96px;grid-template-rows:auto 1fr;align-items:start;gap:28px 32px;min-width:0;min-height:280px;padding:28px;background:var(--white)}
+.logistics-task-number{grid-column:1 / -1;color:var(--accent)}
+.logistics-task-copy{min-width:0}
+.logistics-task-copy p{margin-top:18px;max-width:430px;color:var(--muted)}
+.logistics-task-icon{grid-column:2;grid-row:2;align-self:center;width:96px;height:96px;object-fit:contain;filter:url("#logistics-task-colors")}
+/* Theme the original raster icons without changing their geometry or source files. */
+.logistics-icon-defs{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
 .logistics-process{background:var(--ink);color:var(--white)}
 .logistics-process .section-label{color:var(--divtext2)}
 .logistics-process-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));list-style:none;margin:0;padding:12px 0 0}
@@ -74,8 +78,11 @@
   .logistics-hero-controls{margin-top:22px}
   .logistics-service-track{gap:20px}
   .logistics-service-card{flex-basis:calc((100cqw - 40px) / 2)}
-  .logistics-task-grid{gap:0 28px}
-  .logistics-task{grid-template-columns:24px 1fr;gap:16px;padding:26px 0}
+  .logistics-task-grid{gap:24px}
+  .logistics-task-card{grid-template-columns:minmax(0,1fr) 88px;gap:24px;min-height:300px;padding:24px}
+  .logistics-task-number{grid-column:1;align-self:start}
+  .logistics-task-copy{grid-column:1 / -1;grid-row:2}
+  .logistics-task-icon{grid-column:2;grid-row:1;align-self:start;width:88px;height:88px;margin-top:-4px}
   .logistics-process-list{grid-template-columns:1fr;max-width:520px;margin-left:60px;padding:0}
   .logistics-process-list li{padding:0 0 36px 76px;min-height:110px}
   .logistics-process-list li:last-child{padding-bottom:0}
@@ -99,7 +106,7 @@
   .logistics-service-card{flex-basis:calc(100cqw - 48px)}
   .logistics-service-copy{margin-top:22px}
   .logistics-task-grid,.logistics-value-grid{grid-template-columns:1fr}
-  .logistics-task{grid-template-columns:24px 1fr;gap:14px}
+  .logistics-task-card{min-height:0}
   .logistics-process-list{margin-left:0}
   .logistics-process-list li{padding-left:70px;padding-right:0}
   .logistics-value-grid{gap:32px}
