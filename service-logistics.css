@@ -1,6 +1,4 @@
 /* Logistics uses the homepage's palette, type, artboards and shared components. */
-.logistics-page .sticky-header-cta{background:var(--brand-red);color:var(--white);box-shadow:none}
-.logistics-page .sticky-header-cta:hover{background:var(--ink)}
 .logistics-hero{position:relative;isolation:isolate;min-height:calc(100cqw * 640 / 1200);color:var(--white);background:var(--ink);overflow:hidden}
 .logistics-hero-background,.logistics-hero-background::after,.logistics-hero-photo{position:absolute;inset:0;width:100%;height:100%}
 .logistics-hero-background{z-index:-1}
@@ -15,19 +13,16 @@
 .logistics-hero h1{max-width:calc(100cqw * 580 / 1200);margin-top:45px;text-wrap:balance}
 .logistics-hero-bottom{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-top:auto;padding-top:58px}
 .logistics-hero-actions{display:flex;align-items:center;gap:32px;padding-bottom:4px}
-.logistics-hero-actions .concept-button{min-height:var(--ui-hero-button-height);height:var(--ui-hero-button-height);padding:var(--ui-hero-button-padding-y) var(--ui-hero-button-padding-x);gap:var(--ui-hero-button-gap);font-size:var(--ui-hero-button-size);letter-spacing:-.1px;text-box-trim:trim-both;text-box-edge:cap alphabetic}.logistics-hero-actions .concept-button-red{width:var(--ui-hero-primary-width);justify-content:center}.logistics-hero-actions .logistics-hero-secondary{padding-inline:calc(var(--ui-hero-button-padding-x) * 2.5);color:var(--white);box-shadow:inset 0 0 0 1px rgb(255 255 255 / .4)}
 .logistics-leads{display:grid;max-width:510px}
 .logistics-lead{grid-area:1 / 1;visibility:hidden;opacity:0;transition:opacity .4s ease}
 .logistics-lead.is-active{visibility:visible;opacity:1}
 .logistics-hero-controls{display:flex;align-items:center;justify-content:flex-end;gap:20px;margin-top:28px;padding-top:18px;border-top:1px solid rgb(255 255 255 / .3)}
-.logistics-slide-arrows{display:flex;gap:8px}
-.logistics-slide-arrows .case-control{border-color:rgb(255 255 255 / .35);color:var(--white)}
-.logistics-slide-arrows .case-control:hover{background:var(--accent);border-color:var(--accent)}
 .logistics-section-intro{max-width:580px;margin-top:26px;font-size:var(--ui-body-size);line-height:1.6;color:var(--muted)}
 .logistics-service-toolbar{display:flex;align-items:center;gap:24px;margin-top:30px}
 .logistics-service-position{font-size:var(--ui-meta-size);color:var(--muted);font-variant-numeric:tabular-nums}
 .logistics-service-position>span{color:var(--ink)}
 .logistics-solutions{background:linear-gradient(110deg,var(--bg),rgb(122 170 190 / .24))}
+.logistics-solutions .section-heading{margin-bottom:8px}
 .logistics-service-track{display:flex;gap:24px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:var(--page-gutter);list-style:none;margin:0;padding:0 var(--page-gutter) 26px;scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg)}
 .logistics-service-track:focus-visible{outline-offset:-2px}
 .logistics-service-card{flex:0 0 calc((100cqw - var(--page-gutter)*2 - 48px) / 3);min-width:0;scroll-snap-align:start}
@@ -36,8 +31,8 @@
 .logistics-service-stage::after{content:"";position:absolute;z-index:-1;inset:0;background:url('assets/concept/logistics/service-orbit.svg') center / contain no-repeat;pointer-events:none}
 .logistics-service-stage>img{position:absolute;left:2%;top:4%;width:96%;height:96%;object-fit:contain;transform-origin:center;transition:transform .4s cubic-bezier(.2,.65,.3,1)}
 .logistics-service-number{position:absolute;z-index:1;right:3%;bottom:5%;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--white);font-size:var(--ui-body-size);font-weight:400;color:var(--ink)}
-.logistics-service-card>a:focus-visible .logistics-service-stage>img{transform:translateY(10%) scale(.85)}
-@media (hover:hover) and (pointer:fine){.logistics-service-card>a:hover .logistics-service-stage>img{transform:translateY(10%) scale(.85)}}
+.logistics-service-card>a:focus-visible .logistics-service-stage>img{transform:translateY(4%) scale(.92)}
+@media (hover:hover) and (pointer:fine){.logistics-service-card>a:hover .logistics-service-stage>img{transform:translateY(4%) scale(.92)}}
 .logistics-service-copy{flex:1;margin-top:26px;padding-top:0}
 .logistics-service-copy h3{font-size:var(--ui-service-title-size);line-height:1.1;max-width:340px}
 .logistics-service-copy p{margin-top:18px;font-size:var(--ui-body-size);line-height:1.6;color:var(--muted);max-width:360px}
@@ -49,11 +44,11 @@
 .logistics-process{background:var(--white);color:var(--ink)}
 .logistics-process-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));list-style:none;margin:0;padding:12px 0 0}
 .logistics-process-list li{position:relative;isolation:isolate;min-width:0;padding-right:32px}
-.logistics-process-list li::before{position:absolute;content:"";z-index:-1;left:0;right:0;top:23px;border-top:1px solid rgb(122 170 190 / .45)}
+.logistics-process-list li::before{position:absolute;content:"";z-index:-1;left:0;right:0;top:23px;border-top:1px solid var(--line)}
 .logistics-process-list li:last-child{padding-right:0}
 .logistics-process-list li:last-child::before{display:none}
 .logistics-process-node{display:grid;place-items:center;width:48px;height:48px;background:var(--white);border:1px solid var(--accent);border-radius:50%;color:var(--ink);font-size:var(--ui-caption-size)}
-.logistics-process-list li:last-child .logistics-process-node{background:var(--accent);color:var(--ink)}
+.logistics-process-list li:last-child .logistics-process-node{background:var(--accent);color:var(--white)}
 .logistics-process-list h3{margin-top:32px;font-size:var(--ui-h3-size);line-height:1.1}
 .logistics-process-list p{margin-top:18px;font-size:var(--ui-body-size);line-height:1.6;color:var(--muted)}
 .logistics-values{background:var(--ink);color:var(--white)}
@@ -81,7 +76,7 @@
   .logistics-process-list{grid-template-columns:1fr;max-width:520px;margin-left:60px;padding:0}
   .logistics-process-list li{padding:0 0 36px 76px;min-height:110px}
   .logistics-process-list li:last-child{padding-bottom:0}
-  .logistics-process-list li::before{top:0;bottom:0;left:23px;right:auto;border-top:0;border-left:1px solid rgb(122 170 190 / .45)}
+  .logistics-process-list li::before{top:0;bottom:0;left:23px;right:auto;border-top:0;border-left:1px solid var(--line)}
   .logistics-process-node{position:absolute;top:0;left:0}
   .logistics-process-list h3{margin-top:0;padding-top:10px;font-size:var(--ui-h3-size)}
   .logistics-process-list p{margin-top:12px}

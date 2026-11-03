@@ -31,6 +31,8 @@
 .kit-table thead th{font-weight:500}
 .kit-button-row{display:flex;align-items:center;flex-wrap:wrap;gap:24px;margin-bottom:32px}
 .kit-button-row .text-link{min-width:180px}
+.kit-hero-controls{padding:32px;background:var(--ink)}
+.kit-hero-controls .hero-buttons{flex-wrap:wrap}
 .kit-component-gap{margin-top:64px}
 .kit-graphics{display:flex;flex-wrap:wrap;gap:24px}
 .kit-logo{display:grid;place-items:center;width:240px;height:150px;border:1px solid var(--line);background:var(--white);color:var(--ink)}
