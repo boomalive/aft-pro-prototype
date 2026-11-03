@@ -58,7 +58,7 @@ body,h1,h2,h3,.concept-button,.hero-title-group>p,.hero-intro>p,.stat strong,.of
 .purpose-card{position:relative;min-width:0;overflow:hidden}
 .purpose-card h3,.purpose-flip h3{font-size:24px;line-height:1.15;letter-spacing:-.025em}
 .purpose-card p,.purpose-flip p{font-size:14px;line-height:1.5;letter-spacing:-.02em}
-.purpose-card-graphic{display:flex;flex-direction:column;min-height:330px;padding:28px;background:var(--bg-start);border:1px solid var(--line)}
+.purpose-card-graphic{display:flex;flex-direction:column;min-height:330px;padding:28px;background:var(--bg-start);border:0}
 .purpose-symbol{display:block;width:72px;height:72px;flex-shrink:0;color:var(--accent)}
 .purpose-card-graphic h3{margin-top:38px}
 .purpose-card-graphic p{margin-top:20px}
@@ -68,10 +68,10 @@ body,h1,h2,h3,.concept-button,.hero-title-group>p,.hero-intro>p,.stat strong,.of
 .purpose-flip{min-width:0;perspective:1200px}
 .purpose-flip-inner{display:grid;min-height:330px;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.2,.65,.3,1)}
 .purpose-flip.is-flipped .purpose-flip-inner{transform:rotateY(180deg)}
-.purpose-flip-face{grid-area:1 / 1;display:flex;flex-direction:column;align-items:start;gap:24px;min-width:0;padding:28px;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid var(--line)}
+.purpose-flip-face{grid-area:1 / 1;display:flex;flex-direction:column;align-items:start;gap:24px;min-width:0;padding:28px;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:0}
 .purpose-flip-front{background:var(--bg-start)}
 .purpose-flip-front .purpose-symbol{width:90px;height:90px;margin-block:auto;align-self:center}
-.purpose-flip-back{transform:rotateY(180deg);background:var(--ink);color:var(--white);border-color:var(--ink);cursor:pointer;justify-content:space-between}
+.purpose-flip-back{transform:rotateY(180deg);background:var(--ink);color:var(--white);cursor:pointer;justify-content:space-between}
 .purpose-flip-back h3{color:var(--accent)}
 .purpose-flip-face .concept-button{margin-top:auto}
 @container aft-page (width < 1200px){
