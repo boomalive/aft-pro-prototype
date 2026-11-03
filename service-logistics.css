@@ -36,21 +36,18 @@
 .logistics-service-toolbar{display:flex;align-items:center;gap:24px;margin-top:30px}
 .logistics-service-position{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
 .logistics-service-position>span{color:var(--ink)}
+.logistics-solutions{background:linear-gradient(110deg,var(--bg),rgb(122 170 190 / .24))}
 .logistics-service-track{display:flex;gap:24px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:var(--page-gutter);list-style:none;margin:0;padding:0 var(--page-gutter) 26px;scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg)}
 .logistics-service-track:focus-visible{outline-offset:-2px}
 .logistics-service-card{flex:0 0 calc((100cqw - var(--page-gutter)*2 - 48px) / 3);min-width:0;scroll-snap-align:start}
 .logistics-service-card>a{display:flex;flex-direction:column;height:100%}
-.logistics-service-stage{position:relative;isolation:isolate;display:grid;place-items:center;aspect-ratio:1.4;overflow:hidden}
-.logistics-service-stage::before{content:"";position:absolute;z-index:-2;inset:5% 0 -15%;background:radial-gradient(ellipse at 50% 65%,rgb(67 182 165 / .35),transparent 67%);opacity:0;transition:opacity .35s}
-.logistics-service-stage::after{content:"";position:absolute;z-index:-1;left:5%;bottom:6%;width:90%;height:28%;border-radius:50%;background:linear-gradient(180deg,#fff 15%,#e8edef);box-shadow:0 18px 22px -20px rgb(0 52 73 / .4)}
-.logistics-service-stage>img{width:94%;height:90%;object-fit:contain;position:relative;transform:translateY(-6px);transition:transform .35s}
-.logistics-service-number{position:absolute;left:0;top:4px;font-size:11px;color:var(--muted)}
-.logistics-service-link{position:absolute;right:6px;top:0;display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--line);transition:background .2s}
-.logistics-service-link img{width:12px;height:12px}
-.logistics-service-card>a:is(:hover,:focus-visible) .logistics-service-stage::before{opacity:1}
-.logistics-service-card>a:is(:hover,:focus-visible) .logistics-service-stage>img{transform:translateY(-14px)}
-.logistics-service-card>a:is(:hover,:focus-visible) .logistics-service-link{background:var(--accent);border-color:var(--accent)}
-.logistics-service-copy{flex:1;margin-top:16px;padding-top:24px;border-top:1px solid var(--line)}
+.logistics-service-stage{position:relative;isolation:isolate;display:grid;place-items:center;aspect-ratio:1;overflow:hidden}
+.logistics-service-stage::before{content:"";position:absolute;z-index:-2;inset:12% 0 0;background:linear-gradient(0deg,rgb(67 182 165 / .3),rgb(67 182 165 / .12) 35%,transparent 80%);mask-image:radial-gradient(ellipse at 50% 90%,#000 15%,transparent 72%);opacity:0;transform:translateY(14%);transition:opacity .4s ease,transform .4s ease}
+.logistics-service-stage::after{content:"";position:absolute;z-index:-1;inset:0;background:url('assets/concept/logistics/service-orbit.svg') center / contain no-repeat;pointer-events:none}
+.logistics-service-stage>img{position:absolute;left:2%;top:4%;width:96%;height:96%;object-fit:contain}
+.logistics-service-number{position:absolute;z-index:1;right:3%;bottom:5%;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--white);font-size:14px;font-weight:400;color:var(--ink)}
+.logistics-service-card>a:is(:hover,:focus-visible) .logistics-service-stage::before{opacity:1;transform:translateY(0)}
+.logistics-service-copy{flex:1;margin-top:26px;padding-top:0}
 .logistics-service-copy h3{font-size:26px;line-height:1.15;max-width:340px}
 .logistics-service-copy p{margin-top:18px;font-size:14px;line-height:1.6;color:var(--muted);max-width:360px}
 .logistics-task-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 64px}
@@ -115,8 +112,7 @@
   .logistics-hero-controls{gap:12px}
   .logistics-pagination{gap:12px}
   .logistics-service-card{flex-basis:calc(100cqw - 48px)}
-  .logistics-service-stage{aspect-ratio:1.4}
-  .logistics-service-copy{padding-top:20px}
+  .logistics-service-copy{margin-top:22px}
   .logistics-task-grid,.logistics-value-grid{grid-template-columns:1fr}
   .logistics-task{grid-template-columns:24px 1fr;gap:14px}
   .logistics-task h3{font-size:22px}

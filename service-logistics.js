@@ -2,9 +2,9 @@
 (() => {
   const assets = {
   "services": [
-    "https://static.tildacdn.com/tild6532-6530-4462-b662-303638643638/ChatGPT_Image_4__202.png",
-    "https://static.tildacdn.com/tild3737-6533-4263-b265-613732663035/ChatGPT_Image_4__202.png",
-    "https://static.tildacdn.com/tild3538-3165-4066-b864-313437303334/ChatGPT_Image_5__202.png",
+    "assets/concept/logistics/services/road.webp",
+    "assets/concept/logistics/services/rail.webp",
+    "assets/concept/logistics/services/sea.webp",
     "https://static.tildacdn.com/tild3161-3830-4264-b764-356437336466/ChatGPT_Image_5__202.png",
     "https://static.tildacdn.com/tild6334-3663-4534-a231-633331326166/ChatGPT_Image_5__202.png",
     "https://static.tildacdn.com/tild3436-3238-4431-a332-346236396239/ChatGPT_Image_9__202.png",
@@ -18,12 +18,12 @@
     "https://static.tildacdn.com/tild3337-6636-4663-a136-366434313932/ChatGPT_Image_5__202.png"
   ],
   "icons": [
-    "https://static.tildacdn.com/tild6631-3262-4565-b764-626631636231/icon1_accent.svg",
-    "https://static.tildacdn.com/tild6264-6366-4861-a330-313638386338/icon2_accent.svg",
-    "https://static.tildacdn.com/tild3436-6637-4539-b039-646566663933/icon3_accent.svg",
-    "https://static.tildacdn.com/tild3931-3663-4634-b965-613066333630/icon4_accent.svg",
-    "https://static.tildacdn.com/tild6135-3062-4966-b634-396436393334/icon5_accent.svg",
-    "https://static.tildacdn.com/tild3034-3366-4162-b265-613161643930/icon6_accent.svg"
+    "assets/concept/logistics/icons/icon1_accent.svg",
+    "assets/concept/logistics/icons/icon2_accent.svg",
+    "assets/concept/logistics/icons/icon3_accent.svg",
+    "assets/concept/logistics/icons/icon4_accent.svg",
+    "assets/concept/logistics/icons/icon5_accent.svg",
+    "assets/concept/logistics/icons/icon6_accent.svg"
   ]
 };
   const data = window.AFT_SERVICE_DATA.logistics;
@@ -36,7 +36,7 @@
   document.querySelector('#solutions-intro').textContent = data.solutionsIntro;
   document.querySelector('#logistics-services').innerHTML = data.solutions.map(([title, description], index) => `
     <li class="logistics-service-card"><a href="#request" data-select-service="${index}">
-      <div class="logistics-service-stage"><span class="logistics-service-number" aria-hidden="true">${number(index)}</span><img src="${html(assets.services[index])}" alt="" loading="lazy" decoding="async" width="480" height="320"><span class="logistics-service-link" aria-hidden="true"><img src="assets/concept/button-arrow-ink.svg" alt="" width="9" height="9"></span></div>
+      <div class="logistics-service-stage"><span class="logistics-service-number" aria-hidden="true">${index + 1}</span><img src="${html(assets.services[index])}" alt="" loading="lazy" decoding="async" width="600" height="600"></div>
       <div class="logistics-service-copy"><h3>${html(title)}</h3><p>${html(description)}</p></div>
     </a></li>`).join('');
   document.querySelector('#tasks-title').textContent = data.tasksTitle;

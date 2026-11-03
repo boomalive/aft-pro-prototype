@@ -22,5 +22,58 @@
     "https://static.tildacdn.com/tild3931-3663-4634-b965-613066333630/icon4_accent.svg",
     "https://static.tildacdn.com/tild6135-3062-4966-b634-396436393334/icon5_accent.svg",
     "https://static.tildacdn.com/tild3034-3366-4162-b265-613161643930/icon6_accent.svg"
+  ],
+  "uploaded_archive": "photosweb2.zip",
+  "local_copies": [
+    {
+      "path": "services/road.webp",
+      "source": "https://static.tildacdn.com/tild6532-6530-4462-b662-303638643638/ChatGPT_Image_4__202.png",
+      "archive_entry": "ChatGPT_Image_4__202.png.webp"
+    },
+    {
+      "path": "services/rail.webp",
+      "source": "https://static.tildacdn.com/tild3737-6533-4263-b265-613732663035/ChatGPT_Image_4__202.png",
+      "archive_entry": "ChatGPT_Image_4__202.png (1).webp"
+    },
+    {
+      "path": "services/sea.webp",
+      "source": "https://static.tildacdn.com/tild3538-3165-4066-b864-313437303334/ChatGPT_Image_5__202.png",
+      "archive_entry": "ChatGPT_Image_5__202.png.webp"
+    },
+    {
+      "path": "icons/icon1_accent.svg",
+      "source": "https://static.tildacdn.com/tild6631-3262-4565-b764-626631636231/icon1_accent.svg",
+      "archive_entry": "icon1_accent.svg"
+    },
+    {
+      "path": "icons/icon2_accent.svg",
+      "source": "https://static.tildacdn.com/tild6264-6366-4861-a330-313638386338/icon2_accent.svg",
+      "archive_entry": "icon2_accent.svg"
+    },
+    {
+      "path": "icons/icon3_accent.svg",
+      "source": "https://static.tildacdn.com/tild3436-6637-4539-b039-646566663933/icon3_accent.svg",
+      "archive_entry": "icon3_accent.svg"
+    },
+    {
+      "path": "icons/icon4_accent.svg",
+      "source": "https://static.tildacdn.com/tild3931-3663-4634-b965-613066333630/icon4_accent.svg",
+      "archive_entry": "icon4_accent.svg"
+    },
+    {
+      "path": "icons/icon5_accent.svg",
+      "source": "https://static.tildacdn.com/tild6135-3062-4966-b634-396436393334/icon5_accent.svg",
+      "archive_entry": "icon5_accent.svg"
+    },
+    {
+      "path": "icons/icon6_accent.svg",
+      "source": "https://static.tildacdn.com/tild3034-3366-4162-b265-613161643930/icon6_accent.svg",
+      "archive_entry": "icon6_accent.svg"
+    },
+    {
+      "path": "service-orbit.svg",
+      "source": "https://static.tildacdn.com/tild6434-3233-4337-a266-396235643037/Frame124talke.svg",
+      "archive_entry": "Frame124talke.svg"
+    }
   ]
 }
