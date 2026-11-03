@@ -1,0 +1,66 @@
+/* AFT PRO: shared foundations from the approved homepage. */
+:root{--blacktext:#003449;--accent:#43b6a5;--divtext:#567988;--brand-red:#f4242b;--divtext2:#7aaabe;--white:#fff;--bg:#f1f3f6;--bg-start:#f8f9fa;--surface:var(--white);--ink:var(--blacktext);--muted:var(--divtext);--panel:rgb(122 170 190 / .12);--line:rgb(122 170 190 / .35);--line-strong:rgb(122 170 190 / .6);--page-gradient:linear-gradient(90deg,var(--bg-start),var(--bg));--layout-width:1440px;--page-gutter:40px;--page-scale:1;--container:calc(var(--layout-width) - var(--page-gutter)*2);--button-font-size:var(--ui-button-size)}
+
+/* Values are extracted from design-test.css/design-review.css, not a new type scale.
+   The homepage hero scales a 1200px inner canvas: 41px becomes 49.2px at 1440.
+   --ui-h1-size is the equivalent size outside that transformed inner canvas. */
+:root{
+  --ui-h1-canvas-size:41px;
+  --ui-h1-size:calc(100cqw * 41 / 1200);
+  --ui-h2-size:40px;
+  --ui-h3-size:22px;
+  --ui-service-title-size:30px;
+  --ui-card-title-size:24px;
+  --ui-benefit-title-size:34px;
+  --ui-case-title-size:22px;
+  --ui-body-size:14px;
+  --ui-caption-size:12px;
+  --ui-meta-size:11px;
+  --ui-small-size:10px;
+  --ui-stat-size:74px;
+  --ui-case-number-size:24px;
+  --ui-button-size:calc(100cqw / 120);
+  --ui-hero-lead-size:calc(100cqw * 13 / 1200);
+  --ui-hero-lead-line-height:1.3;
+  --ui-hero-lead-spacing:calc(100cqw * -.26 / 1200);
+  --ui-hero-button-size:calc(100cqw * 10 / 1200);
+  --ui-hero-button-height:calc(100cqw * 32 / 1200);
+  --ui-hero-button-padding-y:calc(100cqw * 10 / 1200);
+  --ui-hero-button-padding-x:calc(100cqw * 8 / 1200);
+  --ui-hero-button-gap:calc(100cqw * 19 / 1200);
+  --ui-hero-primary-width:calc(100cqw * 190 / 1200);
+}
+:root[data-layout-width="640"],:root[data-layout-width="320"]{
+  --ui-h1-canvas-size:46px;
+  --ui-h1-size:46px;
+  --ui-h2-size:26px;
+  --ui-h3-size:20px;
+  --ui-service-title-size:22px;
+  --ui-card-title-size:22px;
+  --ui-benefit-title-size:22px;
+  --ui-stat-size:56px;
+  --ui-case-number-size:32px;
+  --ui-button-size:10px;
+  --ui-hero-lead-size:13px;
+  --ui-hero-lead-line-height:1.4;
+  --ui-hero-lead-spacing:-.26px;
+  --ui-hero-button-size:10px;
+  --ui-hero-button-height:32px;
+  --ui-hero-button-padding-y:10px;
+  --ui-hero-button-padding-x:8px;
+  --ui-hero-button-gap:19px;
+  --ui-hero-primary-width:190px;
+}
+:root[data-layout-width="320"]{--ui-h1-canvas-size:32px;--ui-h1-size:32px;--ui-stat-size:48px}
+.ui-h1{font-size:var(--ui-h1-size);font-weight:500;line-height:1;letter-spacing:0}
+.ui-hero-lead{font-size:var(--ui-hero-lead-size);font-weight:500;line-height:var(--ui-hero-lead-line-height);letter-spacing:var(--ui-hero-lead-spacing)}
+.ui-h2{font-size:var(--ui-h2-size);font-weight:500;line-height:1;letter-spacing:-.025em}
+.ui-h3{font-size:var(--ui-h3-size);font-weight:500;line-height:1.1;letter-spacing:-.02em}
+.ui-service-title{font-size:var(--ui-service-title-size);font-weight:500;line-height:1.1;letter-spacing:-.02em}
+.ui-card-title{font-size:var(--ui-card-title-size);font-weight:500;line-height:1.15;letter-spacing:-.025em}
+.ui-benefit-title{font-size:var(--ui-benefit-title-size);font-weight:500;line-height:1;letter-spacing:-.02em}
+.ui-case-title{font-size:var(--ui-case-title-size);font-weight:500;line-height:1.1;letter-spacing:-.02em}
+.ui-body{font-size:var(--ui-body-size);line-height:1.5}
+.ui-caption{font-size:var(--ui-caption-size);line-height:1.5}
+.ui-meta{font-size:var(--ui-meta-size);line-height:1.5}
+.ui-small{font-size:var(--ui-small-size);line-height:1.4}

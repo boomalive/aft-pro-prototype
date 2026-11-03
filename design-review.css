@@ -41,7 +41,7 @@ body,h1,h2,h3,.concept-button,.hero-title-group>p,.hero-intro>p,.stat strong,.of
   .sticky-header-main{display:contents}
   .sticky-header-actions{display:none}
   .sticky-header .sticky-menu-toggle{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px}
-  .sticky-nav{position:absolute;left:10px;right:10px;top:var(--sticky-header-height);display:none;flex-direction:column;align-items:start;gap:24px;padding:26px;background:var(--ink);color:var(--white);font-size:14px;box-shadow:0 8px 16px rgb(0 52 73 / .08)}
+  .sticky-nav{position:absolute;left:10px;right:10px;top:var(--sticky-header-height);display:none;flex-direction:column;align-items:start;gap:24px;padding:26px;background:var(--ink);color:var(--white);font-size:var(--ui-body-size);box-shadow:0 8px 16px rgb(0 52 73 / .08)}
   .sticky-nav.is-open{display:flex}
   .sticky-header.is-scrolled .sticky-nav{background:var(--white);color:var(--ink);border-top:1px solid var(--line)}
   .sticky-nav .hero-nav-submenu{display:none}
@@ -52,12 +52,12 @@ body,h1,h2,h3,.concept-button,.hero-title-group>p,.hero-intro>p,.stat strong,.of
 /* The two retained alternatives stay visible together for comparison. */
 .purpose-option{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:32px;align-items:start}
 .purpose-option+.purpose-option{margin-top:64px;padding-top:32px;border-top:1px solid var(--line)}
-.purpose-option-label{color:var(--muted);font-size:11px;line-height:1.5;text-transform:uppercase;letter-spacing:.025em}
+.purpose-option-label{color:var(--muted);font-size:var(--ui-meta-size);line-height:1.5;text-transform:uppercase;letter-spacing:.025em}
 .purpose-option-aside .purpose-intro{margin-top:28px}
 .purpose-options-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;min-width:0;align-items:stretch}
 .purpose-card{position:relative;min-width:0;overflow:hidden}
-.purpose-card h3,.purpose-flip h3{font-size:24px;line-height:1.15;letter-spacing:-.025em}
-.purpose-card p,.purpose-flip p{font-size:14px;line-height:1.5;letter-spacing:-.02em}
+.purpose-card h3,.purpose-flip h3{font-size:var(--ui-card-title-size);line-height:1.15;letter-spacing:-.025em}
+.purpose-card p,.purpose-flip p{font-size:var(--ui-body-size);line-height:1.5;letter-spacing:-.02em}
 .purpose-card-graphic{display:flex;flex-direction:column;min-height:330px;padding:28px;background:var(--bg-start);border:0}
 .purpose-symbol{display:block;width:72px;height:72px;flex-shrink:0;color:var(--accent)}
 .purpose-card-graphic h3{margin-top:38px}
@@ -79,7 +79,7 @@ body,h1,h2,h3,.concept-button,.hero-title-group>p,.hero-intro>p,.stat strong,.of
   .purpose-option-aside{display:flex;align-items:start;justify-content:space-between;gap:24px}
   .purpose-option-aside .purpose-intro{margin-top:0;max-width:330px}
   .purpose-option+.purpose-option{margin-top:48px;padding-top:28px}
-  .purpose-card h3,.purpose-flip h3{font-size:22px}
+  .purpose-card h3,.purpose-flip h3{font-size:var(--ui-card-title-size)}
   .purpose-options-grid{gap:20px}
   .purpose-card-graphic,.purpose-flip-face{padding:24px}
   .purpose-card-graphic{min-height:330px}
@@ -100,7 +100,7 @@ body,h1,h2,h3,.concept-button,.hero-title-group>p,.hero-intro>p,.stat strong,.of
 .relief-backdrop::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 30%,rgb(248 249 250 / .38) 65%,rgb(248 249 250 / .6))}
 .geography-relief-section>.container{position:relative}
 .geography-relief-section .section-heading{position:relative}
-.map-option-label{margin-top:16px;font-size:11px;line-height:1.5;color:var(--muted);text-transform:uppercase;letter-spacing:.025em}
+.map-option-label{margin-top:16px;font-size:var(--ui-meta-size);line-height:1.5;color:var(--muted);text-transform:uppercase;letter-spacing:.025em}
 .geography-relief-section .geography-layout{align-items:center}
 .relief-map{align-self:stretch;min-height:320px;aspect-ratio:5/3;border:1px solid var(--line);background:var(--white)}
 .relief-map>img{object-fit:contain}

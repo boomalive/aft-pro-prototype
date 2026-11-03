@@ -31,7 +31,7 @@
   const number = index => String(index + 1).padStart(2, '0');
   document.querySelector('#hero-title').textContent = data.heroTitle;
   document.querySelector('#logistics-leads').innerHTML = [data.lead, ...data.heroMeta]
-    .map((lead, index) => `<p class="logistics-lead${index === 0 ? ' is-active' : ''}" data-logistics-lead aria-hidden="${index !== 0}">${html(lead)}</p>`).join('');
+    .map((lead, index) => `<p class="logistics-lead ui-hero-lead${index === 0 ? ' is-active' : ''}" data-logistics-lead aria-hidden="${index !== 0}">${html(lead)}</p>`).join('');
   document.querySelector('#solutions-title').textContent = data.solutionsTitle;
   document.querySelector('#solutions-intro').textContent = data.solutionsIntro;
   document.querySelector('#logistics-services').innerHTML = data.solutions.map(([title, description], index) => `
@@ -49,7 +49,8 @@
     <article class="logistics-value"><img src="${html(assets.icons[index])}" alt="" loading="lazy" decoding="async" width="64" height="64"><h3>${html(title)}</h3><p>${html(description)}</p></article>`).join('');
   document.querySelector('#logistics-stats').innerHTML = data.stats.map(([value, label]) => {
     const [, digits, suffix] = value.match(/^([\d ]+)(.*)$/);
-    return `<div class="stat"><strong aria-label="${html(value)}"><span class="stat-value" data-count-to="${Number(digits.replaceAll(' ', ''))}" data-count-group>${html(digits)}</span><span class="stat-plus" aria-hidden="true">${html(suffix)}</span></strong><p>${html(label)}</p></div>`;
+    const [, plus, unit] = suffix.match(/^(\+?)(.*)$/);
+    return `<div class="stat"><strong aria-label="${html(value)}"><span class="stat-value" data-count-to="${Number(digits.replaceAll(' ', ''))}" data-count-group>${html(digits)}</span><span class="stat-plus" aria-hidden="true">${html(plus)}</span>${unit.trim() ? `<span class="stat-unit" aria-hidden="true">${html(unit.trim())}</span>` : ''}</strong><p>${html(label)}</p></div>`;
   }).join('');
   const serviceField = document.querySelector('#logistics-direction');
   data.solutions.forEach(([title]) => serviceField.add(new Option(title, title)));
@@ -65,61 +66,18 @@
     const hero = document.querySelector('.logistics-hero');
     const photos = [...hero.querySelectorAll('[data-logistics-photo]')];
     const leads = [...hero.querySelectorAll('[data-logistics-lead]')];
-    const pages = [...hero.querySelectorAll('[data-logistics-page]')];
-    const pause = hero.querySelector('[data-logistics-pause]');
-    const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+    document.querySelector('#logistics-leads').setAttribute('aria-live', 'polite');
     let current = 0;
-    let timer;
-    let paused = false;
-    let hovered = false;
-    let focused = false;
-    let visible = true;
-
-    function schedule() {
-      clearTimeout(timer);
-      if (paused || hovered || focused || !visible || document.hidden || reduced.matches) return;
-      timer = setTimeout(() => show(current + 1), 13000);
-    }
-    function syncPause() {
-      const stopped = paused || reduced.matches;
-      pause.setAttribute('aria-pressed', String(stopped));
-      pause.setAttribute('aria-label', reduced.matches ? 'Автосмена отключена: уменьшение движения' : paused ? 'Возобновить смену слайдов' : 'Приостановить смену слайдов');
-      pause.disabled = reduced.matches;
-      pause.classList.toggle('is-paused', stopped);
-      document.querySelector('#logistics-leads').setAttribute('aria-live', stopped || focused ? 'polite' : 'off');
-      schedule();
-    }
-    function show(index, manual = false) {
+    function show(index) {
       current = (index + leads.length) % leads.length;
-      if (manual) { paused = true; syncPause(); }
-      photos.forEach((photo, index) => photo.classList.toggle('is-active', index === current));
-      leads.forEach((lead, index) => {
-        lead.classList.toggle('is-active', index === current);
-        lead.setAttribute('aria-hidden', String(index !== current));
+      photos.forEach((photo, i) => photo.classList.toggle('is-active', i === current));
+      leads.forEach((lead, i) => {
+        lead.classList.toggle('is-active', i === current);
+        lead.setAttribute('aria-hidden', String(i !== current));
       });
-      pages.forEach((page, index) => {
-        if (index === current) page.setAttribute('aria-current', 'true');
-        else page.removeAttribute('aria-current');
-      });
-      schedule();
     }
-    pages.forEach((page, index) => page.addEventListener('click', () => show(index, true)));
-    hero.querySelector('[data-logistics-prev]').addEventListener('click', () => show(current - 1, true));
-    hero.querySelector('[data-logistics-next]').addEventListener('click', () => show(current + 1, true));
-    pause.addEventListener('click', () => { paused = !paused; syncPause(); });
-    hero.addEventListener('mouseenter', () => { hovered = true; schedule(); });
-    hero.addEventListener('mouseleave', () => { hovered = false; schedule(); });
-    hero.addEventListener('focusin', () => { focused = true; syncPause(); });
-    hero.addEventListener('focusout', event => {
-      if (!hero.contains(event.relatedTarget)) { focused = false; syncPause(); }
-    });
-    document.addEventListener('visibilitychange', schedule);
-    reduced.addEventListener('change', syncPause);
-    if ('IntersectionObserver' in window) new IntersectionObserver(entries => {
-      visible = entries[0].isIntersecting;
-      schedule();
-    }).observe(hero);
-    syncPause();
+    hero.querySelector('[data-logistics-prev]').addEventListener('click', () => show(current - 1));
+    hero.querySelector('[data-logistics-next]').addEventListener('click', () => show(current + 1));
   }
 
   function initServiceCarousel() {
