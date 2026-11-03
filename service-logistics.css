@@ -36,8 +36,8 @@
 .logistics-service-stage::after{content:"";position:absolute;z-index:-1;inset:0;background:url('assets/concept/logistics/service-orbit.svg') center / contain no-repeat;pointer-events:none}
 .logistics-service-stage>img{position:absolute;left:2%;top:4%;width:96%;height:96%;object-fit:contain;transform-origin:center;transition:transform .4s cubic-bezier(.2,.65,.3,1)}
 .logistics-service-number{position:absolute;z-index:1;right:3%;bottom:5%;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--white);font-size:var(--ui-body-size);font-weight:400;color:var(--ink)}
-.logistics-service-card>a:focus-visible .logistics-service-stage>img{transform:translateY(10%) scale(.7)}
-@media (hover:hover) and (pointer:fine){.logistics-service-card>a:hover .logistics-service-stage>img{transform:translateY(10%) scale(.7)}}
+.logistics-service-card>a:focus-visible .logistics-service-stage>img{transform:translateY(10%) scale(.85)}
+@media (hover:hover) and (pointer:fine){.logistics-service-card>a:hover .logistics-service-stage>img{transform:translateY(10%) scale(.85)}}
 .logistics-service-copy{flex:1;margin-top:26px;padding-top:0}
 .logistics-service-copy h3{font-size:var(--ui-service-title-size);line-height:1.1;max-width:340px}
 .logistics-service-copy p{margin-top:18px;font-size:var(--ui-body-size);line-height:1.6;color:var(--muted);max-width:360px}
