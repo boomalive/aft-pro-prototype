@@ -43,7 +43,7 @@
   document.querySelector('#logistics-tasks').innerHTML = data.tasks.map(([title, description], index) => `
     <details class="direction logistics-task-item" name="logistics-tasks">
       <summary><span class="direction-index" aria-hidden="true">${number(index)}</span><h3>${html(title)}</h3><span class="direction-toggle" aria-hidden="true">+</span></summary>
-      <div class="direction-body"><p>${html(description)}</p><a class="concept-button concept-button-red" href="#request">Обсудить задачу <img src="assets/concept/button-arrow.svg" alt="" width="9" height="9"></a></div>
+      <div class="direction-body"><p>${html(description)}</p><a class="concept-button concept-button-dark" href="#request">Обсудить задачу <img src="assets/concept/button-arrow.svg" alt="" width="9" height="9"></a></div>
     </details>`).join('');
   document.querySelector('#logistics-process').innerHTML = data.process.map(([title, description], index) => `
     <li><span class="logistics-process-node" aria-hidden="true">${number(index)}</span><h3>${html(title)}</h3><p>${html(description)}</p></li>`).join('');

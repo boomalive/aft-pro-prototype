@@ -46,22 +46,23 @@
 .logistics-task-item summary{grid-template-columns:var(--task-label-column) minmax(0,1fr) 40px;column-gap:32px}
 .logistics-task-item .direction-body{display:flex;flex-direction:column;align-items:flex-start;gap:24px;margin:0 60px 36px var(--task-content-axis);padding-top:8px}
 .logistics-task-item .direction-body p{max-width:580px}
-.logistics-process{background:var(--ink);color:var(--white)}
-.logistics-process .section-label{color:var(--divtext2)}
+.logistics-process{background:var(--white);color:var(--ink)}
 .logistics-process-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));list-style:none;margin:0;padding:12px 0 0}
 .logistics-process-list li{position:relative;isolation:isolate;min-width:0;padding-right:32px}
 .logistics-process-list li::before{position:absolute;content:"";z-index:-1;left:0;right:0;top:23px;border-top:1px solid rgb(122 170 190 / .45)}
 .logistics-process-list li:last-child{padding-right:0}
 .logistics-process-list li:last-child::before{display:none}
-.logistics-process-node{display:grid;place-items:center;width:48px;height:48px;background:var(--ink);border:1px solid var(--accent);border-radius:50%;color:var(--accent);font-size:var(--ui-caption-size)}
+.logistics-process-node{display:grid;place-items:center;width:48px;height:48px;background:var(--white);border:1px solid var(--accent);border-radius:50%;color:var(--ink);font-size:var(--ui-caption-size)}
 .logistics-process-list li:last-child .logistics-process-node{background:var(--accent);color:var(--ink)}
 .logistics-process-list h3{margin-top:32px;font-size:var(--ui-h3-size);line-height:1.1}
-.logistics-process-list p{margin-top:18px;font-size:var(--ui-body-size);line-height:1.6;color:var(--white)}
+.logistics-process-list p{margin-top:18px;font-size:var(--ui-body-size);line-height:1.6;color:var(--muted)}
+.logistics-values{background:var(--ink);color:var(--white)}
+.logistics-values .section-label{color:var(--divtext2)}
 .logistics-value-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 64px}
 .logistics-value{min-width:0;border-top:1px solid var(--line);padding-top:28px}
 .logistics-value>img{width:64px;height:64px;object-fit:contain;margin-bottom:34px}
 .logistics-value h3{max-width:340px;font-size:var(--ui-card-title-size);line-height:1.15;letter-spacing:-.025em}
-.logistics-value p{margin-top:20px;max-width:350px;font-size:var(--ui-body-size);line-height:1.6;color:var(--muted)}
+.logistics-value p{margin-top:20px;max-width:350px;font-size:var(--ui-body-size);line-height:1.6;color:var(--divtext2)}
 .logistics-statistics .stat-unit{font-size:var(--ui-body-size);margin-left:8px;font-weight:400;letter-spacing:0}
 
 @container aft-page (width < 1200px){
