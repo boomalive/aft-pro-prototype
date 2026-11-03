@@ -40,9 +40,11 @@
       <div class="logistics-service-copy"><h3>${html(title)}</h3><p>${html(description)}</p></div>
     </a></li>`).join('');
   document.querySelector('#tasks-title').textContent = data.tasksTitle;
-  const taskIcons = ['benefit-transport', 'benefit-support', 'benefit-system', 'benefit-economics'];
   document.querySelector('#logistics-tasks').innerHTML = data.tasks.map(([title, description], index) => `
-    <article class="logistics-task-card"><span class="logistics-task-number ui-meta" aria-hidden="true">${number(index)}</span><div class="logistics-task-copy"><h3 class="ui-card-title">${html(title)}</h3><p class="ui-body">${html(description)}</p></div><img class="logistics-task-icon" src="assets/concept/media/${taskIcons[index]}.webp" alt="" width="96" height="96" loading="lazy" decoding="async"></article>`).join('');
+    <details class="direction logistics-task-item" name="logistics-tasks">
+      <summary><span class="direction-index" aria-hidden="true">${number(index)}</span><h3>${html(title)}</h3><span class="direction-toggle" aria-hidden="true">+</span></summary>
+      <div class="direction-body"><p>${html(description)}</p><a class="concept-button concept-button-red" href="#request">Обсудить задачу <img src="assets/concept/button-arrow.svg" alt="" width="9" height="9"></a></div>
+    </details>`).join('');
   document.querySelector('#logistics-process').innerHTML = data.process.map(([title, description], index) => `
     <li><span class="logistics-process-node" aria-hidden="true">${number(index)}</span><h3>${html(title)}</h3><p>${html(description)}</p></li>`).join('');
   document.querySelector('#values-title').textContent = data.valuesTitle;

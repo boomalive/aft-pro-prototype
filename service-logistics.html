@@ -12,28 +12,15 @@
   <link rel="stylesheet" href="ui-kit.css?v=1">
   <link rel="stylesheet" href="design-test.css?v=12">
   <link rel="stylesheet" href="design-review.css?v=4">
-  <link rel="stylesheet" href="service-logistics.css?v=7">
+  <link rel="stylesheet" href="service-logistics.css?v=8">
   <script src="common.js?v=5" defer></script>
   <script src="service-data.js?v=1" defer></script>
-  <script src="service-logistics.js?v=4" defer></script>
+  <script src="service-logistics.js?v=5" defer></script>
   <script src="design-test.js?v=9" defer></script>
   <script src="design-review.js?v=2" defer></script>
 </head>
 <body class="logistics-page" data-service="logistics">
-<svg class="logistics-icon-defs" width="0" height="0" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-  <defs><filter id="logistics-task-colors" color-interpolation-filters="sRGB">
-    <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  8 -8 0 0 1" result="light-lines"/>
-    <feComponentTransfer in="light-lines" result="light-mask"><feFuncA type="discrete" tableValues="0 1"/></feComponentTransfer>
-    <feComposite in="SourceAlpha" in2="light-mask" operator="in" result="ink-alpha"/>
-    <feComposite in="SourceAlpha" in2="light-mask" operator="out" result="accent-alpha"/>
-    <feFlood style="flood-color:var(--ink)" result="ink"/>
-    <feComposite in="ink" in2="ink-alpha" operator="in" result="ink-lines"/>
-    <feFlood style="flood-color:var(--accent)" result="accent"/>
-    <feComposite in="accent" in2="accent-alpha" operator="in" result="accent-lines"/>
-    <feMerge><feMergeNode in="ink-lines"/><feMergeNode in="accent-lines"/></feMerge>
-  </filter></defs>
-</svg>
-  <a class="skip-link" href="#main">К содержанию</a>
+<a class="skip-link" href="#main">К содержанию</a>
 <header class="sticky-header" data-sticky-header>
     <div class="sticky-header-inner"><div class="container sticky-header-grid">
       <a class="sticky-brand" href="design-test.html" aria-label="АФТ ПРО — главная"><svg aria-hidden="true" focusable="false" width="66" height="27" viewBox="0 0 66 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -98,7 +85,7 @@
     </section>
 
     <section class="section logistics-tasks" id="tasks" aria-labelledby="tasks-title">
-      <div class="container"><div class="section-heading"><p class="section-label">Ваша задача</p><h2 id="tasks-title"></h2></div><div class="logistics-task-grid" id="logistics-tasks"></div></div>
+      <div class="container"><div class="section-heading"><p class="section-label">Ваша задача</p><h2 id="tasks-title"></h2></div><div class="logistics-task-list" id="logistics-tasks"></div></div>
     </section>
 
     <section class="section logistics-process" id="process" aria-labelledby="process-title">
