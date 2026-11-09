@@ -1,7 +1,7 @@
 /* Review options live on the test homepage; structural prototype pages are unchanged. */
 (() => {
   const root = document.documentElement;
-  const fontFamilies = { inter: 'Inter', manrope: 'Manrope', onest: 'Onest', 'inter-display': 'Inter Display', 'ibm-plex-sans': 'IBM Plex Sans' };
+  const fontFamilies = { inter: 'Inter', manrope: 'Manrope', onest: 'Onest', 'inter-display': 'Inter Display', 'ibm-plex-sans': 'IBM Plex Sans', montserrat: 'Montserrat' };
   const fonts = Object.keys(fontFamilies);
   const parameters = new URLSearchParams(location.search);
   let storedFont;
