@@ -47,7 +47,6 @@
     <article class="logistics-task-item">
       <h3 class="ui-service-title">${html(title)}</h3>
       <p class="ui-body">${html(description)}</p>
-      <a class="concept-button concept-button-dark" href="#request">Обсудить задачу <img src="assets/concept/button-arrow.svg" alt="" width="9" height="9"></a>
     </article>`).join('');
   document.querySelector('#logistics-process').innerHTML = data.process.map(([title, description], index) => `
     <li><span class="logistics-process-node" aria-hidden="true">${number(index)}</span><h3>${html(title)}</h3><p>${html(description)}</p></li>`).join('');
