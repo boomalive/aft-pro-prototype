@@ -5,6 +5,5 @@
 - Onest — Google Fonts, https://github.com/google/fonts/tree/main/ofl/onest, SIL Open Font License (`onest-OFL.txt`).
 - Inter Display — отдельные начертания Regular / Medium / SemiBold из официального репозитория Inter: https://github.com/rsms/inter/tree/master/docs/font-files, SIL Open Font License (`../inter-LICENSE.txt`). Сохранены настоящие Display-начертания, а не имитация трекингом обычного Inter.
 - IBM Plex Sans — более характерный гуманистический гротеск с кириллицей: https://github.com/google/fonts/tree/main/ofl/ibmplexsans, SIL Open Font License (`ibm-plex-sans-OFL.txt`).
-- Montserrat — Google Fonts, https://github.com/google/fonts/tree/main/ofl/montserrat, SIL Open Font License (`montserrat-OFL.txt`). Локальные переменные WOFF2 для кириллицы и латиницы, веса 100–900; файлы получены через Google Fonts CSS API (Montserrat v31).
 
-Дополнительные шрифты сохранены как локальные WOFF2 с латиницей, кириллицей и знаками, используемыми на сайте. Внешний сервис шрифтов при просмотре не требуется. На тестовой главной гарнитуры меняются компактным фиксированным переключателем. Размеры текста и прочие настройки при переключении сохраняются.
+Дополнительные шрифты сохранены как локальные WOFF2 с латиницей, кириллицей и знаками, используемыми на сайте. Внешний сервис шрифтов при просмотре не требуется. Manrope используется на всех страницах АФТ ПРО. Переключатель шрифтов временно отключён.

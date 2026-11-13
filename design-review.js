@@ -1,12 +1,5 @@
-/* Review options live on the test homepage; structural prototype pages are unchanged. */
 (() => {
   const root = document.documentElement;
-  const fontFamilies = { inter: 'Inter', manrope: 'Manrope', onest: 'Onest', 'inter-display': 'Inter Display', 'ibm-plex-sans': 'IBM Plex Sans', montserrat: 'Montserrat' };
-  const fonts = Object.keys(fontFamilies);
-  const parameters = new URLSearchParams(location.search);
-  let storedFont;
-  try { storedFont = localStorage.getItem('aft-review-font'); } catch { /* Private mode can disable storage. */ }
-  root.dataset.reviewFont = fonts.includes(parameters.get('font')) ? parameters.get('font') : fonts.includes(storedFont) ? storedFont : 'inter';
 
   function initStickyHeader() {
     const header = document.querySelector('[data-sticky-header]');
@@ -55,9 +48,29 @@
     setExpanded(false);
   }
 
+  function refreshFontLayout() {
+    window.dispatchEvent(new Event('aft-layout-change'));
+  }
 
   function initFontReview() {
-    const buttons = [...document.querySelectorAll('[data-review-font]')].filter(element => element.tagName === 'BUTTON');
+    const buttons = [...document.querySelectorAll('.font-review button[data-review-font]')];
+    if (!buttons.length) {
+      document.fonts.ready.then(refreshFontLayout);
+      return;
+    }
+
+    const fontFamilies = {
+      inter: 'Inter',
+      manrope: 'Manrope',
+      onest: 'Onest',
+      'inter-display': 'Inter Display',
+      'ibm-plex-sans': 'IBM Plex Sans'
+    };
+    const fonts = Object.keys(fontFamilies);
+    const requestedFont = new URLSearchParams(location.search).get('font');
+    let storedFont;
+    try { storedFont = localStorage.getItem('aft-review-font'); } catch { /* Private mode can disable storage. */ }
+
     function show(font, persist = false) {
       if (!fonts.includes(font)) return;
       root.dataset.reviewFont = font;
@@ -68,13 +81,10 @@
         url.searchParams.set('font', font);
         history.replaceState(null, '', url);
       }
-      document.fonts.load('500 16px "' + fontFamilies[font] + '"', 'АФТ ПРО').then(() => {
-        // Existing hero alignment, map context and carousel observers follow the new font metrics.
-        window.dispatchEvent(new Event('aft-layout-change'));
-      });
+      document.fonts.load('500 16px "' + fontFamilies[font] + '"', 'АФТ ПРО').then(refreshFontLayout);
     }
     buttons.forEach(button => button.addEventListener('click', () => show(button.dataset.reviewFont, true)));
-    show(root.dataset.reviewFont);
+    show([requestedFont, storedFont].find(font => fonts.includes(font)) || 'manrope');
   }
 
   document.addEventListener('DOMContentLoaded', () => {
