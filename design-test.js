@@ -256,11 +256,10 @@ function initConceptCounters() {
 }
 
 function renderConceptCases() {
-  const target = document.querySelector('#concept-cases');
-  if (!target) return;
+  const section = document.querySelector('.project-section#cases');
+  if (!section) return;
   const arrow = direction => `<img class="arrow-icon arrow-${direction}" src="assets/concept/button-arrow${direction === 'diagonal' ? '' : '-ink'}.svg" alt="" width="9" height="9">`;
-  target.outerHTML = `<section class="section section-white project-section" id="cases" aria-labelledby="projects-title">
-    <div class="container">
+  section.innerHTML = `<div class="container">
       <div class="section-heading"><p class="section-label">Практика</p><div><h2 id="projects-title">Кейсы: опыт, подтвержденный реальными задачами</h2><div class="project-toolbar"><div class="project-controls"><button class="case-control" type="button" data-project-prev aria-controls="project-track" aria-label="Прокрутить кейсы влево">${arrow('prev')}</button><button class="case-control" type="button" data-project-next aria-controls="project-track" aria-label="Прокрутить кейсы вправо">${arrow('next')}</button></div><a class="concept-button concept-button-red" href="#request">Получить консультацию ${arrow('diagonal')}</a></div></div></div>
     </div>
     <ul class="project-track" id="project-track" tabindex="0" aria-label="Кейсы — горизонтальная лента">
@@ -271,10 +270,7 @@ function renderConceptCases() {
             return `<li><strong aria-label="${escapeHtml(value + suffix)}"><span data-count-to="${escapeHtml(value)}">${escapeHtml(value)}</span><span aria-hidden="true">${escapeHtml(suffix)}</span></strong><span>${escapeHtml(label)}</span></li>`;
           }).join('')}</ul></div></div>
         </article></li>`).join('')}
-    </ul>
-  </section>`;
-
-  const section = document.querySelector('#cases');
+    </ul>`;
   const track = section.querySelector('.project-track');
   const prev = section.querySelector('[data-project-prev]');
   const next = section.querySelector('[data-project-next]');
