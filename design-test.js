@@ -308,11 +308,10 @@ function initFloatingFields() {
   });
 }
 
-function initGeographyContext() {
-  const section = document.querySelector('.geography-section');
-  const frame = section?.querySelector('.geography-map');
+function initGeographyContext(section) {
+  const frame = section.querySelector('.geography-map');
   const image = frame?.querySelector('img');
-  if (!section || !frame || !image) return;
+  if (!frame || !image) return;
 
   function alignContext() {
     const pageScale = getConceptPageScale();
@@ -380,6 +379,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initBenefits();
   initConceptCounters();
   initFloatingFields();
-  initGeographyContext();
+  document.querySelectorAll('.geography-section').forEach(initGeographyContext);
   initConceptClients();
 });
