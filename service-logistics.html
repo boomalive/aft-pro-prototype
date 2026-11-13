@@ -12,12 +12,12 @@
   <link rel="stylesheet" href="site-fonts.css?v=1">
   <link rel="stylesheet" href="ui-kit.css?v=1">
   <link rel="stylesheet" href="design-test.css?v=15">
-  <link rel="stylesheet" href="design-review.css?v=6">
-  <link rel="stylesheet" href="service-logistics.css?v=11">
+  <link rel="stylesheet" href="design-review.css?v=8">
+  <link rel="stylesheet" href="service-logistics.css?v=12">
   <script src="common.js?v=5" defer></script>
-  <script src="service-data.js?v=1" defer></script>
-  <script src="service-logistics.js?v=6" defer></script>
-  <script src="design-test.js?v=9" defer></script>
+  <script src="service-data.js?v=6" defer></script>
+  <script src="service-logistics.js?v=7" defer></script>
+  <script src="design-test.js?v=11" defer></script>
   <script src="design-review.js?v=4" defer></script>
 </head>
 <body class="logistics-page" data-service="logistics">
@@ -86,7 +86,7 @@
     </section>
 
     <section class="section logistics-tasks" id="tasks" aria-labelledby="tasks-title">
-      <div class="container"><div class="section-heading"><p class="section-label">Ваша задача</p><h2 id="tasks-title"></h2></div><div class="logistics-task-list" id="logistics-tasks"></div></div>
+      <div class="container"><div class="section-heading"><p class="section-label">Ваша задача</p><h2 id="tasks-title"></h2></div><div class="logistics-task-grid" id="logistics-tasks"></div></div>
     </section>
 
     <section class="section logistics-process" id="process" aria-labelledby="process-title">
@@ -97,8 +97,17 @@
       <div class="container"><div class="section-heading"><p class="section-label">Почему АФТ ПРО</p><h2 id="values-title"></h2></div><div class="logistics-value-grid" id="logistics-values"></div></div>
     </section>
 
-    <section class="section statistics-section logistics-statistics" id="stats" aria-label="Логистика АФТ ПРО в цифрах"><div class="container statistics" id="logistics-stats"></div></section>
+    <section class="section statistics-section" id="stats" aria-label="Логистика АФТ ПРО в цифрах"><div class="container statistics logistics-stat-grid" id="logistics-stats"></div></section>
     <div id="concept-cases"></div>
+    <section class="section logistics-audit" id="logistics-audit" aria-labelledby="audit-title">
+      <div class="container logistics-audit-panel">
+        <h2 id="audit-title">Покажем, где вы теряете деньги, и предложим решение, которое будет работать в интересах вашего бизнеса</h2>
+        <div class="logistics-audit-footer">
+          <p class="ui-body">Логистика не должна стоить вам прибыли</p>
+          <button class="concept-button concept-button-red" type="button" disabled>Проверить свою логистику <img src="assets/concept/button-arrow.svg" alt="" width="9" height="9"></button>
+        </div>
+      </div>
+    </section>
     <section class="section section-white clients-section" id="clients" aria-labelledby="clients-title">
       <div class="container">
         <div class="clients-heading"><p class="section-label">Опыт работы</p><h2 id="clients-title">Клиенты</h2></div>

@@ -34,26 +34,31 @@
     .map((lead, index) => `<p class="logistics-lead ui-hero-lead${index === 0 ? ' is-active' : ''}" data-logistics-lead aria-hidden="${index !== 0}">${html(lead)}</p>`).join('');
   document.querySelector('#solutions-title').textContent = data.solutionsTitle;
   document.querySelector('#solutions-intro').textContent = data.solutionsIntro;
-  document.querySelector('#logistics-services').innerHTML = data.solutions.map(([title, description], index) => `
+  document.querySelector('#logistics-services').innerHTML = data.solutions.map(([title, description, options], index) => `
     <li class="logistics-service-card"><a href="#request" data-select-service="${index}">
       <div class="logistics-service-stage"><span class="logistics-service-number" aria-hidden="true">${index + 1}</span><img src="${html(assets.services[index])}" alt="" loading="lazy" decoding="async" width="600" height="600"></div>
-      <div class="logistics-service-copy"><h3>${html(title)}</h3><p>${html(description)}</p></div>
+      <div class="logistics-service-copy">
+        ${options?.additional ? '<p class="small-label">Доп. услуга</p>' : ''}
+        <h3>${html(title)}</h3><p>${html(description)}</p>
+      </div>
     </a></li>`).join('');
   document.querySelector('#tasks-title').textContent = data.tasksTitle;
-  document.querySelector('#logistics-tasks').innerHTML = data.tasks.map(([title, description], index) => `
-    <details class="direction logistics-task-item" name="logistics-tasks">
-      <summary><span class="direction-index" aria-hidden="true">${number(index)}</span><h3>${html(title)}</h3><span class="direction-toggle" aria-hidden="true">+</span></summary>
-      <div class="direction-body"><p>${html(description)}</p><a class="concept-button concept-button-dark" href="#request">Обсудить задачу <img src="assets/concept/button-arrow.svg" alt="" width="9" height="9"></a></div>
-    </details>`).join('');
+  document.querySelector('#logistics-tasks').innerHTML = data.tasks.map(([title, description]) => `
+    <article class="logistics-task-item">
+      <h3 class="ui-service-title">${html(title)}</h3>
+      <p class="ui-body">${html(description)}</p>
+      <a class="concept-button concept-button-dark" href="#request">Обсудить задачу <img src="assets/concept/button-arrow.svg" alt="" width="9" height="9"></a>
+    </article>`).join('');
   document.querySelector('#logistics-process').innerHTML = data.process.map(([title, description], index) => `
     <li><span class="logistics-process-node" aria-hidden="true">${number(index)}</span><h3>${html(title)}</h3><p>${html(description)}</p></li>`).join('');
   document.querySelector('#values-title').textContent = data.valuesTitle;
   document.querySelector('#logistics-values').innerHTML = data.values.map(([title, description], index) => `
     <article class="logistics-value"><img src="${html(assets.icons[index])}" alt="" loading="lazy" decoding="async" width="64" height="64"><h3>${html(title)}</h3><p>${html(description)}</p></article>`).join('');
   document.querySelector('#logistics-stats').innerHTML = data.stats.map(([value, label]) => {
-    const [, digits, suffix] = value.match(/^([\d ]+)(.*)$/);
-    const [, plus, unit] = suffix.match(/^(\+?)(.*)$/);
-    return `<div class="stat"><strong aria-label="${html(value)}"><span class="stat-value" data-count-to="${Number(digits.replaceAll(' ', ''))}" data-count-group>${html(digits)}</span><span class="stat-plus" aria-hidden="true">${html(plus)}</span>${unit.trim() ? `<span class="stat-unit" aria-hidden="true">${html(unit.trim())}</span>` : ''}</strong><p>${html(label)}</p></div>`;
+    const [, digits, plus, unit] = value.match(/^(\d[\d ]*(?:,\d+)?)(\+?)\s*(.*)$/);
+    const count = Number(digits.replaceAll(' ', '').replace(',', '.'));
+    const decimals = digits.split(',')[1]?.length || 0;
+    return `<div class="stat"><strong aria-label="${html(value)}"><span class="stat-value" data-count-to="${count}" data-count-group data-count-decimals="${decimals}">${html(digits)}</span><span class="stat-plus" aria-hidden="true">${html(plus)}</span>${unit ? `<span class="stat-unit" aria-hidden="true">${html(unit)}</span>` : ''}</strong><p>${html(label)}</p></div>`;
   }).join('');
   const serviceField = document.querySelector('#logistics-direction');
   data.solutions.forEach(([title]) => serviceField.add(new Option(title, title)));

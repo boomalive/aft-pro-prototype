@@ -36,12 +36,14 @@
 @media (hover:hover) and (pointer:fine){.logistics-service-card>a:hover .logistics-service-stage>img{transform:translateY(4%) scale(.92)}}
 .logistics-service-copy{flex:1;margin-top:26px;padding-top:0}
 .logistics-service-copy h3{font-size:var(--ui-service-title-size);line-height:1.1;max-width:340px}
-.logistics-service-copy p{margin-top:18px;font-size:var(--ui-body-size);line-height:1.6;color:var(--muted);max-width:360px}
+.logistics-service-copy>.small-label{margin-bottom:10px}
+.logistics-service-copy h3+p{margin-top:18px;font-size:var(--ui-body-size);line-height:1.6;color:var(--muted);max-width:360px}
 .logistics-tasks{background:var(--page-gradient)}
-.logistics-task-list{--task-label-column:calc((100% - 32px) / 3);--task-content-axis:calc((100% - 32px) / 3 + 32px)}
-.logistics-task-item summary{grid-template-columns:var(--task-label-column) minmax(0,1fr) 40px;column-gap:32px}
-.logistics-task-item .direction-body{display:flex;flex-direction:column;align-items:flex-start;gap:24px;margin:0 60px 36px var(--task-content-axis);padding-top:8px}
-.logistics-task-item .direction-body p{max-width:580px}
+.logistics-task-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-block:1px solid var(--line)}
+.logistics-task-item{position:relative;display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding:36px 32px}
+.logistics-task-item>p{margin-block:16px 28px;color:var(--muted)}
+.logistics-task-item>.concept-button{margin-top:auto}
+.logistics-task-item::before{position:absolute;content:"";top:0;left:0;border-top:1px solid var(--line);pointer-events:none}
 .logistics-process{background:var(--white);color:var(--ink)}
 .logistics-process-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));list-style:none;margin:0;padding:12px 0 0}
 .logistics-process-list li{position:relative;isolation:isolate;min-width:0;padding-right:32px}
@@ -59,8 +61,28 @@
 .logistics-value>img{width:64px;height:64px;object-fit:contain;margin-bottom:34px}
 .logistics-value h3{max-width:340px;font-size:var(--ui-card-title-size);line-height:1.15;letter-spacing:-.025em}
 .logistics-value p{margin-top:20px;max-width:350px;font-size:var(--ui-body-size);line-height:1.6;color:var(--divtext2)}
-.logistics-statistics .stat-unit{font-size:var(--ui-body-size);margin-left:8px;font-weight:400;letter-spacing:0}
+.logistics-stat-grid.statistics{grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+.logistics-stat-grid .stat{padding:30px 24px;border:0}
+.logistics-stat-grid .stat p{max-width:240px}
+.logistics-stat-grid .stat-unit{font-size:var(--ui-body-size);margin-left:8px;font-weight:400;letter-spacing:0}
+.section.logistics-audit{padding-block-start:0;background:var(--white)}
+.logistics-audit-panel{
+  padding:48px;
+  background:linear-gradient(90deg,rgb(0 52 73 / .5),transparent 80%),
+    var(--ink) url('https://static.tildacdn.com/tild6566-6566-4134-a232-623165316162/Frame_2087325075.svg') right center / cover no-repeat;
+  color:var(--white);
+}
+.logistics-audit-panel h2{max-width:720px;text-wrap:balance}
+.logistics-audit-footer{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:34px}
+.logistics-audit-footer>.concept-button:disabled{background:var(--brand-red);cursor:default}
 
+@container aft-page (width >= 1200px){
+  .logistics-task-item:not(:nth-child(3n + 1)){border-inline-start:1px solid var(--line)}
+  .logistics-task-item:nth-child(3n + 1):not(:first-child)::before{width:300%}
+  .logistics-stat-grid .stat:not(:nth-child(3n)){border-inline-end:1px solid var(--line)}
+  .logistics-stat-grid .stat:nth-child(n + 4){border-block-start:1px solid var(--line)}
+  .logistics-stat-grid .stat:nth-child(3n + 1){padding-inline-start:0}
+}
 @container aft-page (width < 1200px){
   .logistics-hero{min-height:720px}
   .logistics-hero-content{padding-top:100px;padding-bottom:30px}
@@ -70,9 +92,8 @@
   .logistics-hero-controls{align-self:end;margin-top:0;padding-top:0;border-top:0}
   .logistics-service-track{gap:20px}
   .logistics-service-card{flex-basis:calc((100cqw - 40px) / 2)}
-  .logistics-task-list{--task-content-axis:0px}
-  .logistics-task-item summary{grid-template-columns:minmax(0,1fr) 25px;column-gap:14px}
-  .logistics-task-item .direction-body{margin:0 0 30px;padding-top:0}
+  .logistics-task-item{padding:28px 24px}
+  .logistics-audit-panel{padding:32px}
   .logistics-process-list{grid-template-columns:1fr;max-width:520px;margin-left:60px;padding:0}
   .logistics-process-list li{padding:0 0 36px 76px;min-height:110px}
   .logistics-process-list li:last-child{padding-bottom:0}
@@ -82,8 +103,13 @@
   .logistics-process-list p{margin-top:12px}
   .logistics-value-grid{grid-template-columns:1fr 1fr;gap:36px 28px}
   .logistics-value>img{margin-bottom:26px}
-  .logistics-statistics .statistics{gap:24px}
-  .logistics-statistics .stat{padding-right:12px}
+}
+@container aft-page (640px <= width < 1200px){
+  .logistics-task-grid,.logistics-stat-grid.statistics{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .logistics-task-item:nth-child(2n){border-inline-start:1px solid var(--line)}
+  .logistics-task-item:nth-child(2n + 1):not(:first-child)::before{width:200%}
+  .logistics-stat-grid .stat:nth-child(odd){border-inline-end:1px solid var(--line);padding-inline-start:0}
+  .logistics-stat-grid .stat:nth-child(n + 3){border-block-start:1px solid var(--line)}
 }
 @container aft-page (width < 640px){
   .logistics-hero{min-height:740px}
@@ -102,8 +128,13 @@
   .logistics-value{display:grid;grid-template-columns:48px 1fr;column-gap:20px;padding-top:24px}
   .logistics-value>img{width:48px;height:48px;margin:0;grid-row:1 / 3}
   .logistics-value p{grid-column:2;margin-top:16px}
-  .logistics-statistics .statistics{grid-template-columns:1fr;gap:26px}
-  .logistics-statistics .stat{padding:0 0 26px;border-right:0;border-bottom:1px solid var(--line)}
-  .logistics-statistics .stat:last-child{padding-bottom:0;border-bottom:0}
-  .logistics-statistics .stat p{margin-top:14px;max-width:none}
+  .logistics-task-grid{grid-template-columns:1fr}
+  .logistics-task-item{padding-inline:0}
+  .logistics-task-item+.logistics-task-item::before{width:100%}
+  .logistics-stat-grid.statistics{grid-template-columns:1fr}
+  .logistics-stat-grid .stat{padding:24px 0}
+  .logistics-stat-grid .stat+.stat{border-block-start:1px solid var(--line)}
+  .logistics-stat-grid .stat p{margin-top:14px;max-width:none}
+  .logistics-audit-panel{padding:24px}
+  .logistics-audit-footer{align-items:flex-start;flex-direction:column;margin-top:26px}
 }

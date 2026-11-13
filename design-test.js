@@ -207,9 +207,13 @@ function initConceptCounters() {
   const values = [...document.querySelectorAll('[data-count-to]')];
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const animations = new Map();
-  const format = (element, value) => element.hasAttribute('data-count-group')
-    ? String(value).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
-    : String(value);
+  const format = (element, value) => {
+    const [integer, fraction] = value.toFixed(Number(element.dataset.countDecimals) || 0).split('.');
+    const digits = element.hasAttribute('data-count-group')
+      ? integer.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+      : integer;
+    return fraction ? `${digits},${fraction}` : digits;
+  };
   const finish = element => {
     if (animations.has(element)) cancelAnimationFrame(animations.get(element));
     animations.delete(element);
@@ -231,11 +235,12 @@ function initConceptCounters() {
       if (reducedMotion.matches) return finish(element);
       let start = null;
       const target = Number(element.dataset.countTo);
+      const factor = 10 ** (Number(element.dataset.countDecimals) || 0);
       function tick(timestamp) {
         if (start === null) start = timestamp;
         const progress = Math.min(1, (timestamp - start) / 1600);
         const eased = 1 - Math.pow(1 - progress, 3);
-        element.textContent = format(element, Math.floor(target * eased));
+        element.textContent = format(element, Math.floor(target * eased * factor) / factor);
         if (progress < 1) animations.set(element, requestAnimationFrame(tick));
         else finish(element);
       }
