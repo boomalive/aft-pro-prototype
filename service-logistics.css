@@ -41,6 +41,7 @@
 .logistics-tasks{background:var(--page-gradient)}
 .logistics-task-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));row-gap:28px}
 .logistics-task-item{min-width:0;padding:20px 24px}
+.logistics-task-item>h3{white-space:pre-line}
 .logistics-task-item>p{margin-top:16px;color:var(--muted)}
 .logistics-process{background:var(--white);color:var(--ink)}
 .logistics-process-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));list-style:none;margin:0;padding:12px 0 0}
@@ -74,6 +75,8 @@
 .logistics-audit-footer{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:34px}
 
 @container aft-page (width >= 1200px){
+  .logistics-service-stage{aspect-ratio:10/9}
+  .logistics-service-number{right:7%}
   .logistics-task-item:not(:nth-child(4n + 1)){border-inline-start:1px solid var(--line)}
   .logistics-stat-grid .stat:not(:nth-child(3n)){border-inline-end:1px solid var(--line)}
   .logistics-stat-grid .stat:nth-child(n + 4){border-block-start:1px solid var(--line)}
@@ -117,7 +120,7 @@
   .logistics-solutions .section-heading{gap:16px}
   .logistics-section-intro{margin-top:16px}
   .logistics-service-toolbar{margin-top:18px}
-  .logistics-service-track{--service-gap:14px;padding-bottom:14px}
+  .logistics-service-track{--service-gap:8px;padding-inline:8px;scroll-padding-inline:8px;padding-bottom:14px}
   .logistics-service-card{flex-basis:70cqw}
   .logistics-service-stage{aspect-ratio:3/2}
   .logistics-service-copy{margin-top:10px}

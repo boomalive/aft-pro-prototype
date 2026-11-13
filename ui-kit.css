@@ -7,7 +7,7 @@
   box-shadow:none;
 }
 .concept-button.concept-button-green:not(:disabled):hover{
-  background:color-mix(in srgb,var(--accent) 48%,var(--ink));
+  background:var(--ink);
 }
 .concept-button.concept-button-green:disabled{cursor:default}
 
@@ -41,13 +41,15 @@
   --ui-hero-primary-width:calc(100cqw * 190 / 1200);
 }
 :root[data-layout-width="640"],:root[data-layout-width="320"]{
-  --ui-h1-canvas-size:46px;
-  --ui-h1-size:46px;
-  --ui-h2-size:26px;
-  --ui-h3-size:20px;
-  --ui-service-title-size:22px;
-  --ui-card-title-size:22px;
-  --ui-benefit-title-size:22px;
+  --ui-h1-canvas-size:39px;
+  --ui-h1-size:39px;
+  --ui-h2-size:22px;
+  --ui-h3-size:17px;
+  --ui-service-title-size:19px;
+  --ui-card-title-size:19px;
+  --ui-benefit-title-size:19px;
+  --ui-case-title-size:19px;
+  --ui-body-size:11px;
   --ui-stat-size:56px;
   --ui-case-number-size:32px;
   --ui-button-size:10px;
@@ -61,7 +63,7 @@
   --ui-hero-button-gap:19px;
   --ui-hero-primary-width:190px;
 }
-:root[data-layout-width="320"]{--ui-h1-canvas-size:32px;--ui-h1-size:32px;--ui-stat-size:48px}
+:root[data-layout-width="320"]{--ui-h1-canvas-size:27px;--ui-h1-size:27px;--ui-stat-size:48px}
 .ui-h1{font-size:var(--ui-h1-size);font-weight:500;line-height:1;letter-spacing:0}
 .ui-hero-lead{font-size:var(--ui-hero-lead-size);font-weight:500;line-height:var(--ui-hero-lead-line-height);letter-spacing:var(--ui-hero-lead-spacing)}
 .ui-h2{font-size:var(--ui-h2-size);font-weight:500;line-height:1;letter-spacing:-.025em}
