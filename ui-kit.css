@@ -20,6 +20,7 @@
   --ui-h2-size:40px;
   --ui-h3-size:22px;
   --ui-service-title-size:30px;
+  --ui-logistics-title-size:25.5px;
   --ui-card-title-size:24px;
   --ui-benefit-title-size:34px;
   --ui-case-title-size:22px;
@@ -46,12 +47,13 @@
   --ui-h2-size:22px;
   --ui-h3-size:17px;
   --ui-service-title-size:19px;
+  --ui-logistics-title-size:16px;
   --ui-card-title-size:19px;
   --ui-benefit-title-size:19px;
   --ui-case-title-size:19px;
   --ui-body-size:11px;
   --ui-stat-size:56px;
-  --ui-case-number-size:32px;
+  --ui-case-number-size:22.4px;
   --ui-button-size:10px;
   --ui-hero-lead-size:13px;
   --ui-hero-lead-line-height:1.4;
