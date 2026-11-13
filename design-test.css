@@ -155,8 +155,20 @@ button:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 .industry-media::before{position:absolute;content:"";z-index:1;width:16px;height:16px;top:18px;right:18px;border-top:1px solid var(--white);border-right:1px solid var(--white)}
 .industry h3{font-size:var(--ui-h3-size);line-height:1.1}
 .industry p{margin-top:20px;font-size:var(--ui-caption-size);line-height:1.5;color:var(--muted)}
-.geography-section{position:relative;isolation:isolate;overflow:hidden;background:var(--bg)}
-.geography-backdrop{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.geography-section{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:radial-gradient(ellipse at 22% 35%,var(--white) 5%,transparent 76%),linear-gradient(135deg,#e0f4f6,#f7fbfc 76%,var(--white));
+}
+.geography-backdrop{
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  overflow:hidden;
+  pointer-events:none;
+  mask-image:linear-gradient(90deg,#000 31%,rgb(0 0 0 / .38) 55%,transparent 96%);
+}
 .geography-backdrop>img{position:absolute;left:var(--map-context-left,0px);top:var(--map-context-top,0px);width:var(--map-context-width,2600px);height:var(--map-context-height,3400px);max-width:none}
 .geography-section>.container{position:relative}
 .geography-layout{display:grid;grid-template-columns:minmax(0,calc(50% - 40px)) minmax(0,1fr);gap:40px}
@@ -308,6 +320,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visi
   .industry h3{font-size:var(--ui-h3-size)}
   .industry p{font-size:var(--ui-caption-size);margin-top:14px}
   .industry-media{aspect-ratio:1.2;margin:0 0 20px}
+  .geography-backdrop{mask-image:linear-gradient(180deg,rgb(0 0 0 / .35),#000 24%,#000 43%,transparent 76%)}
   .geography-map{min-height:270px;aspect-ratio:5/3}
   .geography-map>img{object-fit:contain}
   .geography-intro{font-size:var(--ui-body-size)}

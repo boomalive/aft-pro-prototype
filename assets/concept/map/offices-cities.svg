@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600">
+  <desc>Центры населённых пунктов в той же проекции, что и карта Natural Earth.</desc>
+  <style>
+    .city-label{font:500 24px Arial,sans-serif;fill:#003449;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+    .city-dot{fill:#f4242b;stroke:#fff;stroke-width:3}
+    @media(max-width:600px){.city-label{font-size:30px;stroke-width:5px}.city-dot{r:9px}}
+    @media(max-width:360px){.city-label{font-size:34px}}
+  </style>
+  <g data-city="Усть-Луга" data-lat="59.66755" data-lon="28.28713">
+    <circle class="city-dot" cx="120.16" cy="226.70" r="7"/>
+    <text class="city-label" x="136.16" y="206.70" text-anchor="start">Усть-Луга</text>
+  </g>
+  <g data-city="Москва" data-lat="55.75204" data-lon="37.61781">
+    <circle class="city-dot" cx="332.22" cy="393.48" r="7"/>
+    <text class="city-label" x="332.22" y="427.48" text-anchor="middle">Москва</text>
+  </g>
+  <g data-city="Нижний Новгород" data-lat="56.32867" data-lon="44.00205">
+    <circle class="city-dot" cx="477.32" cy="370.02" r="7"/>
+    <text class="city-label" x="493.32" y="346.02" text-anchor="start">Нижний Новгород</text>
+  </g>
+  <g data-city="Екатеринбург" data-lat="56.85733" data-lon="60.61529">
+    <circle class="city-dot" cx="854.89" cy="348.19" r="7"/>
+    <text class="city-label" x="836.89" y="390.19" text-anchor="end">Екатеринбург</text>
+  </g>
+</svg>
