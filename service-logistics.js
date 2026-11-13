@@ -31,7 +31,7 @@
   const number = index => String(index + 1).padStart(2, '0');
   document.querySelector('#hero-title').textContent = data.heroTitle;
   document.querySelector('#logistics-leads').innerHTML = [data.lead, ...data.heroMeta]
-    .map((lead, index) => `<p class="logistics-lead ui-hero-lead${index === 0 ? ' is-active' : ''}" data-logistics-lead aria-hidden="${index !== 0}">${html(lead)}</p>`).join('');
+    .map((lead, index) => `<p class="logistics-lead ui-body${index === 0 ? ' is-active' : ''}" data-logistics-lead aria-hidden="${index !== 0}">${html(lead)}</p>`).join('');
   document.querySelector('#solutions-title').textContent = data.solutionsTitle;
   document.querySelector('#solutions-intro').textContent = data.solutionsIntro;
   document.querySelector('#logistics-services').innerHTML = data.solutions.map(([title, description, options], index) => `
@@ -39,13 +39,13 @@
       <div class="logistics-service-stage"><span class="logistics-service-number" aria-hidden="true">${index + 1}</span><img src="${html(assets.services[index])}" alt="" loading="lazy" decoding="async" width="600" height="600"></div>
       <div class="logistics-service-copy">
         ${options?.additional ? '<p class="small-label">Доп. услуга</p>' : ''}
-        <h3>${html(title)}</h3><p>${html(description)}</p>
+        <h3 class="ui-h4">${html(title)}</h3><p>${html(description)}</p>
       </div>
     </a></li>`).join('');
   document.querySelector('#tasks-title').textContent = data.tasksTitle;
   document.querySelector('#logistics-tasks').innerHTML = data.tasks.map(([title, description]) => `
     <article class="logistics-task-item">
-      <h3 class="ui-service-title">${html(title)}</h3>
+      <h3 class="ui-h4">${html(title)}</h3>
       <p class="ui-body">${html(description)}</p>
     </article>`).join('');
   document.querySelector('#logistics-process').innerHTML = data.process.map(([title, description], index) => `

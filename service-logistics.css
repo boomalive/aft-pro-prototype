@@ -35,13 +35,13 @@
 .logistics-service-card>a:focus-visible .logistics-service-stage>img{transform:translateY(4%) scale(.92)}
 @media (hover:hover) and (pointer:fine){.logistics-service-card>a:hover .logistics-service-stage>img{transform:translateY(4%) scale(.92)}}
 .logistics-service-copy{flex:1;margin-top:14px}
-.logistics-service-copy h3{font-size:var(--ui-logistics-title-size);line-height:1.1;max-width:340px}
+.logistics-service-copy h3{max-width:340px}
 .logistics-service-copy>.small-label{margin-bottom:8px}
 .logistics-service-copy h3+p{margin-top:12px;font-size:var(--ui-body-size);line-height:1.6;color:var(--muted);max-width:360px}
 .logistics-tasks{background:var(--page-gradient)}
 .logistics-task-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));row-gap:28px}
 .logistics-task-item{min-width:0;padding:20px 24px}
-.logistics-task-item>h3{font-size:var(--ui-logistics-title-size);white-space:pre-line}
+.logistics-task-item>h3{white-space:pre-line}
 .logistics-task-item>p{margin-top:16px;color:var(--muted)}
 .logistics-process{background:var(--white);color:var(--ink)}
 .logistics-process-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));list-style:none;margin:0;padding:12px 0 0}
@@ -51,14 +51,14 @@
 .logistics-process-list li:last-child::before{display:none}
 .logistics-process-node{display:grid;place-items:center;width:48px;height:48px;background:var(--white);border:1px solid var(--accent);border-radius:50%;color:var(--ink);font-size:var(--ui-caption-size)}
 .logistics-process-list li:last-child .logistics-process-node{background:var(--accent);color:var(--white)}
-.logistics-process-list h3{margin-top:32px;font-size:var(--ui-h3-size);line-height:1.1}
+.logistics-process-list h3{margin-top:32px;font-size:22px;line-height:1.1;letter-spacing:-.02em}
 .logistics-process-list p{margin-top:18px;font-size:var(--ui-body-size);line-height:1.6;color:var(--muted)}
 .logistics-values{background:var(--ink);color:var(--white)}
 .logistics-values .section-label{color:var(--divtext2)}
 .logistics-value-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 64px}
 .logistics-value{min-width:0;border-top:1px solid var(--line);padding-top:28px}
 .logistics-value>img{width:64px;height:64px;object-fit:contain;margin-bottom:34px}
-.logistics-value h3{max-width:340px;font-size:var(--ui-card-title-size);line-height:1.15;letter-spacing:-.025em}
+.logistics-value h3{max-width:340px;font-size:24px;line-height:1.15;letter-spacing:-.025em}
 .logistics-value p{margin-top:20px;max-width:350px;font-size:var(--ui-body-size);line-height:1.6;color:var(--divtext2)}
 .logistics-stat-grid.statistics{grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
 .logistics-stat-grid .stat{padding:30px 24px;border:0}
@@ -96,10 +96,11 @@
   .logistics-process-list li:last-child{padding-bottom:0}
   .logistics-process-list li::before{top:0;bottom:0;left:23px;right:auto;border-top:0;border-left:1px solid var(--line)}
   .logistics-process-node{position:absolute;top:0;left:0}
-  .logistics-process-list h3{margin-top:0;padding-top:10px;font-size:var(--ui-h3-size)}
+  .logistics-process-list h3{margin-top:0;padding-top:10px;font-size:17px}
   .logistics-process-list p{margin-top:12px}
   .logistics-value-grid{grid-template-columns:1fr 1fr;gap:36px 28px}
   .logistics-value>img{margin-bottom:26px}
+  .logistics-value h3{font-size:19px}
 }
 @media (min-width:640px) and (max-height:560px) and (orientation:landscape){
   @container aft-page (width < 1200px){

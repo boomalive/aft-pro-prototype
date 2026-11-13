@@ -65,8 +65,8 @@ function renderServicePage() {
           <div class="hero-copy">
             <p class="eyebrow">Направление АФТ ПРО</p>
             ${data.draft ? `<button class="editor-note" type="button" data-note="${data.draftNote || "Текст страницы подготовлен для демонстрации и требует согласования"}" aria-label="Комментарий редактора">i</button>` : ""}
-            <h1>${data.heroTitle}</h1>
-            <p class="lead">${data.lead}</p>
+            <h1 class="ui-h1">${data.heroTitle}</h1>
+            <p class="lead ui-body">${data.lead}</p>
             <div class="hero-meta">${data.heroMeta.map((item) => `<p>${item}</p>`).join("")}</div>
             <div class="button-row">
               <a class="button" href="contacts.html#request">Обсудить задачу</a>

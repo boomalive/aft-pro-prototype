@@ -265,9 +265,9 @@ function renderConceptCases() {
     <ul class="project-track" id="project-track" tabindex="0" aria-label="Кейсы — горизонтальная лента">
         ${homeCases.map(([title, description, metrics, image], i) => `<li class="project-card"><article id="project-${i}" aria-labelledby="project-title-${i}">
           <div class="project-visual"><img class="project-image" src="${escapeHtml(image.replace('assets/cases/', 'assets/concept/cases/'))}" srcset="${escapeHtml(image.replace('assets/cases/', 'assets/concept/cases/').replace('.webp', '-480.webp'))} 480w, ${escapeHtml(image.replace('assets/cases/', 'assets/concept/cases/'))} 960w" sizes="(min-width: 1200px) 25vw, 88vw" alt="${escapeHtml(title)}" loading="lazy" decoding="async"></div>
-          <div class="project-copy"><h3 id="project-title-${i}">${escapeHtml(title)}</h3><p class="project-description">${escapeHtml(description)}</p><div class="project-equipment"><p class="small-label">Техника</p><ul>${metrics.map(metric => {
+          <div class="project-copy"><h3 class="ui-h5" id="project-title-${i}">${escapeHtml(title)}</h3><p class="project-description">${escapeHtml(description)}</p><div class="project-equipment"><p class="small-label">Техника</p><ul>${metrics.map(metric => {
             const [, value, suffix, label] = metric.match(/^(\d+)(\+?)\s+(.+)$/) || ['', '', '', metric];
-            return `<li><strong aria-label="${escapeHtml(value + suffix)}"><span data-count-to="${escapeHtml(value)}">${escapeHtml(value)}</span><span aria-hidden="true">${escapeHtml(suffix)}</span></strong><span>${escapeHtml(label)}</span></li>`;
+            return `<li><strong class="ui-h5" aria-label="${escapeHtml(value + suffix)}"><span data-count-to="${escapeHtml(value)}">${escapeHtml(value)}</span><span aria-hidden="true">${escapeHtml(suffix)}</span></strong><span>${escapeHtml(label)}</span></li>`;
           }).join('')}</ul></div></div>
         </article></li>`).join('')}
     </ul>`;

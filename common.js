@@ -46,9 +46,14 @@ function renderCaseCarousel(items, { metricLabel = "Результат", note = 
       ${items.map(([title, description, metrics, image]) => `<article class="case-slide">
         ${image ? `<img class="case-image" src="${escapeHtml(image)}" alt="${escapeHtml(title)}" loading="lazy">` : `<div class="case-image media-placeholder" role="img" aria-label="Место для изображения проекта ${escapeHtml(title)}"><span>Фото проекта</span></div>`}
         <div class="case-body">
-          <p class="case-kicker">${escapeHtml(title)}</p>
+          <h3 class="case-kicker ui-h5">${escapeHtml(title)}</h3>
           <p class="case-description">${escapeHtml(description)}</p>
-          <div class="case-metrics"><strong>${escapeHtml(metricLabel)}:</strong><ul>${metrics.map((metric) => `<li>${escapeHtml(metric)}</li>`).join("")}</ul></div>
+          <div class="case-metrics"><strong>${escapeHtml(metricLabel)}:</strong><ul>${metrics.map((metric) => {
+            const parts = metric.match(/^(\d[\d ]*(?:[,.]\d+)?\+?)\s+(.+)$/);
+            return parts
+              ? `<li><strong class="ui-h5">${escapeHtml(parts[1])}</strong> ${escapeHtml(parts[2])}</li>`
+              : `<li>${escapeHtml(metric)}</li>`;
+          }).join("")}</ul></div>
         </div>
       </article>`).join("")}
     </div>
