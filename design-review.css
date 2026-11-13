@@ -49,7 +49,7 @@ html{scroll-padding-top:calc((var(--sticky-header-height) + 16px)*var(--page-sca
 .purpose-option{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:32px;align-items:start}
 .purpose-options-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;min-width:0;align-items:stretch}
 .purpose-card{position:relative;min-width:0;overflow:hidden}
-.purpose-card p,.purpose-flip p{font-size:var(--ui-body-size);line-height:1.5;letter-spacing:-.02em}
+.purpose-card p,.purpose-flip p{font-size:var(--ui-body-size);font-weight:var(--ui-body-weight);line-height:1.5;letter-spacing:-.02em}
 .purpose-card-graphic{display:flex;flex-direction:column;min-height:330px;padding:28px;background:var(--bg-start);border:0;transition:background-color .3s ease}
 .purpose-symbol{display:block;width:72px;height:72px;flex-shrink:0;color:var(--accent)}
 .purpose-card-graphic .purpose-symbol{transition:color .3s ease}

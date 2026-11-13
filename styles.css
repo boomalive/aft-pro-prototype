@@ -308,6 +308,16 @@ h3 {
   line-height: 1.35;
 }
 
+.lead,
+.hero-meta p,
+.card p,
+.plain-list-item p,
+.timeline-item p,
+.trust-item p,
+.case-description {
+  font-weight: var(--ui-body-weight);
+}
+
 .hero .lead {
   font-size: var(--ui-body-size);
   line-height: 1.5;

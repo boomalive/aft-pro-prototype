@@ -1,5 +1,5 @@
 /* AFT PRO: shared foundations from the approved homepage. */
-:root{--blacktext:#003449;--accent:#43b6a5;--divtext:#567988;--brand-red:#f4242b;--divtext2:#7aaabe;--white:#fff;--bg:#f1f3f6;--bg-start:#f8f9fa;--surface:var(--white);--ink:var(--blacktext);--muted:var(--divtext);--panel:rgb(122 170 190 / .12);--line:rgb(122 170 190 / .35);--line-strong:rgb(122 170 190 / .6);--page-gradient:linear-gradient(90deg,var(--bg-start),var(--bg));--layout-width:1440px;--page-gutter:40px;--page-scale:1;--container:calc(var(--layout-width) - var(--page-gutter)*2);--button-font-size:var(--ui-button-size)}
+:root{--blacktext:#003449;--accent:#43b6a5;--divtext:#567988;--brand-red:#f4242b;--divtext2:#7aaabe;--white:#fff;--bg:#f1f3f6;--bg-start:#f8f9fa;--surface:var(--white);--ink:var(--blacktext);--muted:var(--divtext);--panel:rgb(122 170 190 / .12);--line:rgb(122 170 190 / .35);--line-strong:rgb(122 170 190 / .6);--page-gradient:linear-gradient(90deg,var(--bg-start),var(--bg));--layout-width:1440px;--page-gutter:40px;--page-scale:1;--container:calc(var(--layout-width) - var(--page-gutter)*2)}
 
 .concept-button.concept-button-green{
   background:color-mix(in srgb,var(--accent) 58%,var(--ink));
@@ -21,12 +21,12 @@
   --ui-h4-size:26px;
   --ui-h5-size:24px;
   --ui-body-size:14px;
+  --ui-body-weight:500;
   --ui-caption-size:12px;
   --ui-meta-size:11px;
   --ui-small-size:10px;
   --ui-stat-size:74px;
-  --ui-button-size:calc(100cqw / 120);
-  --ui-hero-button-size:calc(100cqw * 10 / 1200);
+  --ui-tag-text-size:12px;
   --ui-hero-button-height:calc(100cqw * 32 / 1200);
   --ui-hero-button-padding-y:calc(100cqw * 10 / 1200);
   --ui-hero-button-padding-x:calc(100cqw * 8 / 1200);
@@ -38,6 +38,7 @@
     --ui-h1-size:41px;
     --ui-h1-canvas-size:var(--ui-h1-size);
     --ui-h5-size:22px;
+    --ui-tag-text-size:10px;
   }
 }
 @media (width < 1200px){
@@ -49,8 +50,6 @@
     --ui-h5-size:16px;
     --ui-body-size:11px;
     --ui-stat-size:56px;
-    --ui-button-size:10px;
-    --ui-hero-button-size:10px;
     --ui-hero-button-height:32px;
     --ui-hero-button-padding-y:10px;
     --ui-hero-button-padding-x:8px;
@@ -67,7 +66,8 @@
 .ui-h3{font-size:var(--ui-h3-size)}
 .ui-h4{font-size:var(--ui-h4-size)}
 .ui-h5{font-size:var(--ui-h5-size)}
-.ui-body{font-size:var(--ui-body-size);line-height:1.5}
+.ui-body{font-size:var(--ui-body-size);font-weight:var(--ui-body-weight);line-height:1.5}
+.ui-tag-text{font-size:var(--ui-tag-text-size);font-weight:600;line-height:1.2;letter-spacing:.025em;text-transform:uppercase}
 .ui-caption{font-size:var(--ui-caption-size);line-height:1.5}
 .ui-meta{font-size:var(--ui-meta-size);line-height:1.5}
 .ui-small{font-size:var(--ui-small-size);line-height:1.4}
