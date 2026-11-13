@@ -45,11 +45,8 @@ html{scroll-padding-top:calc((var(--sticky-header-height) + 16px)*var(--page-sca
   .sticky-menu-toggle[aria-expanded=true]>span:last-child{transform:translateY(-3px) rotate(-45deg)}
 }
 
-/* The two retained alternatives stay visible together for comparison. */
+/* Purpose cards and the UI kit's flip-card example. */
 .purpose-option{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:32px;align-items:start}
-.purpose-option+.purpose-option{margin-top:64px;padding-top:32px;border-top:1px solid var(--line)}
-.purpose-option-label{color:var(--muted);font-size:var(--ui-meta-size);line-height:1.5;text-transform:uppercase;letter-spacing:.025em}
-.purpose-option-aside .purpose-intro{margin-top:28px}
 .purpose-options-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;min-width:0;align-items:stretch}
 .purpose-card{position:relative;min-width:0;overflow:hidden}
 .purpose-card h3,.purpose-flip h3{font-size:var(--ui-card-title-size);line-height:1.15;letter-spacing:-.025em}
@@ -59,8 +56,10 @@ html{scroll-padding-top:calc((var(--sticky-header-height) + 16px)*var(--page-sca
 .purpose-card-graphic h3{margin-top:38px}
 .purpose-card-graphic p{margin-top:20px}
 .purpose-card-rule{width:38px;height:2px;margin-top:32px;background:var(--accent)}
-.purpose-card-graphic:last-child{background:var(--panel)}
-.purpose-card-graphic:last-child .purpose-symbol{color:var(--ink)}
+@media (hover: hover){
+  .purpose-card-graphic:hover{background:var(--panel)}
+  .purpose-card-graphic:hover .purpose-symbol{color:var(--ink)}
+}
 .purpose-flip{min-width:0;perspective:1200px}
 .purpose-flip-inner{display:grid;min-height:330px;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.2,.65,.3,1)}
 .purpose-flip.is-flipped .purpose-flip-inner{transform:rotateY(180deg)}
@@ -72,9 +71,7 @@ html{scroll-padding-top:calc((var(--sticky-header-height) + 16px)*var(--page-sca
 .purpose-flip-face .concept-button{margin-top:auto}
 @container aft-page (width < 1200px){
   .purpose-option{grid-template-columns:1fr;gap:24px}
-  .purpose-option-aside{display:flex;align-items:start;justify-content:space-between;gap:24px}
-  .purpose-option-aside .purpose-intro{margin-top:0;max-width:330px}
-  .purpose-option+.purpose-option{margin-top:48px;padding-top:28px}
+  .purpose-option .purpose-intro{max-width:330px}
   .purpose-card h3,.purpose-flip h3{font-size:var(--ui-card-title-size)}
   .purpose-options-grid{gap:20px}
   .purpose-card-graphic,.purpose-flip-face{padding:24px}
@@ -82,7 +79,6 @@ html{scroll-padding-top:calc((var(--sticky-header-height) + 16px)*var(--page-sca
   .purpose-flip-inner{min-height:350px}
 }
 @container aft-page (width < 640px){
-  .purpose-option-aside{flex-direction:column;gap:20px}
   .purpose-options-grid{grid-template-columns:1fr}
   .purpose-card-graphic{min-height:0}
   .purpose-card-graphic h3{margin-top:28px}
