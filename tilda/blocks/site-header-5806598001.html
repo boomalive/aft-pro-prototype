@@ -1,0 +1,313 @@
+<style>
+  .aft-header-fixed {
+    position: fixed !important;
+    inset: 0 0 auto !important;
+    z-index: 990 !important;
+    transition: background 0.3s;
+  }
+  .aft-header-fixed .t396__artboard {
+    overflow: visible !important;
+  }
+  .aft-header-overlay {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 195px;
+    padding: 14px 22px;
+    background: var(--uc-color-color-hnbTtyKO, #003449);
+    color: var(--uc-color-color-mqoFbtWdCirZ, #ffffff);
+    font:
+      500 14px/1.45 Manrope,
+      sans-serif;
+  }
+  .aft-header-overlay[hidden] {
+    display: none;
+  }
+  .aft-header-overlay a {
+    display: block;
+    color: var(--uc-color-color-mqoFbtWdCirZ, #ffffff) !important;
+    padding: 9px 0;
+    text-decoration: none;
+  }
+  .aft-header-overlay a:hover,
+  .aft-header-overlay a:focus-visible {
+    color: var(--uc-color-color-eguPwScz4Z, #43b6a5) !important;
+  }
+  .aft-header-nav a:focus-visible,
+  .aft-header-actions a:focus-visible {
+    outline: 2px solid var(--uc-color-color-eguPwScz4Z, #43b6a5);
+    outline-offset: 4px;
+  }
+  @media (max-width: 1199px) {
+    .aft-header-overlay {
+      min-width: 245px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .aft-header-fixed {
+      transition: none;
+    }
+  }
+  .aft-header-fixed {
+    height: 0 !important;
+    pointer-events: none;
+  }
+  .aft-header-fixed .t396__artboard {
+    height: auto !important;
+    min-height: 0 !important;
+    pointer-events: none;
+  }
+  .aft-header-fixed .t396__carrier,
+  .aft-header-fixed .t396__filter {
+    pointer-events: none;
+  }
+  .aft-header-fixed a,
+  .aft-header-fixed button {
+    pointer-events: auto;
+  }
+  .aft-header-fixed .aft-logo-dark {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    visibility: hidden;
+  }
+  .aft-header-fixed .aft-header-logo a {
+    position: relative;
+  }
+  .aft-header-fixed.is-scrolled .aft-logo-dark {
+    visibility: visible;
+  }
+  .aft-header-fixed.is-scrolled .aft-header-logo .tn-atom__img {
+    visibility: hidden;
+  }
+  .aft-header-fixed .aft-header-overlay {
+    left: var(--aft-menu-left, auto);
+    top: var(--aft-menu-top, 60px);
+    right: auto;
+  }
+  .aft-header-fixed .aft-header-overlay.aft-menu-mobile {
+    left: auto;
+    right: 0;
+  }
+  .aft-site-header {
+    z-index: 3;
+  }
+  .aft-header-fixed .t396__artboard {
+    transition: background-color 0.3s ease;
+  }
+  #allrecords .aft-header-fixed,
+  #allrecords .aft-header-fixed > .t396,
+  #allrecords .aft-header-fixed .t396__artboard {
+    pointer-events: none;
+  }
+  #allrecords .aft-header-fixed :is(a, button) {
+    pointer-events: auto;
+  }
+  #allrecords .aft-header-fixed .t396__artboard {
+    background: transparent !important;
+  }
+  #allrecords .aft-header-fixed.is-scrolled .t396__artboard {
+    background: var(--uc-color-color-mqoFbtWdCirZ, #ffffff) !important;
+    box-shadow: inset 0 -1px var(--uc-color-color-Jo1lkjbx, #cadce4);
+  }
+  #allrecords
+    .aft-header-fixed.is-scrolled
+    :is(.aft-header-nav, .aft-contact-phone)
+    :is(.tn-atom, a, .tn-atom__button-text) {
+    color: var(--uc-color-color-hnbTtyKO, #003449) !important;
+  }
+  #allrecords .aft-header-fixed.is-scrolled .aft-menu-trigger .tn-atom__button-icon {
+    filter: brightness(0) saturate(100%) invert(13%) sepia(37%) saturate(2577%) hue-rotate(165deg)
+      brightness(91%) contrast(104%);
+  }
+  #allrecords
+    .aft-header-fixed.is-scrolled
+    .aft-header-actions
+    [data-elem-type="button"]:not(.aft-menu-burger)
+    > a {
+    background: var(--uc-color-color-BUcaoTzUvKDv, #f4242b) !important;
+    border-color: var(--uc-color-color-BUcaoTzUvKDv, #f4242b) !important;
+    color: var(--uc-color-color-mqoFbtWdCirZ, #ffffff) !important;
+  }
+  #allrecords
+    .aft-header-fixed.is-scrolled
+    .aft-header-actions
+    [data-elem-type="button"]:not(.aft-menu-burger)
+    > a:hover {
+    background: var(--uc-color-color-hnbTtyKO, #003449) !important;
+    border-color: var(--uc-color-color-hnbTtyKO, #003449) !important;
+  }
+  #allrecords .aft-header-overlay {
+    top: var(--aft-menu-top, 60px) !important;
+    left: var(--aft-menu-left, auto);
+    right: auto;
+    max-width: calc(100vw - 16px);
+    box-sizing: border-box;
+    z-index: 991;
+  }
+  #allrecords .aft-header-overlay.aft-menu-mobile {
+    left: auto;
+    right: 0;
+  }
+  #allrecords .aft-header-fixed.is-scrolled .aft-header-overlay {
+    background: var(--uc-color-color-mqoFbtWdCirZ, #ffffff);
+    border: 1px solid var(--uc-color-color-Jo1lkjbx, #cadce4);
+  }
+  #allrecords .aft-header-fixed.is-scrolled .aft-header-overlay a {
+    color: var(--uc-color-color-hnbTtyKO, #003449) !important;
+  }
+  #allrecords .aft-header-fixed.is-scrolled .aft-header-overlay a:hover {
+    color: var(--uc-color-color-fCYUZfLALLt, #267c7c) !important;
+  }
+  #allrecords .aft-header-fixed :is(.tn-atom__button-icon, [class*="tn-atom__button-icon-"]) {
+    animation: none !important;
+    transition-property: opacity, background-color, color !important;
+    transform: none !important;
+    translate: none !important;
+  }
+  #allrecords .aft-header-fixed.is-scrolled .aft-menu-burger .tn-atom__button-icon {
+    filter: brightness(0) saturate(100%) invert(13%) sepia(37%) saturate(2577%) hue-rotate(165deg)
+      brightness(91%) contrast(104%);
+  }
+  .t-rec:has(.aft-source-list) {
+    display: none !important;
+  }
+  #allrecords .aft-header-fixed.is-scrolled .aft-header-overlay a:focus-visible {
+    color: var(--uc-color-color-fCYUZfLALLt, #267c7c) !important;
+  }
+</style>
+<script>
+  (function () {
+    function init() {
+      const menu = document.querySelector(".aft-site-header");
+      if (!menu || menu.dataset.aftReady) return;
+      menu.dataset.aftReady = "1";
+      const r = menu.closest(".t-rec"),
+        trigger = menu.querySelector(".aft-menu-trigger a"),
+        burger = menu.querySelector(".aft-menu-burger a");
+      const panel = document.createElement("nav");
+      panel.className = "aft-header-overlay";
+      panel.hidden = true;
+      panel.setAttribute("aria-label", "Услуги и навигация");
+      r.append(panel);
+      panel.id = "aft-services-menu";
+      r.classList.add("aft-header-fixed");
+      const scroll = () =>
+        r.classList.toggle(
+          "is-scrolled",
+          scrollY > 15 || document.querySelector("#allrecords")?.dataset.tildaPageId === "385521609",
+        );
+      addEventListener("scroll", scroll, { passive: true });
+      scroll();
+      if (!document.querySelector(".aft-request")) {
+        for (const link of menu.querySelectorAll('a[href="#request"]')) link.href = "/new-home#request";
+      }
+      const routes = [
+        ["Логистика", "/services/logistics-preview"],
+        ["Инжиниринг", "/services/engineering"],
+        ["Роботизация", "/services/robotics"],
+        ["Консалтинг", "/services/consulting"],
+        ["Сервис", "/services/service"],
+      ];
+      function sources() {
+        const links = new Map();
+        for (const row of document.querySelectorAll(".aft-menu-source")) {
+          const label = row.querySelector(".aft-source-menu-name")?.textContent.trim();
+          const href = row.getAttribute("href") || row.querySelector("a")?.getAttribute("href");
+          if (!label || !href || label.startsWith("feeds:")) continue;
+          try {
+            const url = new URL(href, location.origin);
+            const host = url.hostname.replace(/^www\./, "");
+            const local = host === "aft.pro" || host === "aft-pro.tilda.ws" || url.origin === location.origin;
+            const link = local ? url.pathname + url.search + url.hash : url.href;
+            if (!links.has(link)) links.set(link, label);
+          } catch {}
+        }
+        return links.size ? [...links].map(([link, label]) => [label, link]) : routes;
+      }
+      let active = null;
+      function position() {
+        if (!active || panel.hidden) return;
+        const box = active.getBoundingClientRect(),
+          header = menu.getBoundingClientRect();
+        const width = panel.getBoundingClientRect().width;
+        r.style.setProperty("--aft-menu-top", header.bottom + "px");
+        r.style.setProperty(
+          "--aft-menu-left",
+          Math.max(8, Math.min(box.left, document.documentElement.clientWidth - width - 8)) + "px",
+        );
+      }
+      const darkLogo = document.createElement("img");
+      const logo = menu.querySelector(".aft-header-logo a");
+      if (logo) {
+        darkLogo.alt = "";
+        darkLogo.setAttribute("aria-hidden", "true");
+        darkLogo.className = "aft-logo-dark";
+        darkLogo.src =
+          "data:image/svg+xml,%3Csvg%20width%3D%2266%22%20height%3D%2227%22%20viewBox%3D%220%200%2066%2027%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cg%20clip-path%3D%22url%28%23clip0_676_387%29%22%3E%0A%3Cpath%20d%3D%22M29.4965%200L6.18021%2026.014L-0.303711%2025.9987L22.9901%200H29.4965Z%22%20fill%3D%22%23D3324A%22%2F%3E%0A%3Cpath%20d%3D%22M19.9189%2014.329L22.6101%2011.3094L25.5252%2011.3083L25.529%208.05318L29.3267%203.83496L29.3322%2018.6798L25.5263%2018.6803L25.5268%2014.3356L19.9189%2014.329Z%22%20fill%3D%22%23D3324A%22%2F%3E%0A%3Cpath%20d%3D%22M42.086%2010.404L39.4036%2013.4177L36.9145%2013.4243V18.6795L33.1025%2018.679L33.1047%203.81445L48.0021%203.815L44.6035%207.616L36.915%207.61873L36.9134%2010.3958L42.086%2010.404Z%22%20fill%3D%22%23003449%22%2F%3E%0A%3Cpath%20d%3D%22M58.324%2018.7557L54.5121%2018.7629L54.5132%207.61995L47.9844%207.61447L51.3835%203.81348L66.2578%203.81676L62.8659%207.61666L58.323%207.61831L58.324%2018.7557Z%22%20fill%3D%22%23003449%22%2F%3E%0A%3Cpath%20d%3D%22M57.5449%2025.8672C56.7258%2026.4137%2055.617%2026.3699%2054.8691%2025.7407C53.9969%2025.007%2053.9624%2023.6366%2054.7831%2022.8558C55.4369%2022.2332%2056.4%2022.1199%2057.2098%2022.4637C57.8657%2022.7419%2058.295%2023.348%2058.3717%2023.981C58.462%2024.7283%2058.1986%2025.4319%2057.5449%2025.8678V25.8672ZM57.517%2024.258C57.517%2023.5813%2056.9683%2023.0326%2056.2916%2023.0326C55.6148%2023.0326%2055.0662%2023.5813%2055.0662%2024.258C55.0662%2024.9348%2055.6148%2025.4834%2056.2916%2025.4834C56.9683%2025.4834%2057.517%2024.9348%2057.517%2024.258Z%22%20fill%3D%22%23003449%22%2F%3E%0A%3Cpath%20d%3D%22M43.5561%2026.17L42.6088%2026.1755L41.8751%2025.1061L41.056%2025.1039L41.0522%2026.1744L40.1729%2026.1716V22.3389L42.0055%2022.3471C42.4336%2022.3493%2042.8311%2022.5245%2043.1427%2022.7873C43.417%2023.0945%2043.5238%2023.4651%2043.4876%2023.8763C43.446%2024.3511%2043.1821%2024.753%2042.7036%2024.9336L43.5561%2026.17ZM42.0022%2024.385C42.4199%2024.3762%2042.6138%2024.0291%2042.6001%2023.6874C42.5864%2023.3458%2042.3252%2023.0764%2041.943%2023.0737L41.0527%2023.0665V24.4053L42.0022%2024.385Z%22%20fill%3D%22%23003449%22%2F%3E%0A%3Cpath%20d%3D%22M28.118%2025.072L26.8625%2025.1213L26.8581%2026.1742L25.9766%2026.1731V22.3398L27.7747%2022.3453C28.1229%2022.3464%2028.4892%2022.4625%2028.7712%2022.6574C29.2426%2022.9837%2029.3844%2023.551%2029.2519%2024.1089C29.138%2024.5875%2028.7%2024.9872%2028.118%2025.072ZM27.7665%2024.3827C28.1985%2024.3739%2028.4208%2024.0427%2028.4049%2023.6912C28.389%2023.3396%2028.1152%2023.0708%2027.7117%2023.0692L26.8597%2023.0653L26.8614%2024.4008L27.7665%2024.3827Z%22%20fill%3D%22%23003449%22%2F%3E%0A%3C%2Fg%3E%0A%3Cdefs%3E%0A%3CclipPath%20id%3D%22clip0_676_387%22%3E%0A%3Crect%20width%3D%2266%22%20height%3D%2226.1905%22%20fill%3D%22%23003449%22%2F%3E%0A%3C%2FclipPath%3E%0A%3C%2Fdefs%3E%0A%3C%2Fsvg%3E%0A";
+        logo.append(darkLogo);
+      }
+      new ResizeObserver(position).observe(menu);
+      addEventListener(
+        "resize",
+        () => {
+          if (active && !active.getClientRects().length) set(false);
+          else position();
+        },
+        { passive: true },
+      );
+      function set(open, mobile = false) {
+        active = open ? (mobile ? burger : trigger) : null;
+        panel.classList.toggle("aft-menu-mobile", mobile);
+        panel.hidden = !open;
+        r.classList.toggle("is-menu-open", open);
+        trigger?.setAttribute("aria-expanded", String(open && !mobile));
+        burger?.setAttribute("aria-expanded", String(open && mobile));
+        if (!open) return;
+        panel.replaceChildren();
+        const pre = mobile
+          ? [
+              ["О компании", "/new-home#purpose"],
+              ["Кейсы", "/new-home#cases"],
+              ["Контакты", document.querySelector(".aft-request")?.closest(".t-rec")?.checkVisibility() ? "#request" : "/new-home#request"],
+            ]
+          : [];
+        for (const [label, href] of [...pre, ...sources()]) {
+          const a = document.createElement("a");
+          a.href = href;
+          a.textContent = label;
+          panel.append(a);
+        }
+        position();
+      }
+      for (const [a, m] of [
+        [trigger, false],
+        [burger, true],
+      ]) {
+        if (!a) continue;
+        a.setAttribute("aria-expanded", "false");
+        a.setAttribute("aria-controls", panel.id);
+        if (m) a.setAttribute("aria-label", "Меню");
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          set(panel.hidden, m);
+        });
+      }
+      document.addEventListener("click", (e) => {
+        if (!panel.hidden && (!r.contains(e.target) || e.target.closest(".aft-header-overlay a"))) set(false);
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !panel.hidden) {
+          const previous = active;
+          set(false);
+          previous?.focus();
+        }
+      });
+    }
+    if (document.readyState === "loading")
+      document.addEventListener("DOMContentLoaded", init, { once: true });
+    else init();
+  })();
+</script>

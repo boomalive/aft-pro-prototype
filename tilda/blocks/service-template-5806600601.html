@@ -1,0 +1,451 @@
+<style>
+  .aft-solution-photo {
+    transition: transform 0.35s ease;
+  }
+  .aft-solution-card:hover .aft-solution-photo {
+    transform: scale(0.94);
+  }
+  .aft-solution-card {
+    text-decoration: none !important;
+  }
+  @media (max-width: 639px) {
+    .aft-solution-card {
+      max-width: calc(100vw - 38px) !important;
+    }
+  }
+  .t-rec:has(.aft-service-data) {
+    display: none !important;
+  }
+  #allrecords .aft-process-grid > .tn-molecule {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  #allrecords .aft-process-grid .aft-process-card {
+    width: auto !important;
+    min-width: 0;
+  }
+  @media (max-width: 1199px) {
+    #allrecords .aft-process-grid > .tn-molecule {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 639px) {
+    #allrecords .aft-process-grid > .tn-molecule {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .aft-process-card > .tn-molecule:not([id]) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+    gap: 16px;
+    background-color: var(--uc-color-color-SNTyA9Ig, #f6f7f8);
+  }
+  @media (max-width: 1439px) {
+    .aft-process-card > .tn-molecule:not([id]) {
+      padding: 20px;
+      gap: 13px;
+    }
+  }
+  @media (max-width: 1199px) {
+    .aft-process-card > .tn-molecule:not([id]) {
+      padding: 16px;
+      gap: 10px;
+    }
+  }
+  @media (max-width: 639px) {
+    .aft-process-card > .tn-molecule:not([id]) {
+      gap: 9px;
+    }
+  }
+  .aft-audit-cta a[aria-disabled="true"] {
+    cursor: default;
+  }
+  .aft-solution-photo img {
+    object-fit: contain;
+  }
+  @media (max-width: 639px) {
+    .aft-service-hero-actions {
+      order: 2;
+    }
+    .aft-service-hero-controls {
+      width: 100% !important;
+      justify-content: flex-end !important;
+    }
+    .t-rec:has(.aft-service-hero) .t396__artboard > div.tn-molecule:last-child > .tn-group {
+      gap: 10px !important;
+    }
+  }
+  .aft-hero-image-swap {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .aft-hero-image-swap.is-visible {
+    visibility: visible;
+  }
+  #allrecords .aft-solution-image .aft-solution-orbit > .tn-atom {
+    background-position: center bottom !important;
+  }
+  .aft-services-jump {
+    --uc-button-bordercolor-G0U0tjLN: var(--uc-color-color-mqoFbtWdCirZ, #fff);
+    --uc-button-bgcolorhover-G0U0tjLN: color-mix(
+      in srgb,
+      var(--uc-color-color-mqoFbtWdCirZ, #fff) 12%,
+      transparent
+    );
+  }
+  .aft-services-jump > a:focus-visible {
+    outline: 2px solid var(--uc-color-color-eguPwScz4Z, #43b6a5);
+    outline-offset: 5px;
+  }
+  @media (max-width: 1199px) {
+    .aft-service-hero-actions {
+      --uc-button-padding-ga8XrhG: 8px;
+      --uc-button-gap-ga8XrhG: 19px;
+    }
+    #allrecords .aft-service-hero-actions > .tn-molecule {
+      flex-wrap: wrap;
+      gap: 8px !important;
+    }
+  }
+</style>
+<script>
+  (function () {
+    window.aftHeroSlides = [
+      [
+        "https://static.tildacdn.com/tila3937-3338-4634-a566-323961666637/integrated-logistics.webp",
+        "Мы не просто перевозим грузы. Мы выстраиваем решения, в которых каждая деталь — от маршрута до оформления — работает на снижение затрат, скорость и результат вашего бизнеса.",
+      ],
+      [
+        "https://static.tildacdn.com/tila6462-3861-4031-b837-346363366637/complex-transport.webp",
+        "Планируем маршруты с учетом всех факторов и управляем рисками в процессе. Обеспечиваем стабильные сроки даже в сложных логистических условиях.",
+      ],
+      [
+        "https://static.tildacdn.com/tila6534-3964-4062-a333-633965363335/intermodal-terminal.webp",
+        "Работаем на всех базисах и адаптируем логистику под вашу модель бизнеса.",
+      ],
+    ];
+    async function cmsInit() {
+      const $ = (s, r = document) => r?.querySelector(s),
+        all = (s, r = document) => (r ? [...r.querySelectorAll(s)] : []);
+      const rec = (el) => el?.closest(".t-rec");
+      const root = $("#allrecords");
+      const uid = root?.dataset.tildaPostUid;
+      const target = $(".aft-service-data");
+      const atom = (el) => (el?.matches("a,button") ? el : el?.querySelector("a,button,.tn-atom") || el);
+      const hide = (el, hidden = true) => el?.classList.toggle("aft-runtime-hide", hidden);
+      const value = (x) => x?.value ?? x ?? "";
+      const imgUrl = (x) => (typeof x === "string" ? x : x?.url || "");
+      const linkUrl = (x) => (typeof x === "string" ? x : x?.url || "");
+      const text = (el, s) => {
+        const a = atom(el);
+        if (!a) return;
+        a.textContent = s ?? "";
+        a.style.whiteSpace = "pre-line";
+      };
+      const requestUrl = (url, allowHash = false) => {
+        try {
+          const u = new URL(url, location.origin);
+          if (u.origin === location.origin)
+            return allowHash && String(url).startsWith("#") ? u.hash : u.pathname + u.search + u.hash;
+          if (["https:", "http:", "mailto:", "tel:"].includes(u.protocol)) return u.href;
+        } catch {}
+        return "";
+      };
+      function image(el, field) {
+        const i = $("img", el);
+        const url = imgUrl(field);
+        if (!i || !url) return;
+        i.removeAttribute("srcset");
+        i.src = url;
+        i.alt = field?.alt || "";
+        i.dataset.original = url;
+        i.loading = "lazy";
+      }
+      function tileRows(track, selector, data, draw) {
+        if (!track) return;
+        const initial = all(selector, track);
+        if (!initial.length) return;
+        const layout = $(":scope > .tn-molecule", track) || track;
+        const prototype = initial[0].cloneNode(true);
+        while (initial.length < data.length) {
+          const node = prototype.cloneNode(true);
+          for (const item of [node, ...all("[id]", node)]) item.removeAttribute("id");
+          layout.append(node);
+          initial.push(node);
+        }
+        initial.forEach((el, i) => {
+          const row = data[i];
+          hide(el, !row);
+          if (row) draw(el, row, i);
+        });
+      }
+      if (target) {
+        hide(rec(target));
+      }
+      if (!target || !uid) return;
+      const shell = target.closest(".t-rec");
+      const fields = [
+        ...all(".aft-service-field,.aft-service-ref", shell)
+          .map((e) => e.dataset.key)
+          .filter(Boolean),
+        "home-cover",
+        "home-summary",
+      ];
+      const api = "https://feeds.tildaapi.com/api/v2/getfeed/";
+      const query = new URLSearchParams({
+        feeduid: root.dataset.tildaFeedUid,
+        postuid: JSON.stringify([uid]),
+        fields: JSON.stringify(fields),
+        size: "1",
+        v: "2",
+      });
+      let d;
+      try {
+        const res = await fetch(api + "?" + query);
+        if (!res.ok) throw Error(res.status);
+        d = (await res.json()).result?.posts?.[0]?.fields;
+        if (!d) throw Error("No post");
+      } catch (e) {
+        console.warn("AFT: could not load service content.", e);
+        return;
+      }
+      const list = (key, max = 40) =>
+        (Array.isArray(d[key]) ? d[key] : [])
+          .map((p) => p.fields || {})
+          .filter((p) => p.title)
+          .slice(0, max);
+      const show = (id) => /^(да|yes|true|1|on)$/i.test(String(value(d["show-" + id])).trim());
+      const headerRecord = (track) => rec(track)?.previousElementSibling;
+      function head(key, heading) {
+        if (!heading) return;
+        const label = $(".aft-section-label", heading),
+          title = $(".aft-section-title", heading),
+          intro = $(".aft-section-intro", heading);
+        if (d[key + "-title"]) text(title, d[key + "-title"]);
+        if (label) text($('.tn-elem[data-elem-type="text"]', label) || label, d[key + "-label"]);
+        hide(label, !d[key + "-label"]);
+        if (intro) {
+          text(intro, d[key + "-summary"]);
+          hide(intro, !d[key + "-summary"]);
+          if (d[key + "-summary"]) intro.style.setProperty("display", "block", "important");
+        }
+      }
+      const solutions = list("solutions-items"),
+        tasks = list("tasks-items", 4),
+        process = list("process-items", Infinity),
+        values = list("values-items", 6),
+        stats = list("stats-items", 6),
+        cases = list("cases-items"),
+        slides = list("hero-slides", 4);
+      const elements = {
+        solutions: $(".aft-solutions-track"),
+        tasks: $(".aft-task-grid"),
+        process: $(".aft-process-grid"),
+        values: $(".aft-value-grid"),
+        stats: $(".aft-stat-grid"),
+        cases: $(".aft-cases-track"),
+      };
+      for (const [key, rows] of Object.entries({ solutions, tasks, process, values, stats, cases })) {
+        const record = rec(elements[key]);
+        hide(record, !show(key) || !rows.length);
+        if (key !== "stats") {
+          const heading = headerRecord(elements[key]);
+          head(key, heading);
+          hide(heading, !show(key) || !rows.length);
+        }
+      }
+      const hero = $(".aft-service-hero");
+      hide(rec(hero), !show("hero"));
+      text($(".aft-crumb-home"), d["crumb-home"] || "Главная");
+      text($(".aft-crumb-current"), d["crumb-current"] || "");
+      text($(".aft-service-h1"), d["hero-title"] || "");
+      window.aftHeroSlides = slides.map((s) => [imgUrl(s.cover), s.summary]).filter((s) => s[0] || s[1]);
+      if (window.aftHeroSlides.length) text($(".aft-service-lead"), window.aftHeroSlides[0][1]);
+      else if (d["home-summary"]) {
+        text($(".aft-service-lead"), d["home-summary"]);
+        const carrier = hero.closest(".t396__artboard")?.querySelector(".t396__carrier");
+        if (carrier && imgUrl(d["home-cover"]))
+          carrier.style.setProperty(
+            "background-image",
+            'url("' + imgUrl(d["home-cover"]) + '")',
+            "important",
+          );
+      } else hide($(".aft-service-lead"));
+      hide($(".aft-services-jump"), !show("solutions") || !solutions.length);
+      tileRows(elements.solutions, ".aft-solution-card", solutions, (card, row) => {
+        text($(".aft-solution-number", card), row.number);
+        text($(".aft-solution-title", card), row.title);
+        text($(".aft-solution-summary", card), row.summary);
+        const label = $(".aft-solution-label", card);
+        text(label, row.label);
+        hide(label, !row.label);
+        if (row.label) label.style.setProperty("display", "block", "important");
+        image($(".aft-solution-photo", card), row.cover);
+      });
+      for (const [key, rows] of Object.entries({ tasks, process, values })) {
+        const grid = elements[key];
+        tileRows(grid, ".aft-" + key + "-card", rows, (card, row, i) => {
+          text($(".aft-" + key + "-title", card), row.title);
+          text($(".aft-" + key + "-summary", card), row.summary);
+          if (key === "values") image($(".aft-value-icon", card), row.cover);
+          if (key === "process") {
+            text($(".aft-step-number", card), row.number || String(i + 1).padStart(2, "0"));
+            hide($(".aft-process-summary", card), !row.summary);
+          }
+        });
+      }
+      tileRows(elements.stats, ".aft-stat", stats, (card, row) => {
+        const mark = atom($(".aft-stat-value", card));
+        if (!mark) return;
+        const val = document.createElement("span");
+        val.className = "aft-count";
+        val.textContent = row.value || "";
+        const plus = document.createElement("span");
+        plus.style.color = "var(--uc-color-color-BUcaoTzUvKDv,#f4242b)";
+        plus.textContent = row.plus || "";
+        mark.replaceChildren(val, plus);
+        const labels = all("[data-elem-type=text]", card);
+        text(labels.at(-1), row.title);
+      });
+      tileRows(elements.cases, ".aft-case-card", cases, (card, row) => {
+        text($(".aft-case-title", card), row.title);
+        text($(".aft-case-summary", card), row.summary);
+        text($(".aft-case-metric-label", card), row["metric-label"]);
+        hide($(".aft-case-metric-label", card), !row["metric-label"]);
+        image($(".aft-case-photo", card), row.cover);
+        const cells = all(".aft-case-metric", card),
+          grid = $(".aft-case-grid", card);
+        for (let i = 0; i < 4; i++) {
+          let c = cells[i];
+          if (!c && cells[0]) {
+            c = cells[0].cloneNode(true);
+            ($(":scope > .tn-molecule", grid) || grid).append(c);
+          }
+          const v = row["value-" + (i + 1)],
+            u = row["unit-" + (i + 1)];
+          if (!c) continue;
+          hide(c, (v == null || v === "") && !u);
+          text($(".aft-case-number", c), v);
+          text($(".aft-case-unit", c), u);
+        }
+      });
+      const audit = $(".aft-audit");
+      hide(rec(audit), !show("audit") || !d["audit-title"]);
+      text($(".aft-audit-title"), d["audit-title"]);
+      text($(".aft-audit-summary"), d["audit-summary"]);
+      const auditLink = atom($(".aft-audit-cta"));
+      const configured = requestUrl(linkUrl(d["audit-link"]), true);
+      const url = configured && configured !== "/" ? configured : show("request") ? "#request" : "";
+      if (auditLink) {
+        auditLink.setAttribute("href", url || "#");
+        auditLink.setAttribute("aria-disabled", url ? "false" : "true");
+        if (/^(mailto|tel):/.test(url) || (/^https?:/.test(url) && !url.startsWith(location.origin + "/"))) {
+          auditLink.target = "_blank";
+          auditLink.rel = "nofollow noopener";
+        }
+      }
+      const logos = rec($(".aft-logo-marquee"));
+      hide(logos, !show("clients"));
+      if (logos?.previousElementSibling?.querySelector(".aft-clients-heading"))
+        hide(logos.previousElementSibling, !show("clients"));
+      const request = rec($(".aft-request"));
+      hide(request, !show("request"));
+      if (!show("request")) {
+        all("a[href='#request']").forEach((a) => {
+          if (a.matches(".aft-case-card")) {
+            a.setAttribute("href", "/new-home#request");
+            // Zero Block keeps the original local fragment in its smooth-scroll handler.
+            a.addEventListener("click", (event) => {
+              event.stopImmediatePropagation();
+              if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+              event.preventDefault();
+              window.location.assign(a.href);
+            }, { capture: true });
+          }
+          else if (!a.closest(".aft-solution-card")) hide(a.closest(".tn-elem") || a);
+          else a.removeAttribute("href");
+        });
+      }
+    }
+
+    function setupPage({ $, board, hide, text, control }) {
+      const serviceHero = () => {
+        const h = board($(".aft-service-hero"));
+        if (!h) return;
+        const leads = window.aftHeroSlides || [],
+          copy = $(".aft-service-lead", h),
+          prev = $(".aft-hero-prev", h),
+          next = $(".aft-hero-next", h);
+        if (leads.length < 2) {
+          hide($(".aft-service-hero-controls", h));
+          return;
+        }
+        const carrier = $(".t396__carrier", h);
+        if (!carrier) return;
+        const images = leads.map(([url], index) => {
+          if (!url) return null;
+          const img = new Image();
+          img.alt = "";
+          img.className = "aft-hero-image-swap";
+          img.fetchPriority = index === 0 ? "high" : "auto";
+          img.src = url;
+          const ready = img.decode().then(
+            () => true,
+            () => false,
+          );
+          carrier.append(img);
+          return { img, ready };
+        });
+        let index = 0,
+          visibleImage = null;
+        async function show(requested) {
+          index = (requested + leads.length) % leads.length;
+          const choice = index,
+            slide = images[choice];
+          const ready = slide ? await slide.ready : true;
+          if (choice !== index || !ready) return;
+          visibleImage?.classList.remove("is-visible");
+          visibleImage = slide?.img;
+          visibleImage?.classList.add("is-visible");
+          text(copy, leads[choice][1]);
+        }
+        control(prev, () => show(index - 1), "Предыдущий слайд");
+        control(next, () => show(index + 1), "Следующий слайд");
+        show(0);
+      };
+      serviceHero();
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest(".aft-audit-cta a");
+        if (a && a.getAttribute("aria-disabled") === "true") e.preventDefault();
+      });
+    }
+    async function start() {
+      const root = document.querySelector("#allrecords");
+      if (
+        !root ||
+        root.dataset.tildaMode === "edit" ||
+        (root.dataset.tildaMode === "preview" && location.pathname === "/page/")
+      )
+        return;
+      try {
+        await cmsInit();
+      } finally {
+        document.dispatchEvent(new CustomEvent("aft:content-ready", { detail: setupPage }));
+      }
+    }
+    if (document.readyState === "loading")
+      document.addEventListener("DOMContentLoaded", start, { once: true });
+    else start();
+  })();
+</script>

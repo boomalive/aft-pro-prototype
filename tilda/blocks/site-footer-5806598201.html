@@ -1,0 +1,574 @@
+<style>
+  .aft-runtime-hide,
+  .aft-direction-body[hidden] {
+    display: none !important;
+  }
+  .aft-stat-value {
+    font-variant-numeric: tabular-nums;
+  }
+  #allrecords a.aft-case-card {
+    color: inherit;
+    text-decoration: none;
+  }
+  #allrecords a.aft-case-card:focus-visible {
+    outline: 2px solid var(--uc-color-color-eguPwScz4Z, #43b6a5);
+    outline-offset: -2px;
+  }
+  @media (hover: hover) {
+    #allrecords a.aft-case-card:hover .aft-case-title .tn-atom {
+      color: var(--uc-color-color-ToK9JA, #277f7e);
+    }
+  }
+  .aft-cases-track,
+  .aft-solutions-track {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+    max-width: 100%;
+    touch-action: pan-x pan-y;
+  }
+  .aft-cases-track::-webkit-scrollbar,
+  .aft-solutions-track::-webkit-scrollbar {
+    display: none;
+  }
+  .aft-case-card,
+  .aft-solution-card {
+    scroll-snap-align: start;
+    flex-shrink: 0 !important;
+    min-width: 0;
+  }
+  .aft-case-card:last-child,
+  .aft-solution-card:last-child {
+    scroll-snap-align: end;
+  }
+  .aft-control-prev.is-disabled,
+  .aft-control-next.is-disabled,
+  .aft-benefit-prev.is-disabled,
+  .aft-benefit-next.is-disabled {
+    opacity: 0.33;
+    pointer-events: none;
+  }
+  @media (max-width: 639px) {
+    .aft-case-card,
+    .aft-case-photo {
+      max-width: calc(100vw - 43px) !important;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .aft-purpose-card,
+    .aft-purpose-icon,
+    .aft-solution-photo {
+      transition: none;
+    }
+    .aft-cases-track,
+    .aft-solutions-track {
+      scroll-behavior: auto !important;
+    }
+  }
+  .t-rec:has(.aft-home-hero) .t396__artboard,
+  .t-rec:has(.aft-service-hero) .t396__artboard {
+    isolation: isolate;
+  }
+  .aft-case-card .aft-case-photo img,
+  .aft-solution-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  @media (max-width: 639px) {
+    .t-rec:has(.aft-service-hero) .t396__artboard,
+    .t-rec:has(.aft-home-hero) .t396__artboard {
+      height: 100svh !important;
+      min-height: 0 !important;
+      padding-top: clamp(62px, 11svh, 86px) !important;
+      padding-bottom: clamp(12px, 3svh, 23px) !important;
+    }
+    .aft-case-card .aft-case-info {
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+  }
+  .aft-logo-marquee {
+    animation: aftLogos 34s linear infinite alternate;
+  }
+  .aft-logo-row-1 {
+    animation-direction: alternate-reverse;
+  }
+  .aft-logo-marquee:hover {
+    animation-play-state: paused;
+  }
+  @keyframes aftLogos {
+    from {
+      translate: -9% 0;
+    }
+    to {
+      translate: 10% 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .aft-logo-marquee {
+      animation: none;
+    }
+  }
+  .aft-case-card,
+  .aft-solution-card {
+    margin-block: 0;
+  }
+  .aft-footer-policy a:hover .tn-atom__button-text {
+    color: var(--uc-color-color-mqoFbtWdCirZ, #ffffff) !important;
+  }
+  #allrecords .t396__carrier,
+  #allrecords .t396__filter {
+    pointer-events: none;
+  }
+  #allrecords .aft-cases-track {
+    width: calc(100% + var(--aft-gutter)) !important;
+    max-width: none;
+    scroll-padding-left: 0;
+    box-sizing: border-box;
+  }
+  #allrecords .t396__artboard:has(.aft-cases-track) {
+    --aft-gutter: calc(40px * var(--zoom, 1));
+    overflow: hidden;
+  }
+  #allrecords :is(.aft-cases-track, .aft-solutions-track) > .tn-molecule {
+    flex-wrap: nowrap !important;
+  }
+  #allrecords
+    :is(.aft-cases-track, .aft-solutions-track)
+    > .tn-molecule
+    > :is(.aft-case-card, .aft-solution-card) {
+    flex-shrink: 0 !important;
+  }
+  @media (max-width: 1439px) {
+    #allrecords .t396__artboard:has(.aft-cases-track) {
+      --aft-gutter: calc(32px * var(--zoom, 1));
+    }
+  }
+  @media (max-width: 1199px) {
+    #allrecords .t396__artboard:has(.aft-cases-track) {
+      --aft-gutter: calc(20px * var(--zoom, 1));
+    }
+  }
+  @media (max-width: 639px) {
+    #allrecords .t396__artboard:has(.aft-cases-track) {
+      --aft-gutter: calc(12px * var(--zoom, 1));
+    }
+  }
+  #allrecords .aft-case-metric .aft-case-number:has(.tn-atom:empty) {
+    display: none !important;
+  }
+  #allrecords .aft-case-card > .tn-molecule {
+    display: grid !important;
+    grid-template-columns: minmax(0, 39%) minmax(0, 1fr);
+    align-items: stretch !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(
+      100deg,
+      var(--uc-color-color-SNTyA9Ig, #f6f7f8),
+      var(--uc-color-color-aJMd5H, #eff1f4)
+    );
+    box-sizing: border-box;
+  }
+  #allrecords .aft-case-card > .tn-molecule > :is(.aft-case-photo, .aft-case-info) {
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+  }
+  #allrecords .aft-case-photo > .tn-atom {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  #allrecords .aft-case-card .aft-case-info > .tn-molecule {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch !important;
+    width: 100% !important;
+    padding: calc(24px * var(--zoom, 1));
+    box-sizing: border-box;
+  }
+  #allrecords .aft-case-info > .tn-molecule > .tn-elem {
+    margin: 0 !important;
+  }
+  #allrecords .aft-case-info .aft-case-summary {
+    margin-top: calc(14px * var(--zoom, 1)) !important;
+  }
+  #allrecords .aft-case-info .aft-case-metric-label {
+    margin-top: calc(28px * var(--zoom, 1)) !important;
+  }
+  #allrecords .aft-case-grid {
+    width: 100% !important;
+    min-width: 0;
+    margin-top: calc(12px * var(--zoom, 1)) !important;
+  }
+  #allrecords .aft-case-grid > .tn-molecule {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: calc(14px * var(--zoom, 1)) calc(16px * var(--zoom, 1)) !important;
+  }
+  #allrecords .aft-case-grid .aft-case-metric {
+    width: 100% !important;
+    margin: 0 !important;
+    min-width: 0;
+  }
+  #allrecords .aft-case-grid .aft-case-metric > .tn-molecule {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: calc(9px * var(--zoom, 1)) 0 0;
+    border-top: 1px solid var(--uc-color-color-Jo1lkjbx, #cadce4);
+  }
+  #allrecords .aft-case-grid .aft-case-metric > .tn-molecule > .tn-elem {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  @media (max-width: 639px) {
+    #allrecords .aft-case-card > .tn-molecule {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    #allrecords .aft-case-card .aft-case-info > .tn-molecule {
+      padding: 12px;
+    }
+    #allrecords .aft-case-info .aft-case-summary {
+      margin-top: 9px !important;
+    }
+    #allrecords .aft-case-info .aft-case-metric-label {
+      margin-top: 16px !important;
+    }
+  }
+  #allrecords .aft-request-form {
+    --aft-input-inset: 12px;
+  }
+  #allrecords
+    .aft-request-form
+    .t-form_bbonly
+    .t-input-block
+    :is(.t-input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]), .t-textarea) {
+    background-color: color-mix(
+      in srgb,
+      var(--uc-color-color-t0OdPvDSLQ3E, #7aaabe) 12%,
+      transparent
+    ) !important;
+    padding-inline: var(--aft-input-inset) !important;
+  }
+  #allrecords .aft-request-form .t-form_bbonly .t-input-block .t-input__vis-ph {
+    inset-inline-start: var(--aft-input-inset) !important;
+    max-width: calc(100% - 2 * var(--aft-input-inset));
+  }
+  .t-rec:has(.aft-source-list) {
+    display: none !important;
+  }
+</style>
+<script>
+  (function () {
+    function init() {
+      const up = document.querySelector(".aft-back-top a");
+      up?.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        window.scrollTo({
+          top: 0,
+          behavior: matchMedia("(prefers-reduced-motion:reduce)").matches ? "auto" : "smooth",
+        });
+      });
+      if (!document.querySelector(".aft-request")) {
+        const footer = up?.closest(".t-rec");
+        for (const link of footer?.querySelectorAll('a[href="#request"]') || []) link.href = "/new-home#request";
+      }
+      const target = document.querySelector(".aft-footer-services");
+      if (!target) return;
+      function sync() {
+        const list = [...document.querySelectorAll(".aft-menu-source")]
+          .map((row) => [
+            row.querySelector(".aft-source-menu-name")?.textContent.trim(),
+            row.getAttribute("href") || row.querySelector("a")?.getAttribute("href"),
+          ])
+          .filter(([s, h]) => s && h && !s.startsWith("feeds:"));
+        const unique = [
+          ...new Map(
+            list.map(([label, href]) => {
+              try {
+                const u = new URL(href, location.origin);
+                return [u.pathname + u.search + u.hash, [label, href]];
+              } catch {
+                return [href, [label, href]];
+              }
+            }),
+          ).values(),
+        ];
+        if (!unique.length) return;
+        const links = [...target.querySelectorAll(".aft-footer-link a")];
+        links.forEach((a, i) => {
+          const entry = unique[i];
+          a.hidden = !entry;
+          if (entry) {
+            const url = new URL(entry[1], location.origin);
+            a.textContent = entry[0];
+            a.setAttribute(
+              "href",
+              url.origin === location.origin ||
+                ["aft.pro", "www.aft.pro", "aft-pro.tilda.ws"].includes(url.hostname)
+                ? url.pathname + url.search + url.hash
+                : url.href,
+            );
+          }
+        });
+      }
+      sync();
+      document
+        .querySelectorAll(".aft-feed-root")
+        .forEach((r) => new MutationObserver(sync).observe(r, { childList: true, subtree: true }));
+    }
+    if (document.readyState === "loading")
+      document.addEventListener("DOMContentLoaded", init, { once: true });
+    else init();
+  })();
+</script>
+<script>
+  (function () {
+    const $ = (s, r = document) => r.querySelector(s),
+      all = (s, r = document) => [...r.querySelectorAll(s)];
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+    const rec = (el) => el?.closest(".t-rec");
+    const board = (el) => el?.closest(".t396__artboard");
+    const atom = (el) => (el?.matches("a") ? el : el?.querySelector("a,button,.tn-atom") || el);
+    const hide = (el) => el?.classList.add("aft-runtime-hide");
+    const text = (el, v) => {
+      const a = atom(el);
+      if (a && v != null && a.textContent !== v) a.textContent = v;
+    };
+    const control = (el, fn, label) => {
+      const a = atom(el);
+      if (!a || a.dataset.aftReady) return;
+      a.dataset.aftReady = "1";
+      if (label) a.setAttribute("aria-label", label);
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (a.getAttribute("aria-disabled") !== "true") fn();
+      });
+    };
+    const disabled = (el, value) => {
+      el?.classList.toggle("is-disabled", value);
+      const a = atom(el);
+      if (a) {
+        a.setAttribute("aria-disabled", String(value));
+        a.tabIndex = value ? -1 : 0;
+      }
+    };
+    const useCarousel = (selector, item, heading, step = 1) => {
+      const track = $(selector);
+      if (!track || track.dataset.aftReady) return;
+      track.dataset.aftReady = "1";
+      const prev = $(".aft-control-prev", heading || document),
+        next = $(".aft-control-next", heading || document);
+      const items = () =>
+        all(item, track).filter((card) => !card.hidden && !card.classList.contains("aft-runtime-hide"));
+      let targetIndex = null;
+      const edge = () =>
+        track.getBoundingClientRect().left + (parseFloat(getComputedStyle(track).scrollPaddingLeft) || 0);
+      const current = (cards) =>
+        cards.reduce(
+          (closest, card, i) =>
+            Math.abs(card.getBoundingClientRect().left - edge()) <
+            Math.abs(cards[closest].getBoundingClientRect().left - edge())
+              ? i
+              : closest,
+          0,
+        );
+      function sync() {
+        const cards = items(),
+          end = Math.max(0, track.scrollWidth - track.clientWidth);
+        disabled(prev, cards.length < 2 || track.scrollLeft <= 2);
+        disabled(next, cards.length < 2 || track.scrollLeft >= end - 2);
+        if (step > 1)
+          text(
+            $(".aft-carousel-position", heading || document),
+            String(cards.length ? current(cards) + 1 : 0).padStart(2, "0") +
+              " / " +
+              String(cards.length).padStart(2, "0"),
+          );
+      }
+      function move(direction) {
+        const cards = items();
+        if (!cards.length) return;
+        const from = targetIndex ?? current(cards);
+        targetIndex = Math.max(0, Math.min(cards.length - 1, from + direction * step));
+        track.scrollTo({
+          left: track.scrollLeft + cards[targetIndex].getBoundingClientRect().left - edge(),
+          behavior: reduce.matches ? "auto" : "smooth",
+        });
+      }
+      control(prev, () => move(-1), "Назад");
+      control(next, () => move(1), "Вперёд");
+      track.addEventListener("scroll", sync, { passive: true });
+      for (const type of ["scrollend", "pointerdown", "wheel"])
+        track.addEventListener(
+          type,
+          () => {
+            targetIndex = null;
+          },
+          { passive: true },
+        );
+      track.closest(".aft-feed-root")?.addEventListener("feeds:draw-posts", sync);
+      new ResizeObserver(sync).observe(track);
+      new MutationObserver(sync).observe(track, { childList: true, subtree: true });
+      sync();
+    };
+    const countObserver = new IntersectionObserver(
+      (rows) => {
+        for (const { target, isIntersecting } of rows) {
+          if (!isIntersecting) continue;
+          countObserver.unobserve(target);
+          const literal = target.textContent.trim(),
+            num = Number(literal.replace(/\s/g, "").replace(",", "."));
+          if (!Number.isFinite(num) || reduce.matches) continue;
+          const decimals = (literal.split(",")[1] || "").length,
+            formatter = new Intl.NumberFormat("ru-RU", {
+              useGrouping: /\s/.test(literal),
+              minimumFractionDigits: decimals,
+              maximumFractionDigits: decimals,
+            });
+          const begin = performance.now();
+          const frame = (now) => {
+            const p = Math.min(1, (now - begin) / 850);
+            target.textContent = p === 1 ? literal : formatter.format(num * (1 - Math.pow(1 - p, 3)));
+            if (p < 1) requestAnimationFrame(frame);
+          };
+          requestAnimationFrame(frame);
+        }
+      },
+      { threshold: 0.45 },
+    );
+    const runCount = () => {
+      all(".aft-count").forEach((el) => {
+        if (el.dataset.aftCount) return;
+        el.dataset.aftCount = "1";
+        countObserver.observe(el);
+      });
+    };
+    function observed() {
+      const track = document.querySelector(".aft-cases-track");
+      if (track) {
+        const update = () => {
+          track.querySelectorAll(".aft-case-metric").forEach((c) => {
+            const el = c.querySelector(".aft-case-number .tn-atom"),
+              unit = c.querySelector(".aft-case-unit .tn-atom"),
+              empty = !el?.textContent.trim() && !unit?.textContent.trim();
+            c.classList.toggle("aft-runtime-hide", empty);
+          });
+        };
+        track.closest(".aft-feed-root")?.addEventListener("feeds:draw-posts", update);
+        new MutationObserver(update).observe(track, { childList: true, subtree: true });
+        update();
+      }
+    }
+    const fixContact = () => {
+      const found = new Set();
+      for (const r of all(".aft-contact-source")) {
+        const title = atom($(".aft-source-title", r))?.textContent?.trim(),
+          kind = atom($(".aft-source-kind", r))?.textContent?.trim(),
+          url = atom($(".aft-source-url", r))?.textContent?.trim();
+        if (!title || !["phone", "email"].includes(kind) || !url || !/^(tel|mailto):/.test(url)) continue;
+        if (found.has(kind)) continue;
+        found.add(kind);
+        all(".aft-contact-" + kind).forEach((el) => {
+          const a = atom(el);
+          if (a?.tagName === "A") {
+            if (a.textContent !== title) a.textContent = title;
+            a.setAttribute("href", url);
+            a.target = "_blank";
+            a.rel = "nofollow noopener";
+          }
+        });
+      }
+      return found;
+    };
+    async function hydrateAftContacts(found) {
+      const root = document.querySelector("#allrecords");
+      if (!root) return;
+      const query = new URLSearchParams({
+        feeduid: "212054107201",
+        fields: JSON.stringify(["title", "kind", "url"]),
+        size: "10",
+        v: "2",
+      });
+      try {
+        const res = await fetch("https://feeds.tildaapi.com/api/v2/getfeed/?" + query);
+        if (!res.ok) return;
+        const result = (await res.json()).result;
+        for (const { fields } of result?.posts || []) {
+          const { title, kind, url } = fields;
+          const href = url?.url || url;
+          if (found.has(kind) || !["phone", "email"].includes(kind) || !title || !/^(tel|mailto):/.test(href))
+            continue;
+          for (const a of root.querySelectorAll(".aft-contact-" + kind + " a")) {
+            a.textContent = title;
+            a.href = href;
+            a.rel = "nofollow noopener";
+            a.target = "_blank";
+          }
+        }
+      } catch (e) {
+        console.warn("AFT: could not load contact data.", e);
+      }
+    }
+    function normalizeAftLinks() {
+      const root = document.querySelector("#allrecords");
+      if (!root) return;
+      const domain = location.hostname.replace(/^www\./, ""),
+        local = new Set([domain, "aft.pro", "aft-pro.tilda.ws"]);
+      const apply = () => {
+        root
+          .querySelectorAll(".aft-direction-link a,.aft-menu-source,.aft-footer-services a")
+          .forEach((a) => {
+            const href = a.getAttribute("href");
+            if (!href || !/^https?:\/\//i.test(href)) return;
+            try {
+              const u = new URL(href);
+              if (local.has(u.hostname.replace(/^www\./, "")))
+                a.setAttribute("href", u.pathname + u.search + u.hash);
+            } catch {}
+          });
+      };
+      apply();
+      for (const record of root.querySelectorAll(".aft-feed-root"))
+        record.addEventListener("feeds:draw-posts", apply);
+    }
+
+    document.addEventListener(
+      "aft:content-ready",
+      ({ detail: setupPage }) => {
+        const root = document.querySelector("#allrecords");
+        if (!root) return;
+        observed();
+        normalizeAftLinks();
+        setupPage({ $, all, rec, board, atom, hide, text, control, disabled, reduce });
+        runCount();
+        const contacts = fixContact();
+        if (contacts.size < 2) hydrateAftContacts(contacts);
+        useCarousel(".aft-cases-track", ".aft-case-card", rec($(".aft-cases-track"))?.previousElementSibling);
+        if ($(".aft-solutions-track"))
+          useCarousel(
+            ".aft-solutions-track",
+            ".aft-solution-card",
+            rec($(".aft-solutions-track"))?.previousElementSibling,
+            2,
+          );
+        for (const feed of all(".aft-feed-root")) {
+          feed.addEventListener("feeds:draw-posts", () => {
+            fixContact();
+            runCount();
+          });
+        }
+      },
+      { once: true },
+    );
+  })();
+</script>

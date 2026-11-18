@@ -1,0 +1,354 @@
+<style>
+  .aft-purpose-card,
+  .aft-purpose-icon {
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+  .aft-purpose-icon {
+    color: var(--uc-color-color-eguPwScz4Z, #43b6a5);
+  }
+  .aft-purpose-card:hover,
+  .aft-purpose-card:focus-within {
+    background-color: var(--uc-color-color-ZtBQUkeKs, #eef3f6) !important;
+  }
+  .aft-purpose-card:hover .aft-purpose-icon,
+  .aft-purpose-card:focus-within .aft-purpose-icon {
+    color: var(--uc-color-color-hnbTtyKO, #003449);
+  }
+  .aft-direction-toggle {
+    cursor: pointer;
+  }
+  .aft-direction-toggle:focus-visible {
+    outline: 2px solid var(--uc-color-color-eguPwScz4Z, #43b6a5);
+    outline-offset: -3px;
+  }
+  .aft-direction-card.is-open .aft-direction-title > div,
+  .aft-direction-card.is-open .aft-direction-title .tn-atom {
+    color: var(--uc-color-color-BUcaoTzUvKDv, #f4242b) !important;
+  }
+  .aft-benefit-next:not(.is-disabled) a,
+  .aft-benefit-prev:not(.is-disabled) a {
+    background: var(--uc-color-color-eguPwScz4Z, #43b6a5) !important;
+  }
+  .aft-hero-services {
+    --uc-button-bordercolor-G0U0tjLN: var(--uc-color-color-mqoFbtWdCirZ, #fff);
+    --uc-button-bgcolorhover-G0U0tjLN: color-mix(
+      in srgb,
+      var(--uc-color-color-mqoFbtWdCirZ, #fff) 12%,
+      transparent
+    );
+  }
+  .aft-hero-services > a:focus-visible {
+    outline: 2px solid var(--uc-color-color-eguPwScz4Z, #43b6a5);
+    outline-offset: 5px;
+  }
+  .aft-reticle {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 2;
+    color: var(--uc-color-color-mqoFbtWdCirZ, #fff);
+  }
+  .aft-reticle-track {
+    position: absolute;
+    inset: 0;
+    will-change: transform;
+  }
+  .aft-reticle-track::before,
+  .aft-reticle-track::after {
+    content: "";
+    position: absolute;
+    background: color-mix(in srgb, currentColor 35%, transparent);
+  }
+  .aft-reticle-track::before {
+    top: -100%;
+    left: 0;
+    height: 200%;
+    width: 1px;
+  }
+  .aft-reticle-track::after {
+    left: -100%;
+    top: 0;
+    width: 200%;
+    height: 1px;
+  }
+  .aft-reticle-marker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    width: clamp(82px, 13vw, 205px);
+    aspect-ratio: 1;
+    border: 1px dashed color-mix(in srgb, currentColor 55%, transparent);
+    border-radius: 50%;
+  }
+  .aft-reticle-marker::after {
+    content: "";
+    width: 7px;
+    height: 7px;
+    background: currentColor;
+    box-shadow: 0 0 22px 9px color-mix(in srgb, currentColor 28%, transparent);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .aft-reticle-coordinate {
+    position: absolute;
+    left: 14px;
+    top: -13px;
+    font:
+      400 8px/1 var(--uc-typo-fontfamily-qQDgxuy, Manrope),
+      sans-serif;
+    opacity: 0.8;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  @media (max-width: 639px) {
+    .aft-reticle {
+      opacity: 0.67;
+    }
+  }
+  .aft-benefit-prev:not(.is-disabled) a:hover,
+  .aft-benefit-next:not(.is-disabled) a:hover,
+  .aft-benefit-prev:not(.is-disabled) a:focus-visible,
+  .aft-benefit-next:not(.is-disabled) a:focus-visible {
+    background: var(--uc-color-color-mqoFbtWdCirZ, #ffffff) !important;
+    border-color: var(--uc-color-color-mqoFbtWdCirZ, #ffffff) !important;
+  }
+  #allrecords .aft-purpose-card > .tn-molecule {
+    transition: background-color 0.25s ease;
+  }
+  #allrecords .aft-purpose-card:is(:hover, :focus-within) > .tn-molecule {
+    background-color: var(--uc-color-color-K1Bz9sVh, #e4eef2) !important;
+  }
+  .aft-direction-symbol .tn-atom {
+    transition: transform 0.2s ease;
+  }
+  .aft-direction-card.is-open .aft-direction-symbol .tn-atom {
+    transform: rotate(45deg);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #allrecords :is(.aft-purpose-card > .tn-molecule, .aft-direction-symbol .tn-atom) {
+      transition: none;
+    }
+  }
+  #allrecords a[name="geography"] {
+    display: block;
+    height: 0;
+    scroll-margin-top: clamp(56px, 5.5vw, 100px);
+  }
+  /* География. Контуры берегов затухают за текстом, подписи городов остаются чёткими. */
+  #rec5806600701 .t396__carrier {
+    -webkit-mask-image: linear-gradient(90deg, #000 31%, rgb(0 0 0 / 0.38) 55%, transparent 96%);
+    mask-image: linear-gradient(90deg, #000 31%, rgb(0 0 0 / 0.38) 55%, transparent 96%);
+  }
+  #rec5806600701 .aft-geo-map .tn-atom {
+    -webkit-backdrop-filter: saturate(1.3) contrast(1.12);
+    backdrop-filter: saturate(1.3) contrast(1.12);
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.45);
+  }
+  @media (max-width: 1199px) {
+    #rec5806600701 .t396__carrier {
+      -webkit-mask-image: linear-gradient(180deg, rgb(0 0 0 / 0.35), #000 24%, #000 43%, transparent 76%);
+      mask-image: linear-gradient(180deg, rgb(0 0 0 / 0.35), #000 24%, #000 43%, transparent 76%);
+    }
+    #rec5806600701 .tn-elem.aft-geo-map .tn-atom__img {
+      object-fit: contain !important;
+    }
+  }
+  #rec5806600701 .aft-geo-heading .tn-atom {
+    line-height: var(--uc-typo-lineheight-wGbgkUUm1lUS, 1) !important;
+  }
+  #rec5806600701 .aft-geo-label .tn-atom {
+    line-height: var(--uc-typo-lineheight-CSP5Jp6ftr, 1.2) !important;
+  }
+  #rec5806600701 .aft-geo-intro .tn-atom {
+    line-height: var(--uc-typo-lineheight-qQDgxuy, 1.5) !important;
+  }
+  #rec5806600701 .aft-geo-city .tn-atom {
+    font-family: var(--uc-typo-fontfamily-n8nxeuiFWC, Manrope), Arial, sans-serif;
+    line-height: 1.2 !important;
+  }
+</style>
+<script>
+  (function () {
+    function preloadBenefitBackgrounds() {
+      for (const carrier of document.querySelectorAll(
+        ".t396__artboard:has(.aft-benefit-slide) .t396__carrier[data-original]",
+      )) {
+        carrier.classList.remove("t-bgimg");
+        carrier.style.backgroundImage = 'url("' + carrier.dataset.original + '")';
+        const img = new Image();
+        img.src = carrier.dataset.original;
+      }
+    }
+
+    function setupPage({ $, all, rec, board, atom, control, disabled, reduce }) {
+      const directions = () => {
+        for (const list of all(".aft-directions")) {
+          function bind() {
+            const cards = all(".aft-direction-card", list);
+            if (!cards.length) return;
+            function open(index) {
+              cards.forEach((card, i) => {
+                const active = index === i,
+                  head = $(".aft-direction-toggle", card),
+                  body = $(".aft-direction-body", card);
+                if (!head || !body) return;
+                card.classList.toggle("is-open", active);
+                head.setAttribute("aria-expanded", String(active));
+                body.hidden = !active;
+              });
+            }
+            cards.forEach((card, i) => {
+              const el = $(".aft-direction-toggle", card);
+              if (!el || el.dataset.aftReady) return;
+              el.dataset.aftReady = "1";
+              el.setAttribute("role", "button");
+              el.tabIndex = 0;
+              const activate = () => open(card.classList.contains("is-open") ? -1 : i);
+              el.addEventListener("click", activate);
+              el.addEventListener("keydown", (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  activate();
+                }
+              });
+            });
+            const active = cards.findIndex((card) => card.classList.contains("is-open"));
+            open(active < 0 ? 0 : active);
+          }
+          bind();
+          list.closest(".aft-feed-root")?.addEventListener("feeds:draw-posts", bind);
+        }
+      };
+      const benefits = () => {
+        const slides = all(".aft-benefit-slide").map(rec).filter(Boolean);
+        const open = (i, focus) => {
+          slides.forEach((s, j) => s.classList.toggle("aft-runtime-hide", i !== j));
+          if (focus) atom($(focus, slides[i]))?.focus({ preventScroll: true });
+        };
+        slides.forEach((s, i) => {
+          const prev = $(".aft-benefit-prev", s),
+            next = $(".aft-benefit-next", s);
+          disabled(prev, i === 0);
+          disabled(next, i === slides.length - 1);
+          control(prev, () => open(i - 1, ".aft-benefit-next"), "Предыдущее преимущество");
+          control(next, () => open(i + 1, ".aft-benefit-prev"), "Следующее преимущество");
+          all(".aft-benefit-page", s).forEach((a, j) => {
+            atom(a)?.setAttribute("aria-current", j === i ? "true" : "false");
+            control(a, () => open(j, ".aft-benefit-page"), "Преимущество " + (j + 1));
+          });
+        });
+        if (slides.length) open(0);
+      };
+      const reticle = () => {
+        const heading = $(".aft-home-hero");
+        const hero = board(heading);
+        if (!hero || $(".aft-reticle", hero)) return;
+        const intro = $(".aft-home-hero-intro", hero);
+        const overlay = document.createElement("div");
+        overlay.className = "aft-reticle";
+        overlay.setAttribute("aria-hidden", "true");
+        overlay.innerHTML =
+          '<div class="aft-reticle-track"><span class="aft-reticle-marker"></span><span class="aft-reticle-coordinate">28° 7895</span></div>';
+        hero.append(overlay);
+        const track = overlay.firstElementChild;
+        const marker = track.firstElementChild;
+        const coordinate = track.lastElementChild;
+        const compact = matchMedia("(max-width:1199px)");
+        let centerX = 64,
+          centerY = 60,
+          rangeX = 13,
+          rangeY = 13;
+        let visible = false,
+          drawable = true,
+          frame = 0,
+          previousTime = null,
+          elapsed = 0,
+          lastNumber = 0;
+        function paint() {
+          const phase = Math.max(0, elapsed - 1700) / 1000;
+          const x = centerX + rangeX * Math.sin(phase / 3);
+          const y = centerY + rangeY * Math.sin(phase / 4);
+          track.style.transform = `translate3d(${x}%,${y}%,0)`;
+        }
+        function tick(now) {
+          if (previousTime !== null) elapsed += now - previousTime;
+          previousTime = now;
+          paint();
+          if (elapsed - lastNumber > 180) {
+            coordinate.textContent =
+              26 + Math.floor(4 * Math.random()) + "° " + (1000 + Math.floor(9000 * Math.random()));
+            lastNumber = elapsed;
+          }
+          frame = requestAnimationFrame(tick);
+        }
+        function update() {
+          const run = visible && drawable && !document.hidden && !reduce.matches;
+          if (run && !frame) frame = requestAnimationFrame(tick);
+          if (!run && frame) {
+            cancelAnimationFrame(frame);
+            frame = 0;
+            previousTime = null;
+          }
+        }
+        function measure() {
+          centerX = 64;
+          centerY = 60;
+          rangeX = rangeY = 13;
+          drawable = true;
+          if (compact.matches && intro) {
+            const bounds = overlay.getBoundingClientRect();
+            if (!bounds.width || !bounds.height) return;
+            const inset = marker.getBoundingClientRect().width / 2 + 8;
+            const left = Math.max(inset, bounds.width * 0.5);
+            const right = Math.min(bounds.width - inset, bounds.width * 0.75);
+            const top = heading.getBoundingClientRect().bottom - bounds.top + inset;
+            const bottom = intro.getBoundingClientRect().top - bounds.top - inset;
+            drawable = right >= left && bottom >= top;
+            if (drawable) {
+              centerX = ((left + right) * 50) / bounds.width;
+              centerY = ((top + bottom) * 50) / bounds.height;
+              rangeX = ((right - left) * 50) / bounds.width;
+              rangeY = Math.min(5, ((bottom - top) * 50) / bounds.height);
+            }
+          }
+          overlay.style.visibility = drawable ? "visible" : "hidden";
+          paint();
+          update();
+        }
+        const layout = new ResizeObserver(measure);
+        [hero, heading, intro].filter(Boolean).forEach((element) => layout.observe(element));
+        compact.addEventListener("change", measure);
+        new IntersectionObserver(([entry]) => {
+          visible = entry.isIntersecting;
+          update();
+        }).observe(hero);
+        document.addEventListener("visibilitychange", update);
+        reduce.addEventListener("change", update);
+        measure();
+      };
+      preloadBenefitBackgrounds();
+      directions();
+      benefits();
+      reticle();
+    }
+    function start() {
+      const root = document.querySelector("#allrecords");
+      if (
+        !root ||
+        root.dataset.tildaMode === "edit" ||
+        (root.dataset.tildaMode === "preview" && location.pathname === "/page/")
+      )
+        return;
+      document.dispatchEvent(new CustomEvent("aft:content-ready", { detail: setupPage }));
+    }
+    if (document.readyState === "loading")
+      document.addEventListener("DOMContentLoaded", start, { once: true });
+    else start();
+  })();
+</script>
