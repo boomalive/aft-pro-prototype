@@ -1,0 +1,79 @@
+{
+  "tool": "ImageGen",
+  "transparent_background": true,
+  "prompt": "Use case: product-mockup. One isolated premium photorealistic 3D industrial product illustration for the AFT PRO service-card carousel. Subject: {{subject}}. Render in the established industrial catalog style: realistic painted dark navy steel, restrained brick orange details where plausible, white paper, accurate metal/material textures, soft neutral studio lighting from upper left, 3/4 perspective, clear silhouette. The subject fills roughly 85% of a square image, entire subject visible with comfortable padding. True transparent canvas around the whole assembly, including gaps. No surrounding room, floor, platform, ring, decorative backdrop, title, logo, watermark, or legible typography. Do not draw a website or a card; deliver just the isolated object group.",
+  "cards": [
+    {
+      "post": "mxombvpuj1",
+      "file": "engineering-feasibility.webp",
+      "subject": "A small architectural cutaway massing model of a high-bay industrial warehouse, with two distinguishable proposed expansion wings, and a folded site layout beneath it. Early stage broad massing and feasibility, realistic miniatures.",
+      "description": "Макет промышленного комплекса с вариантами расширения"
+    },
+    {
+      "post": "ujg8ipzvl1",
+      "file": "engineering-design-review.webp",
+      "subject": "A navy spine bound project dossier opened to a precise industrial building cross-section, two tabbed drawing sheets standing neatly and a small metal inspection loupe resting on the drawing. Design review and expert examination, paper is the main subject, illustrative architectural line drawing with no readable text.",
+      "description": "Проектная документация с разрезом здания и лупой"
+    },
+    {
+      "post": "ajn9o95rn1",
+      "file": "engineering-working-drawings.webp",
+      "subject": "Two unrolled white technical working drawings showing dimension lines and plan of machinery installation with a detailed pipe route; a roll at one edge, a real short metal triangular scale and a compact folded steel connection bracket on top. Tangible tools for a construction crew.",
+      "description": "Монтажные чертежи с масштабной линейкой и стальным узлом"
+    },
+    {
+      "post": "t584m9oky1",
+      "file": "engineering-mechanical-design.webp",
+      "subject": "A precision mechanical pillow-block bearing assembly shown in compact exploded axonometric view: navy cast housing, silver shaft with two bearings, a mounting plate and aligned bolts. A single folded engineering drawing supports it. Credible mechanical CAD exhibit of detailed component design.",
+      "description": "Разнесённая 3D-сборка подшипникового узла"
+    },
+    {
+      "post": "v7aorxou21",
+      "file": "engineering-construction.webp",
+      "subject": "An industrial construction site miniature with a partially assembled navy steel portal frame bolted to concrete footings, and a compact parked burnt-orange mobile telescopic crane lifting one beam. Overall silhouette compact, realistic construction hardware.",
+      "description": "Монтаж стального каркаса здания с помощью автокрана"
+    },
+    {
+      "post": "u8rrnn31a1",
+      "file": "engineering-commissioning.webp",
+      "subject": "A realistic floor-standing industrial electrical control cabinet with door swung open, tidy PLC and rows of terminal blocks, next to a small portable commissioning meter with a coiled test lead. Engineering equipment test and handover.",
+      "description": "Шкаф промышленной автоматики с измерительным прибором"
+    },
+    {
+      "post": "jgxrmybvx1",
+      "file": "consulting-concept.webp",
+      "subject": "A removable-roof physical scale model of a distribution center viewed from above at a three quarter angle. Navy shelving, two distinct internal aisles, loading docks and an attached footprint drawing emphasize conceptual internal flow and facility layout.",
+      "description": "Планировочный макет распределительного центра со стеллажами"
+    },
+    {
+      "post": "x50bp34g61",
+      "file": "consulting-simulation.webp",
+      "subject": "One professional desktop engineering workstation display in three-quarter view showing a clean, legible-as-shapes isometric simulation of warehouse racks, tiny forklifts and a few colored vehicle paths, with a small white autonomous warehouse cart miniature beneath. Emphasis on simulation, no writing, headings, or numbers on screen.",
+      "description": "Рабочая станция с имитационной моделью движения на складе"
+    },
+    {
+      "post": "g8bypi5b81",
+      "file": "consulting-economics.webp",
+      "subject": "An industrial project analyst’s compact navy financial calculator showing blank dark display, alongside a physical stepped bar chart in navy, steel and burnt orange, on a single project estimate sheet with faint orderly tabular marks. Real tactile objects, quantitatively comparing project alternatives.",
+      "description": "Калькулятор и диаграмма сравнения затрат по проекту"
+    },
+    {
+      "post": "9obh4r8oa1",
+      "file": "consulting-procurement.webp",
+      "subject": "A compact shipping crate of selected industrial components: a small electric motor and matching stainless flanges clearly visible inside a half-open wooden crate on a short pallet; a navy procurement clipboard with simple checkmarks attached to the front side. One unified physical object.",
+      "description": "Ящик с подобранным промышленным оборудованием и закупочной ведомостью"
+    },
+    {
+      "post": "e5au7r9bb1",
+      "file": "robotics-software.webp",
+      "subject": "A single rugged dark navy tablet-style industrial monitor with fitted controls and compact support foot, viewed in three-quarter perspective, its crisp screen showing a usable schematic warehouse management application with ordered storage locations, docks, pallets and status colors. Flat top-down diagram on the monitor, small clear cyan and orange accents. Software is the subject.",
+      "description": "Промышленный монитор со схемой управления складом"
+    },
+    {
+      "post": "6sxzeyue51",
+      "file": "robotics-services.webp",
+      "subject": "A small integration workbench for commissioning warehouse automation: a single compact tabletop test rig with a short section of powered rollers, small mobile carrier, a gray control box and commissioning laptop showing simple wiring traces. One compact assembly of related hardware on a small engineering work surface. The subject is hands-on integration of robots at a logistics facility.",
+      "description": "Стенд наладки складской робототехники с роликовым модулем и ноутбуком"
+    }
+  ]
+}
