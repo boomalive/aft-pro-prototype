@@ -74,6 +74,18 @@
       "file": "robotics-services.webp",
       "subject": "A small integration workbench for commissioning warehouse automation: a single compact tabletop test rig with a short section of powered rollers, small mobile carrier, a gray control box and commissioning laptop showing simple wiring traces. One compact assembly of related hardware on a small engineering work surface. The subject is hands-on integration of robots at a logistics facility.",
       "description": "Стенд наладки складской робототехники с роликовым модулем и ноутбуком"
+    },
+    {
+      "post": "h32hxb5z11",
+      "file": "robotics-sorter.webp",
+      "subject": "Use the attached first image (ALTA sorting-conveyor outline) as the machinery reference and image 2 as the surface finish and lighting reference only. A realistic compact industrial parcel sorter: one powered metal roller infeed with two visibly different outgoing directions at a compact controllable diverter. A single kraft shipping carton rides through the junction, on the deck at a plausible scale. Show separate rollers, a modest brick-orange photoelectric sensor, sturdy adjustable legs and a small protected drive. No surrounding equipment. Frame the complete sorting module in an elevated three-quarter view from the infeed end, isolated and centered as one object, with a strong recognizable silhouette. It must look like a finished full-color catalog product photograph.",
+      "description": "Роликовый сортировочный конвейер с ответвлением для распределения коробов"
+    },
+    {
+      "post": "r6tv21vhv1",
+      "file": "robotics-palletizer.webp",
+      "subject": "Use the attached first image (ALTA palletizing robot outline) as the equipment reference and image 2 as the surface finish and lighting reference only. A full-size industrial palletizing robot, articulated burnt-orange arm on a dark navy fixed pedestal, substantial cable dress pack, a physically connected rectangular vacuum gripper attaching to the top face of a closed brown corrugated carton and holding it horizontally just above a single tidy layer of cartons on an industrial wooden pallet. Compose the arm on the left, layer on the right, as a compact integrated industrial assembly. Show mechanical joints and suction hoses. Clean isolated full-color photographic 3D catalog render, three-quarter view. Entire robot, gripper, carton and pallet visible.",
+      "description": "Робот-паллетайзер с вакуумным захватом укладывает короб на палету"
     }
   ]
 }

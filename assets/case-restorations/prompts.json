@@ -1,0 +1,101 @@
+{
+  "tool": "ImageGen",
+  "cases": [
+    {
+      "uid": "vdlebrbno1",
+      "title": "Криогаз-Высоцк СПГ, Высоцк",
+      "source": "https://static.tildacdn.com/tild3436-3830-4365-b064-626632393334/image.png",
+      "file": "cryogas-vysotsk.webp",
+      "prompt": "Use case: precise-object-edit. The attached input is the actual image to restore and the binding reference for every object and its exact composition. Reconstruct this visibly low-resolution case-study cover as a clean, sharp, professional high-resolution editorial image of the SAME subject. Make a material visible improvement to compression blocks, fuzzy edges, soft textures and color noise. Retain the original ultra-wide aspect ratio, full frame and all four crop boundaries, object positions, colors, perspective and time of day. Recreate microdetail supported by the reference, maintain major geometry as if images could be overlaid. Preserve the distance of the lens and the original feel. Avoid oversharpening, HDR, crunchy grain, invented writing or any new equipment, people, structures, borders or superimposed titles. Kriogaz Vysotsk facility: the red-and-white open lattice tower is left of center, the same group of tall white vertical cylindrical tanks is right of center, and yellow piping and blue accents are in the foreground. Match relative positions and scale. Keep indistinct tank branding inconspicuous.",
+      "previous_cover": "https://static.tildacdn.com/tila3133-3463-4333-b231-303033363530/kriogaz-vysotsk-sr.webp"
+    },
+    {
+      "uid": "izl02fvzg1",
+      "title": "Новатэк, Усть-Луга",
+      "source": "https://static.tildacdn.com/tild3033-6238-4836-b731-326563363638/image.png",
+      "file": "novatek-ust-luga.webp",
+      "prompt": "Use case: precise-object-edit. The attached input is the actual image to restore and the binding reference for every object and its exact composition. Reconstruct this visibly low-resolution case-study cover as a clean, sharp, professional high-resolution editorial image of the SAME subject. Make a material visible improvement to compression blocks, fuzzy edges, soft textures and color noise. Retain the original ultra-wide aspect ratio, full frame and all four crop boundaries, object positions, colors, perspective and time of day. Recreate microdetail supported by the reference, maintain major geometry as if images could be overlaid. Preserve the distance of the lens and the original feel. Avoid oversharpening, HDR, crunchy grain, invented writing or any new equipment, people, structures, borders or superimposed titles. Ust-Luga coastal industrial terminal photographed obliquely from above. Preserve the exact shoreline, horizon, distant ships, storage tank field and footprint of this specific facility. Preserve row of red-and-white stacks in foreground as seen. Neutral daylight and real grass, steel and water texture.",
+      "previous_cover": "https://static.tildacdn.com/tila3338-3563-4666-a665-393664373965/novatek-ust-luga-sr.webp"
+    },
+    {
+      "uid": "m7jfxab5s1",
+      "title": "Архбум Тиссью Групп, Калуга",
+      "source": "https://static.tildacdn.com/tild3330-6362-4563-a432-663637353537/image.png",
+      "file": "arkhbum-kaluga.webp",
+      "prompt": "Use case: precise-object-edit. The attached input is the actual image to restore and the binding reference for every object and its exact composition. Reconstruct this visibly low-resolution case-study cover as a clean, sharp, professional high-resolution editorial image of the SAME subject. Make a material visible improvement to compression blocks, fuzzy edges, soft textures and color noise. Retain the original ultra-wide aspect ratio, full frame and all four crop boundaries, object positions, colors, perspective and time of day. Recreate microdetail supported by the reference, maintain major geometry as if images could be overlaid. Preserve the distance of the lens and the original feel. Avoid oversharpening, HDR, crunchy grain, invented writing or any new equipment, people, structures, borders or superimposed titles. Arkhbum industrial equipment: the reference is an existing white-background technical 3D visualization. Re-render this SAME machine in high-fidelity, precise engineering catalog style. Preserve the crop of the silver machine, white negative space at left, navy flywheel at same place, stairs and hoppers. White seamless background and physically coherent railings, no factory interior.",
+      "previous_cover": "https://static.tildacdn.com/tila3437-3332-4566-b733-323437303765/arkhbum-kaluga-sr.webp"
+    },
+    {
+      "uid": "8yz4vnfks1",
+      "title": "Балтийский Химический Комплекс, Лен. Область",
+      "source": "https://static.tildacdn.com/tild3637-6665-4361-a338-636236383365/image.png",
+      "file": "baltic-chemical.webp",
+      "prompt": "Use case: precise-object-edit. The attached input is the actual image to restore and the binding reference for every object and its exact composition. Reconstruct this visibly low-resolution case-study cover as a clean, sharp, professional high-resolution editorial image of the SAME subject. Make a material visible improvement to compression blocks, fuzzy edges, soft textures and color noise. Retain the original ultra-wide aspect ratio, full frame and all four crop boundaries, object positions, colors, perspective and time of day. Recreate microdetail supported by the reference, maintain major geometry as if images could be overlaid. Preserve the distance of the lens and the original feel. Avoid oversharpening, HDR, crunchy grain, invented writing or any new equipment, people, structures, borders or superimposed titles. Baltic Chemical Complex: compressed telephoto photograph, cropped steel towers against a pale blue sky, a right-hand brick facade visible at the bottom. Match visible pipes, steel frames, main tower silhouettes and the negative space between equipment. Realistic distance and restrained clean metal textures.",
+      "previous_cover": "https://static.tildacdn.com/tila3561-3262-4863-a235-323533336665/baltic-chemical-comp.webp"
+    },
+    {
+      "uid": "zh662rs161",
+      "title": "Центр Ядерной Медицины, Улан-Удэ",
+      "source": "https://static.tildacdn.com/tild3539-3036-4461-b432-333866636361/image.png",
+      "file": "ulan-ude-medical.webp",
+      "prompt": "Use case: precise-object-edit. The attached input is the actual image to restore and the binding reference for every object and its exact composition. Reconstruct this visibly low-resolution case-study cover as a clean, sharp, professional high-resolution editorial image of the SAME subject. Make a material visible improvement to compression blocks, fuzzy edges, soft textures and color noise. Retain the original ultra-wide aspect ratio, full frame and all four crop boundaries, object positions, colors, perspective and time of day. Recreate microdetail supported by the reference, maintain major geometry as if images could be overlaid. Preserve the distance of the lens and the original feel. Avoid oversharpening, HDR, crunchy grain, invented writing or any new equipment, people, structures, borders or superimposed titles. Ulan-Ude medical center: same blue/white facade with brown inset panels, same windows and dark fence. Preserve the blue patterned facade, three-lobed emblem and existing sign in its original position. The sign reads exactly ЦЕНТР ЯДЕРНОЙ МЕДИЦИНЫ. Keep correct Cyrillic as real mounted letters. Retain warm-toned sky and cool cladding.",
+      "previous_cover": "https://static.tildacdn.com/tila3234-3261-4239-b037-353836636232/nuclear-medicine-ula.webp"
+    },
+    {
+      "uid": "yxudr33bs1",
+      "title": "Горно-обогатительный комбинат, Улан-Удэ",
+      "source": "https://static.tildacdn.com/tild6331-3834-4438-b835-363865373864/image.png",
+      "file": "ulan-ude-mining.webp",
+      "prompt": "Use case: precise-object-edit. The attached input is the actual image to restore and the binding reference for every object and its exact composition. Reconstruct this visibly low-resolution case-study cover as a clean, sharp, professional high-resolution editorial image of the SAME subject. Make a material visible improvement to compression blocks, fuzzy edges, soft textures and color noise. Retain the original ultra-wide aspect ratio, full frame and all four crop boundaries, object positions, colors, perspective and time of day. Recreate microdetail supported by the reference, maintain major geometry as if images could be overlaid. Preserve the distance of the lens and the original feel. Avoid oversharpening, HDR, crunchy grain, invented writing or any new equipment, people, structures, borders or superimposed titles. Aerial oblique view of mining complex, Ulan-Ude case. Preserve the three stepped white volumes with thin blue horizontal stripes, the orange gantry on the left, paved yard, snow, rows of leafless vegetation and the hills. Restore roof surfaces, forest texture and glazing with realistic distance and restrained natural colors.",
+      "previous_cover": "https://static.tildacdn.com/tila3930-6665-4631-b038-363431373163/aft-case-06-hd.webp"
+    },
+    {
+      "uid": "7jyi8g2np1",
+      "title": "Грузовое судно, Гданьск",
+      "source": "https://static.tildacdn.com/tild3633-3530-4332-b761-633063626363/image.png",
+      "file": "cargo-ship-gdansk.webp",
+      "prompt": "Use case: precise-object-edit. Edit the attached archival image (the sole reference and edit target) into a faithful high-resolution documentary photograph for its industrial case page. Generative restoration with fresh coherent optical detail: remove obvious blur, blocky compression, pixel stair-steps, chroma noise and old sharpening halos. Keep the same real scene, event, all landmark geometry, contours, crop, objects, relative positions, perspective, lighting and colors; no beautifying redesign or added equipment. Natural clean camera detail; no plastic or painterly texture, dramatic color grade, new typography, overlays, watermarks, or readable words/identification numbers invented from unclear marks. Reconstruct fine local surfaces while leaving uncertain identifying details ambiguous. Preserve straight side view, three slender vertical masts, long black and red vintage steamship hull with bow at right and stern at left, one red funnel, white cabins, tiny flag, supports and the gray floating pontoon and harbor buildings, blue sky and thin water strip. Very wide 2.21:1 landscape composition, exact reference frame. Restore natural painted metal surfaces, hull seams, rigging strictly along the original silhouettes, and soft realistic sky. Do not guess a ship name.",
+      "previous_cover": "https://static.tildacdn.com/tila6637-3638-4263-b439-643262646564/aft-case-07-hd.webp"
+    },
+    {
+      "uid": "v5c147gb61",
+      "title": "СИБУР, Турция",
+      "source": "https://static.tildacdn.com/tild3162-3434-4738-a666-636637653662/image.png",
+      "file": "sibur-turkey.webp",
+      "prompt": "Restore the attached exact archival photo into a clear, professional, authentic documentary photo, retaining its original wide 2.22:1 composition. This is a reference-based photographic restoration. Same silver red blue locomotive with rounded white windshield frame, identical track and line of multicoloured shipping containers bending away to the upper right and turning left across the distant top. Preserve grassy brown-green slopes, track, sparse trees, daylight, geometry, train type and livery. Naturally resolve surface details, wheel contours, ballast, grasses and fine edges; remove compression blocks and blur. Keep blurred markings without inventing text, brands or vehicle numbers. No changes to main shapes, colors, camera or scene, no redesign, no added vehicles, no cropping.",
+      "previous_cover": "https://static.tildacdn.com/tila3030-3261-4235-b731-343939653930/aft-case-08-hd.webp"
+    },
+    {
+      "uid": "r1tx81d8j1",
+      "title": "СИБУР, Китай",
+      "source": "https://static.tildacdn.com/tild6231-6439-4935-b937-613863383433/image.png",
+      "file": "sibur-china.webp",
+      "prompt": "Use case: precise-object-edit. Edit the attached archival image (the sole reference and edit target) into a faithful high-resolution documentary photograph for its industrial case page. Generative restoration with fresh coherent optical detail: remove obvious blur, blocky compression, pixel stair-steps, chroma noise and old sharpening halos. Keep the same real scene, event, all landmark geometry, contours, crop, objects, relative positions, perspective, lighting and colors; no beautifying redesign or added equipment. Natural clean camera detail; no plastic or painterly texture, dramatic color grade, new typography, overlays, watermarks, or readable words/identification numbers invented from unclear marks. Reconstruct fine local surfaces while leaving uncertain identifying details ambiguous. Preserve the exact side and door-end perspective, rusty dark-red shipping container foreground left with four long door locking bars, second bright orange-red container, third green, edge of last red one at right, dark teal rail wagons, track and overhead industrial catenary truss. No train engine. Match shadows, partly cloudy sky and 2.21:1 landscape framing. Reconstruct genuine corrugated steel, subtle weathering on the bars and track details; keep words, barcodes and numbers unreadable wherever unclear.",
+      "previous_cover": "https://static.tildacdn.com/tila6233-3933-4938-b765-343763663335/aft-case-09-hd.webp"
+    },
+    {
+      "uid": "if0tprb421",
+      "title": "Промышленный проект, Нижнекамск",
+      "source": "https://static.tildacdn.com/tild6633-3539-4161-a435-323831623037/image.png",
+      "file": "industrial-project.webp",
+      "prompt": "Image 1 is the edit target. Produce a faithful high-definition photographic restoration of this exact industrial transport photograph, same panoramic 2.18:1 framing. Maintain silhouette and dimensions of the original red low-loader: empty platform, TWO tall upright ramps at left, five visible trailer wheels and exactly three tractor wheels, red tractor cab at right. Match the industrial yard, parked cars/vans and factory façade at left, red/white slender tower at center and sunny blue sky. Preserve angle, horizon, colors and accurate object positions. Clean pixelation and blur by naturally resolving metal joins, tire tread and gravel details. No change of load, equipment type, wheel arrangement, branding or camera angle. Keep unreadable plates or text inconspicuous. Professional real daylight industrial photograph, neutral realistic color, no typographic overlays or logos.",
+      "previous_cover": "https://static.tildacdn.com/tila6133-3765-4034-b562-333037356638/aft-case-10-hd.webp"
+    },
+    {
+      "uid": "im413f7au1",
+      "title": "ООО \"Гормаш Глобал\", Мытищи-Красноярск",
+      "source": "https://static.tildacdn.com/tild3339-3337-4464-a563-393332383136/telegram-cloud-docum.jpg",
+      "file": "gormash-global.webp",
+      "prompt": "Faithfully reconstruct this documentary logistics photograph in the exact original 4:3 full crop. Sharpen plausible natural texture and resolve blocky blurriness. The same white tractor hauls a low red flatbed with a real RED underground articulated loader and its red scoop; maintain exact type, shape and wheels of this cargo and position of tractor and trailer. Keep the same blue truck, buildings, working yard, overcast daylight, foreground and sky. No new signage, logos or readable plates. Professional real photograph of exactly this scene.",
+      "previous_cover": "https://static.tildacdn.com/tila6562-6466-4164-a662-663530653266/aft-case-11-hd.webp"
+    },
+    {
+      "uid": "fbujhz61z1",
+      "title": "ООО \"Зеленый Рост\", Китай",
+      "source": "https://static.tildacdn.com/tild3861-3139-4331-b466-663365613563/telegram-cloud-docum.jpg",
+      "file": "zeleny-rost.webp",
+      "prompt": "Faithfully reconstruct this documentary logistics photograph in the exact source wide 16:9 composition. True-to-life industrial yard viewed from the green-sided open truck bed. Precisely preserve the paired rows of pale rectangular wrapped cargo, positions of the rails and horizontal crossbars, and background warehouses, pallets, entrance signs and roofs. Reveal convincing transparent stretch-wrap texture and make the photo appear clean and sharply photographed; retain light, colors, viewpoint. Do not invent text or objects.",
+      "previous_cover": "https://static.tildacdn.com/tila6265-3234-4831-a166-376665343437/aft-case-12-hd.webp"
+    }
+  ]
+}
