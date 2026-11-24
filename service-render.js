@@ -40,7 +40,7 @@ function renderServicePage() {
     ["—", "Объем выполненных работ — уточняется"],
     ["—", "Результаты проектов — уточняются"]
   ];
-  const stats = `<section class="section section-white">
+  const stats = data.stats === null ? "" : `<section class="section section-white">
         <div class="container">
           <p class="eyebrow">Показатели</p>
           <h2>Опыт и ориентиры направления</h2>
@@ -50,7 +50,7 @@ function renderServicePage() {
         </div>
       </section>`;
 
-  const cases = renderCaseCarousel(data.cases?.length ? data.cases : placeholderCases(data.title), {
+  const cases = data.cases === null ? "" : renderCaseCarousel(data.cases?.length ? data.cases : placeholderCases(data.title), {
     metricLabel: data.caseMetricLabel || "Результат",
     note: data.caseNote || (data.cases?.length ? "" : "Карточки-заглушки: заменить после получения материалов по кейсам")
   });
@@ -109,7 +109,7 @@ function renderServicePage() {
       </div>
     </section>
 
-    <section class="section section-white">
+    ${data.process?.length ? `<section class="section section-white">
       <div class="container">
         <p class="eyebrow">${data.processEyebrow || "Единая логика проекта"}</p>
         <h2>${data.processTitle || "Как строится работа"}</h2>
@@ -117,7 +117,7 @@ function renderServicePage() {
           ${data.process.map(([title, text]) => `<article class="timeline-item"><h3>${title}</h3><p>${text}</p></article>`).join("")}
         </div>
       </div>
-    </section>
+    </section>` : ""}
 
     <section class="section">
       <div class="container">

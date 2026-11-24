@@ -437,6 +437,22 @@ h3 {
   scroll-snap-align: start;
 }
 
+@media (min-width: 561px) {
+  [data-service="service"] .solution-track {
+    --carousel-step: 2;
+    grid-auto-flow: column dense;
+  }
+
+  [data-service="service"] .solution-card {
+    grid-row: 2;
+  }
+
+  [data-service="service"] .solution-card:nth-child(4n + 1),
+  [data-service="service"] .solution-card:nth-child(4n + 2) {
+    grid-row: 1;
+  }
+}
+
 .solution-card summary {
   list-style: none;
   cursor: pointer;

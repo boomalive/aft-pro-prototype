@@ -188,8 +188,10 @@ function initCaseCarousels() {
     carousel.dataset.carouselReady = "true";
     const move = (direction) => {
       const card = track.querySelector(".case-slide, .solution-card");
-      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-      const distance = card ? card.getBoundingClientRect().width + gap : track.clientWidth * 0.8;
+      const style = getComputedStyle(track);
+      const gap = parseFloat(style.columnGap) || 0;
+      const step = Number(style.getPropertyValue("--carousel-step")) || 1;
+      const distance = card ? (card.getBoundingClientRect().width + gap) * step : track.clientWidth * 0.8;
       track.scrollBy({ left: distance * direction, behavior: "smooth" });
     };
     prev.addEventListener("click", () => move(-1));
