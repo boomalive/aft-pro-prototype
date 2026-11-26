@@ -259,14 +259,22 @@ function renderConceptCases() {
   const section = document.querySelector('.project-section#cases');
   if (!section) return;
   const arrow = direction => `<img class="arrow-icon arrow-${direction}" src="assets/concept/button-arrow${direction === 'diagonal' ? '' : '-ink'}.svg" alt="" width="9" height="9">`;
+  function photo(image, title) {
+    const src = image.replace('assets/cases/', 'assets/concept/cases/');
+    const responsive = src !== image
+      ? ` srcset="${escapeHtml(src.replace('.webp', '-480.webp'))} 480w, ${escapeHtml(src)} 960w" sizes="(min-width: 1200px) 25vw, 88vw"`
+      : '';
+    return `<img class="project-image" src="${escapeHtml(src)}"${responsive} alt="${escapeHtml(title)}" loading="lazy" decoding="async">`;
+  }
   section.innerHTML = `<div class="container">
       <div class="section-heading"><p class="section-label">Практика</p><div><h2 id="projects-title">Кейсы: опыт, подтвержденный реальными задачами</h2><div class="project-toolbar"><div class="project-controls"><button class="case-control" type="button" data-project-prev aria-controls="project-track" aria-label="Прокрутить кейсы влево">${arrow('prev')}</button><button class="case-control" type="button" data-project-next aria-controls="project-track" aria-label="Прокрутить кейсы вправо">${arrow('next')}</button></div><a class="concept-button concept-button-red" href="#request">Получить консультацию ${arrow('diagonal')}</a></div></div></div>
     </div>
     <ul class="project-track" id="project-track" tabindex="0" aria-label="Кейсы — горизонтальная лента">
         ${homeCases.map(([title, description, metrics, image], i) => `<li class="project-card"><article id="project-${i}" aria-labelledby="project-title-${i}">
-          <div class="project-visual"><img class="project-image" src="${escapeHtml(image.replace('assets/cases/', 'assets/concept/cases/'))}" srcset="${escapeHtml(image.replace('assets/cases/', 'assets/concept/cases/').replace('.webp', '-480.webp'))} 480w, ${escapeHtml(image.replace('assets/cases/', 'assets/concept/cases/'))} 960w" sizes="(min-width: 1200px) 25vw, 88vw" alt="${escapeHtml(title)}" loading="lazy" decoding="async"></div>
+          <div class="project-visual">${photo(image, title)}</div>
           <div class="project-copy"><h3 class="ui-h5" id="project-title-${i}">${escapeHtml(title)}</h3><p class="project-description">${escapeHtml(description)}</p><div class="project-equipment"><p class="small-label">Техника</p><ul>${metrics.map(metric => {
             const [, value, suffix, label] = metric.match(/^(\d+)(\+?)\s+(.+)$/) || ['', '', '', metric];
+            if (!value) return `<li><span>${escapeHtml(label)}</span></li>`;
             return `<li><strong class="ui-h5" aria-label="${escapeHtml(value + suffix)}"><span data-count-to="${escapeHtml(value)}">${escapeHtml(value)}</span><span aria-hidden="true">${escapeHtml(suffix)}</span></strong><span>${escapeHtml(label)}</span></li>`;
           }).join('')}</ul></div></div>
         </article></li>`).join('')}

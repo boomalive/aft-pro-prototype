@@ -39,6 +39,7 @@ html{scroll-padding-top:calc((var(--sticky-header-height) + 16px)*var(--page-sca
   .sticky-header .sticky-menu-toggle{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px}
   .sticky-nav{position:absolute;left:10px;right:10px;top:var(--sticky-header-height);display:none;flex-direction:column;align-items:start;gap:24px;padding:26px;background:var(--ink);color:var(--white);font-size:var(--ui-body-size);box-shadow:0 8px 16px rgb(0 52 73 / .08)}
   .sticky-nav.is-open{display:flex}
+  .sticky-nav .sticky-phone{font:inherit}
   .sticky-header.is-scrolled .sticky-nav{background:var(--white);color:var(--ink);border-top:1px solid var(--line)}
   .sticky-nav .hero-nav-submenu{display:none}
   .sticky-menu-toggle[aria-expanded=true]>span:first-child{transform:translateY(3px) rotate(45deg)}
@@ -47,6 +48,9 @@ html{scroll-padding-top:calc((var(--sticky-header-height) + 16px)*var(--page-sca
 
 /* Purpose cards and the UI kit's flip-card example. */
 .purpose-option{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:32px;align-items:start}
+@container aft-page (min-width:1200px){
+  .purpose-option>.purpose-intro{width:50%;max-width:none}
+}
 .purpose-options-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;min-width:0;align-items:stretch}
 .purpose-card{position:relative;min-width:0;overflow:hidden}
 .purpose-card p,.purpose-flip p{font-size:var(--ui-body-size);font-weight:var(--ui-body-weight);line-height:1.5;letter-spacing:-.02em}

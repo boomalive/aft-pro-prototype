@@ -42,14 +42,8 @@
         <h3 class="ui-h4">${html(title)}</h3><p>${html(description)}</p>
       </div>
     </a></li>`).join('');
-  document.querySelector('#tasks-title').textContent = data.tasksTitle;
-  document.querySelector('#logistics-tasks').innerHTML = data.tasks.map(([title, description]) => `
-    <article class="logistics-task-item">
-      <h3 class="ui-h4">${html(title)}</h3>
-      <p class="ui-body">${html(description)}</p>
-    </article>`).join('');
-  document.querySelector('#logistics-process').innerHTML = data.process.map(([title, description], index) => `
-    <li><span class="logistics-process-node" aria-hidden="true">${number(index)}</span><h3>${html(title)}</h3><p>${html(description)}</p></li>`).join('');
+  document.querySelector('#logistics-service-sections').innerHTML =
+    renderServiceTasks(data, "Ваша задача") + renderServiceProcess(data, "От задачи к результату");
   document.querySelector('#values-title').textContent = data.valuesTitle;
   document.querySelector('#logistics-values').innerHTML = data.values.map(([title, description], index) => `
     <article class="logistics-value"><img src="${html(assets.icons[index])}" alt="" loading="lazy" decoding="async" width="64" height="64"><h3>${html(title)}</h3><p>${html(description)}</p></article>`).join('');

@@ -71,7 +71,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 .hero-title-group{position:absolute;left:var(--hero-gutter,33.333px);top:103px;width:407px;display:flex;flex-direction:column;gap:24px}
 .hero-title-group>p{font-family:var(--site-font);font-size:var(--ui-caption-size);font-weight:500;line-height:1.3;letter-spacing:-.12px;text-box-trim:trim-both;text-box-edge:cap alphabetic}
 .hero-title-group h1{font-size:var(--ui-h1-canvas-size);font-weight:500;line-height:1;letter-spacing:0}
-.hero-intro{position:absolute;left:var(--hero-gutter,33.333px);top:461px;width:357px;display:flex;flex-direction:column;align-items:flex-start;gap:32px}
+.hero-intro{position:absolute;left:var(--hero-gutter,33.333px);bottom:24px;width:330px;display:flex;flex-direction:column;align-items:flex-start;gap:32px}
 .hero-intro>.ui-body{font-size:calc(var(--ui-body-size) / var(--hero-scale,1))}
 .hero-buttons{display:flex;align-items:start;gap:8px}
 .concept-hero .hero-primary{width:190px;justify-content:center}
@@ -310,6 +310,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visi
   .hero-title-group>p{font-size:var(--ui-meta-size);letter-spacing:-.1px}
   .hero-title-group h1{font-size:var(--ui-h1-canvas-size)}
   .hero-intro{max-width:370px}
+  .aft-hero-desktop-break{display:none}
   .hero-canvas .hero-coordinates{--target-x:280px;--target-y:420px}
   .section{padding-block:64px}
   h2{font-size:var(--ui-h2-size)}

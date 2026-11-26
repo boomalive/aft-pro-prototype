@@ -371,13 +371,18 @@
       const items = () =>
         all(item, track).filter((card) => !card.hidden && !card.classList.contains("aft-runtime-hide"));
       let targetIndex = null;
-      const edge = () =>
-        track.getBoundingClientRect().left + (parseFloat(getComputedStyle(track).scrollPaddingLeft) || 0);
+      const destination = (card) => {
+        const bounds = track.getBoundingClientRect();
+        const scale = bounds.width / track.offsetWidth || 1;
+        const padding = parseFloat(getComputedStyle(track).scrollPaddingLeft) || 0;
+        const left = track.scrollLeft + (card.getBoundingClientRect().left - bounds.left) / scale - padding;
+        return Math.max(0, Math.min(track.scrollWidth - track.clientWidth, left));
+      };
       const current = (cards) =>
         cards.reduce(
           (closest, card, i) =>
-            Math.abs(card.getBoundingClientRect().left - edge()) <
-            Math.abs(cards[closest].getBoundingClientRect().left - edge())
+            Math.abs(destination(card) - track.scrollLeft) <
+            Math.abs(destination(cards[closest]) - track.scrollLeft)
               ? i
               : closest,
           0,
@@ -401,7 +406,7 @@
         const from = targetIndex ?? current(cards);
         targetIndex = Math.max(0, Math.min(cards.length - 1, from + direction * step));
         track.scrollTo({
-          left: track.scrollLeft + cards[targetIndex].getBoundingClientRect().left - edge(),
+          left: destination(cards[targetIndex]),
           behavior: reduce.matches ? "auto" : "smooth",
         });
       }

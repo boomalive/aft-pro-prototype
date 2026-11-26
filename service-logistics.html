@@ -11,14 +11,16 @@
   <script src="design-scale.js?v=1"></script>
   <link rel="stylesheet" href="site-fonts.css?v=1">
   <link rel="stylesheet" href="ui-kit.css?v=5">
-  <link rel="stylesheet" href="design-test.css?v=21">
-  <link rel="stylesheet" href="design-review.css?v=9">
-  <link rel="stylesheet" href="service-logistics.css?v=16">
-  <script src="common.js?v=6" defer></script>
+  <link rel="stylesheet" href="design-test.css?v=22">
+  <link rel="stylesheet" href="design-review.css?v=10">
+  <link rel="stylesheet" href="service-logistics.css?v=17">
+  <link rel="stylesheet" href="service-sections.css?v=1">
+  <script src="common.js?v=8" defer></script>
   <script src="service-data.js?v=7" defer></script>
-  <script src="service-logistics.js?v=9" defer></script>
-  <script src="design-test.js?v=14" defer></script>
-  <script src="design-review.js?v=4" defer></script>
+  <script src="service-sections.js?v=1" defer></script>
+  <script src="service-logistics.js?v=10" defer></script>
+  <script src="design-test.js?v=15" defer></script>
+  <script src="design-review.js?v=5" defer></script>
 </head>
 <body class="logistics-page" data-service="logistics">
 <a class="skip-link" href="#main">К содержанию</a>
@@ -52,7 +54,7 @@
             <a href="#cases">Кейсы</a>
             <a href="#request">Контакты</a>
           </nav>
-        <div class="sticky-header-actions"><a class="sticky-phone" href="tel:+74992171503">+7 (499) 217-15-03</a><a class="concept-button sticky-header-cta" href="#request">Обсудить задачу <img src="assets/concept/header-arrow.svg" alt="" width="9" height="9"></a></div>
+        <div class="sticky-header-actions"><a class="sticky-phone" href="tel:+74951201473">+7 (495) 120-14-73</a><a class="concept-button sticky-header-cta" href="#request">Обсудить задачу <img src="assets/concept/header-arrow.svg" alt="" width="9" height="9"></a></div>
       </div>
       <button class="hero-menu-toggle sticky-menu-toggle" type="button" aria-label="Открыть меню" aria-controls="concept-nav" aria-expanded="false"><span></span><span></span></button>
     </div></div>
@@ -85,13 +87,7 @@
       <ul class="logistics-service-track" id="logistics-services" tabindex="0" aria-label="14 услуг логистики — горизонтальная лента"></ul>
     </section>
 
-    <section class="section logistics-tasks" id="tasks" aria-labelledby="tasks-title">
-      <div class="container"><div class="section-heading"><p class="section-label">Ваша задача</p><h2 id="tasks-title"></h2></div><div class="logistics-task-grid" id="logistics-tasks"></div></div>
-    </section>
-
-    <section class="section logistics-process" id="process" aria-labelledby="process-title">
-      <div class="container"><div class="section-heading"><p class="section-label">От задачи к результату</p><h2 id="process-title">Как строится работа</h2></div><ol class="logistics-process-list" id="logistics-process"></ol></div>
-    </section>
+    <div id="logistics-service-sections"></div>
 
     <section class="section logistics-values" id="values" aria-labelledby="values-title">
       <div class="container"><div class="section-heading"><p class="section-label">Почему АФТ ПРО</p><h2 id="values-title"></h2></div><div class="logistics-value-grid" id="logistics-values"></div></div>
@@ -152,7 +148,7 @@
 
     <section class="section contact-section" id="request">
       <div class="container contact-layout">
-        <div><p class="section-label">Давайте работать вместе</p><h2>Опишите<br>вашу задачу</h2><p class="contact-intro">Мы свяжемся с вами, чтобы обсудить возможные решения.</p><div class="contact-details"><a href="tel:+74992171503">+7 (499) 217-15-03</a><a href="mailto:logistics@aft.pro">logistics@aft.pro</a></div></div>
+        <div><p class="section-label">Давайте работать вместе</p><h2>Опишите<br>вашу задачу</h2><p class="contact-intro">Мы свяжемся с вами, чтобы обсудить возможные решения.</p><div class="contact-details"><a href="tel:+74951201473">+7 (495) 120-14-73</a><a href="mailto:logistics@aft.pro">logistics@aft.pro</a></div></div>
         <form class="prototype-form" data-prototype-form>
           <div class="field floating-field"><input id="logistics-name" name="name" placeholder=" " autocomplete="name" required><label for="logistics-name">Ваше имя</label></div>
           <div class="field floating-field"><input id="logistics-company" name="company" placeholder=" " autocomplete="organization"><label for="logistics-company">Компания</label></div>
@@ -173,7 +169,7 @@
         <div class="footer-heading-main"><h2 id="footer-title">От маршрута<br>к&nbsp;решению.</h2><a class="footer-back" href="#main"><span>Наверх</span><span class="footer-back-icon"><img class="arrow-icon arrow-up" src="assets/concept/button-arrow.svg" alt="" width="9" height="9"></span></a></div>
       </div>
       <div class="footer-directory">
-        <div class="footer-contacts"><p class="footer-label">Обсудим вашу задачу</p><a class="footer-phone" href="tel:+74992171503">+7 (499) 217-15-03</a><a class="footer-email" href="mailto:logistics@aft.pro">logistics@aft.pro</a><a class="concept-button concept-button-red" href="#request">Обсудить задачу <img src="assets/concept/button-arrow.svg" alt="" width="9" height="9"></a></div>
+        <div class="footer-contacts"><p class="footer-label">Обсудим вашу задачу</p><a class="footer-phone" href="tel:+74951201473">+7 (495) 120-14-73</a><a class="footer-email" href="mailto:logistics@aft.pro">logistics@aft.pro</a><a class="concept-button concept-button-red" href="#request">Обсудить задачу <img src="assets/concept/button-arrow.svg" alt="" width="9" height="9"></a></div>
         <div class="footer-navigation">
           <nav class="footer-column" aria-label="Компания"><p class="footer-label">Компания</p><a href="design-test.html#purpose">О компании</a><a href="#values">Почему АФТ ПРО</a><a href="#cases">Кейсы</a><a href="#request">Контакты</a></nav>
           <nav class="footer-column" aria-label="Услуги"><p class="footer-label">Направления</p><a href="service-logistics.html">Логистика</a><a href="service-engineering.html">Инжиниринг</a><a href="service-robotics.html">Роботизация</a><a href="service-consulting.html">Консалтинг</a><a href="service-service.html">Сервис</a></nav>

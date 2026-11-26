@@ -16,10 +16,15 @@
   .t-rec:has(.aft-service-data) {
     display: none !important;
   }
+  #allrecords .aft-task-grid > .tn-molecule,
   #allrecords .aft-process-grid > .tn-molecule {
     display: grid !important;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(var(--aft-process-columns, 4), minmax(0, 1fr));
   }
+  #allrecords .aft-task-grid > .tn-molecule {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #allrecords .aft-task-grid .aft-tasks-card,
   #allrecords .aft-process-grid .aft-process-card {
     width: auto !important;
     min-width: 0;
@@ -30,8 +35,37 @@
     }
   }
   @media (max-width: 639px) {
+    #allrecords .aft-task-grid > .tn-molecule,
     #allrecords .aft-process-grid > .tn-molecule {
       grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .aft-task-icon {
+    color: var(--uc-color-color-eguPwScz4Z, #43b6a5);
+    transition: color .3s ease;
+  }
+  .aft-tasks-card > .tn-molecule {
+    --t396-speedhover: .3s;
+  }
+  .t-rec:not(.aft-tasks-with-summary) .aft-task-heading-copy .aft-section-intro {
+    display: none !important;
+  }
+  @media (hover: hover) {
+    .aft-tasks-card:hover > .tn-molecule {
+      background-color: var(--uc-color-color-ZtBQUkeKs, #eef3f6) !important;
+    }
+    .aft-tasks-card:hover .aft-task-icon {
+      color: var(--uc-color-color-hnbTtyKO, #003449);
+    }
+  }
+  @media (min-width: 1200px) {
+    #allrecords .aft-tasks-with-summary .aft-task-heading-copy > .tn-molecule {
+      display: grid !important;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      column-gap: 24px !important;
+    }
+    #allrecords .aft-tasks-with-summary .aft-section-intro {
+      width: 100% !important;
     }
   }
   .aft-process-card > .tn-molecule:not([id]) {
@@ -195,13 +229,14 @@
       }
       if (!target || !uid) return;
       const shell = target.closest(".t-rec");
-      const fields = [
+      const fields = [...new Set([
         ...all(".aft-service-field,.aft-service-ref", shell)
           .map((e) => e.dataset.key)
           .filter(Boolean),
         "home-cover",
         "home-summary",
-      ];
+        "tasks-summary",
+      ])];
       const api = "https://feeds.tildaapi.com/api/v2/getfeed/";
       const query = new URLSearchParams({
         feeduid: root.dataset.tildaFeedUid,
@@ -236,6 +271,7 @@
         if (label) text($('.tn-elem[data-elem-type="text"]', label) || label, d[key + "-label"]);
         hide(label, !d[key + "-label"]);
         if (intro) {
+          if (key === "tasks") heading.classList.toggle("aft-tasks-with-summary", Boolean(d["tasks-summary"]));
           text(intro, d[key + "-summary"]);
           hide(intro, !d[key + "-summary"]);
           if (d[key + "-summary"]) intro.style.setProperty("display", "block", "important");
@@ -256,6 +292,7 @@
         stats: $(".aft-stat-grid"),
         cases: $(".aft-cases-track"),
       };
+      if (process.length) elements.process?.style.setProperty("--aft-process-columns", String(Math.min(4, process.length)));
       for (const [key, rows] of Object.entries({ solutions, tasks, process, values, stats, cases })) {
         const record = rec(elements[key]);
         hide(record, !show(key) || !rows.length);

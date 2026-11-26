@@ -4,8 +4,15 @@
   function initStickyHeader() {
     const header = document.querySelector('[data-sticky-header]');
     if (!header) return;
+    const nav = header.querySelector('.sticky-nav');
+    const actions = header.querySelector('.sticky-header-actions');
+    const phone = actions?.querySelector('.sticky-phone');
     function refresh() {
       const base = getConceptLayoutWidth();
+      if (phone && nav) {
+        if (base < 1200 && phone.parentElement !== nav) nav.append(phone);
+        if (base >= 1200 && phone.parentElement !== actions) actions.prepend(phone);
+      }
       const scale = base >= 1200 ? base / 1200 : 1;
       root.style.setProperty('--sticky-header-scale', String(scale));
       root.style.setProperty('--sticky-header-height', (base >= 1200 ? 64 * scale : 52) + 'px');

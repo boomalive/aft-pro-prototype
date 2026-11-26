@@ -93,31 +93,8 @@ function renderServicePage() {
       </div>
     </section>
 
-    <section class="section">
-      <div class="container split">
-        <div>
-          <p class="eyebrow">${data.tasksEyebrow || "Задачи и объекты"}</p>
-          <h2>${data.tasksTitle}</h2>
-        </div>
-        <div class="plain-list">
-          ${data.tasks
-            .map(
-              ([title, text], index) => `<article class="plain-list-item reveal"><span>${String(index + 1).padStart(2, "0")}</span><h3>${title}</h3><p>${text}</p></article>`
-            )
-            .join("")}
-        </div>
-      </div>
-    </section>
-
-    ${data.process?.length ? `<section class="section section-white">
-      <div class="container">
-        <p class="eyebrow">${data.processEyebrow || "Единая логика проекта"}</p>
-        <h2>${data.processTitle || "Как строится работа"}</h2>
-        <div class="timeline" style="--step-count: ${data.process.length}">
-          ${data.process.map(([title, text]) => `<article class="timeline-item"><h3>${title}</h3><p>${text}</p></article>`).join("")}
-        </div>
-      </div>
-    </section>` : ""}
+    ${renderServiceTasks(data)}
+    ${renderServiceProcess(data)}
 
     <section class="section">
       <div class="container">

@@ -274,7 +274,10 @@
               ["Контакты", document.querySelector(".aft-request")?.closest(".t-rec")?.checkVisibility() ? "#request" : "/new-home#request"],
             ]
           : [];
-        for (const [label, href] of [...pre, ...sources()]) {
+        const links = [...pre, ...sources()];
+        const phone = menu.querySelector('.aft-contact-phone a[href^="tel:"]');
+        if (mobile && phone) links.push([phone.textContent.trim(), phone.getAttribute("href")]);
+        for (const [label, href] of links) {
           const a = document.createElement("a");
           a.href = href;
           a.textContent = label;
